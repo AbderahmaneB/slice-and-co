@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Slice and Co Pizza, est. 1951">
+  <defs>
+    <path id="sco-top" d="M70,200 A130,130 0 0 1 330,200" fill="none"/>
+    <path id="sco-bot" d="M78,200 A122,122 0 0 0 322,200" fill="none"/>
+  </defs>
+
+  <circle cx="200" cy="200" r="196" fill="#111111"/>
+  <circle cx="200" cy="200" r="190" fill="#e2231a"/>
+  <circle cx="200" cy="200" r="156" fill="#fdf6ee" stroke="#111111" stroke-width="5"/>
+  <circle cx="200" cy="200" r="186" fill="none" stroke="#fdf6ee" stroke-width="2.5" opacity="0.7"/>
+
+  <g font-family="Arial Black, Arial, sans-serif" font-weight="900" fill="#ffffff" letter-spacing="4">
+    <text font-size="34"><textPath href="#sco-top" startOffset="50%" text-anchor="middle">SLICE &amp; CO</textPath></text>
+    <text font-size="38"><textPath href="#sco-bot" startOffset="50%" text-anchor="middle">PIZZA</textPath></text>
+  </g>
+
+  <g font-family="Arial Black, Arial, sans-serif" font-weight="900" fill="#e2231a" font-size="26" text-anchor="middle">
+    <text x="86" y="210">19</text>
+    <text x="314" y="210">51</text>
+  </g>
+
+  <g transform="rotate(18 235 175)">
+    <path d="M205,196 L312,150 L322,206 Z" fill="#f6c44e" stroke="#c8881d" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M312,150 L322,206" stroke="#e2a23a" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="270" cy="172" r="9" fill="#d3321f"/>
+    <circle cx="292" cy="185" r="7" fill="#d3321f"/>
+    <circle cx="262" cy="194" r="6" fill="#d3321f"/>
+  </g>
+
+  <path d="M118,206 C150,176 188,176 200,196 C212,176 250,176 282,206 C248,200 152,200 118,206 Z" fill="#e2231a" stroke="#111111" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M118,206 C150,252 250,252 282,206 C248,214 152,214 118,206 Z" fill="#e2231a" stroke="#111111" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M138,207 C168,214 232,214 262,207 C236,220 164,220 138,207 Z" fill="#fdf6ee"/>
+  <line x1="170" y1="209" x2="170" y2="216" stroke="#cbb9a0" stroke-width="2"/>
+  <line x1="200" y1="210" x2="200" y2="218" stroke="#cbb9a0" stroke-width="2"/>
+  <line x1="230" y1="209" x2="230" y2="216" stroke="#cbb9a0" stroke-width="2"/>
+</svg>

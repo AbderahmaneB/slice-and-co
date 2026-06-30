@@ -1,0 +1,244 @@
+/* =========================================================
+   SLICE & CO PIZZA — feuille de style globale
+   Identité : New York / diner US, rouge brochure, Est. 1951
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Pacifico&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --red:#e2231a; --red-deep:#9e0b0b; --ink:#141414; --cream:#fdf6ee;
+  --cheese:#f6c44e; --muted:#555555; --line:rgba(20,20,20,.14);
+  --display:'Anton',Impact,sans-serif;
+  --heading:'Oswald',sans-serif;
+  --ui:'Oswald',sans-serif;
+  --script:'Pacifico',cursive;
+  --body:'Inter',system-ui,sans-serif;
+  --shadow:7px 7px 0 var(--ink);
+  --wrap:1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--cream);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-weight:400;line-height:1.05;letter-spacing:.4px;margin:0 0 .35em;text-transform:uppercase}
+h1,h2{font-family:var(--display);line-height:.98;letter-spacing:.6px}
+h3,h4{font-family:var(--heading);font-weight:700}
+p{margin:0 0 1em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+.script{font-family:var(--script);text-transform:none;color:var(--cheese)}
+.eyebrow{font-family:var(--ui);text-transform:uppercase;letter-spacing:3px;font-weight:600;font-size:13px;color:var(--red)}
+.center{text-align:center}
+.center .btn{margin:7px}        /* évite que 2 boutons se collent (côte à côte ou empilés) */
+
+/* ---- boutons ---- */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--ui);font-weight:700;
+  text-transform:uppercase;letter-spacing:1.5px;font-size:14px;padding:15px 30px;border-radius:50px;
+  background:var(--red);color:#fff;border:2px solid var(--red);transition:.18s;cursor:pointer}
+.btn:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border-color:#fff}
+.btn.ghost:hover{background:#fff;color:var(--ink)}
+.btn.ink{background:var(--ink);border-color:var(--ink)}
+.btn.ink:hover{background:var(--red);border-color:var(--red)}
+
+/* ---- top bar ---- */
+.topbar{background:var(--ink);color:#fff;font-family:var(--ui);font-size:13px;letter-spacing:.5px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
+.topbar a{opacity:.85;transition:.15s}.topbar a:hover{opacity:1;color:var(--cheese)}
+.topbar .right{display:flex;gap:18px;align-items:center}
+
+/* ---- header / nav ---- */
+.site-header{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:3px solid var(--ink)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand img{width:58px;height:58px}
+.brand b{font-family:var(--display);font-size:24px;letter-spacing:1px;text-transform:uppercase;line-height:.9}
+.brand small{display:block;font-family:var(--ui);font-size:10px;letter-spacing:3px;color:var(--red)}
+.nav{display:flex;gap:28px;align-items:center;font-family:var(--ui);text-transform:uppercase;font-weight:600;letter-spacing:1.5px;font-size:15px}
+.nav a{position:relative;padding:4px 0}
+.nav a.active,.nav a:hover{color:var(--red)}
+.nav a.active:after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:3px;background:var(--red)}
+.burger{display:none;background:none;border:0;font-size:28px;cursor:pointer;color:var(--ink)}
+
+/* ---- marquee ---- */
+.marquee{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.marquee .track{display:inline-block;padding:10px 0;animation:scroll 26s linear infinite;font-family:var(--ui);text-transform:uppercase;letter-spacing:2px;font-weight:600;font-size:14px}
+.marquee span{margin:0 14px}.marquee .dot{color:var(--cheese)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---- hero ---- */
+.hero{position:relative;background:radial-gradient(130% 120% at 50% 0%,#c9160f 0%,#9e0b0b 55%,#6e0707 100%);color:#fff;overflow:hidden;text-align:left}
+.hero:before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 26px,transparent 26px 52px);pointer-events:none}
+.hero .wrap{position:relative;z-index:3;max-width:none;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  padding:60px clamp(38px,6vw,120px);min-height:clamp(560px,80vh,760px)}
+.hero-content{max-width:620px}
+.hero .script{font-size:38px;display:block;margin-bottom:4px}
+.hero h1{font-size:clamp(46px,7.5vw,98px);color:#fff;text-shadow:0 6px 0 rgba(0,0,0,.18)}
+.hero p{font-size:19px;max-width:520px;margin:0;opacity:.96;font-style:italic;line-height:1.7;
+  letter-spacing:.2px;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-start;margin-top:28px}
+/* grosse pizza à droite, entière (coupée seulement en bas), en rotation */
+.hero-pizza{position:absolute;right:clamp(16px,3vw,90px);bottom:0;width:clamp(460px,56vw,980px);
+  transform:translateY(38%);z-index:1;pointer-events:none;container-type:inline-size}
+.hero-pizza img{width:100%;animation:spin 42s linear infinite;filter:drop-shadow(0 26px 48px rgba(0,0,0,.55))}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* pastille promo : collée à la pizza (reste au même endroit sur tous les écrans) */
+.hero-pizza .badge{position:absolute;top:11%;right:11%;z-index:6;
+  background:var(--cheese);color:var(--ink);font-family:var(--display);
+  width:24%;min-width:72px;max-width:150px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;
+  font-size:clamp(12px,5.2cqw,26px);line-height:.95;border:3px solid var(--ink);transform:rotate(-12deg);
+  box-shadow:0 8px 0 rgba(0,0,0,.2);user-select:none}
+
+/* ---- bandes / sections ---- */
+.section{padding:78px 0}
+.section.alt{background:#fff}
+.section-head{max-width:680px;margin:0 auto 46px;text-align:center}
+.section-head h2{font-size:clamp(34px,5vw,58px)}
+.section-head p{color:var(--muted);margin:0}
+
+/* ---- features ---- */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feature{background:var(--cream);border:2px solid var(--ink);border-radius:16px;padding:26px;text-align:center}
+.feature .ic{font-size:34px;margin-bottom:8px}
+.feature h3{font-size:20px;margin-bottom:4px}
+.feature p{margin:0;font-size:14px;color:var(--muted)}
+
+/* ---- cartes pizzas ---- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{background:var(--cream);border:2px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
+.card:hover{transform:translateY(-4px)}
+.card .pic{aspect-ratio:1/1;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#fff,#f0e4d4);padding:18px}
+.card .pic img{width:88%}
+.card .body{padding:18px 20px 22px;border-top:2px solid var(--ink)}
+.card .body .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.card h3{font-size:24px;margin:0}
+.card .price{font-family:var(--display);color:var(--red);font-size:26px}
+.card .tag{display:inline-block;font-family:var(--ui);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  background:var(--ink);color:#fff;padding:3px 9px;border-radius:30px;margin-bottom:8px}
+.card p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+
+/* ---- bandeau livraison ---- */
+.cta-band{background:var(--ink);color:#fff;text-align:center;padding:64px 0}
+.cta-band h2{font-size:clamp(32px,5vw,56px);color:#fff}
+.cta-band .big{font-family:var(--display);color:var(--cheese);font-size:64px;line-height:1}
+.cta-band .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+
+/* ---- page hero (pages internes) ---- */
+.page-hero{background:radial-gradient(130% 130% at 50% 0%,#c9160f,#7a0808);color:#fff;text-align:center;padding:64px 22px 56px}
+.page-hero .script{font-size:26px;display:block;margin-bottom:6px}
+.page-hero h1{font-size:clamp(40px,7vw,78px);color:#fff}
+.page-hero .est{font-family:var(--ui);letter-spacing:4px;text-transform:uppercase;font-size:12px;opacity:.85;margin-top:8px}
+
+/* ---- menu ---- */
+.menu-cat{margin:54px 0 14px;display:flex;align-items:flex-end;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:10px}
+.menu-cat .ic{font-size:30px}
+.menu-cat h2{font-size:34px;margin:0}
+.menu-cat span{font-family:var(--ui);text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--red);margin-bottom:5px;font-weight:600}
+.menu-list{display:grid;grid-template-columns:1fr 1fr;gap:4px 44px}
+.row{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 10px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.row .n{font-weight:600}
+.row .lead{flex:1;border-bottom:2px dotted rgba(20,20,20,.25);transform:translateY(-4px);min-width:14px}
+.row .p{font-family:var(--ui);font-weight:700;color:var(--red);white-space:nowrap;margin-left:auto;order:2}
+/* description sous le nom, pleine largeur, petit style thème (Oswald) */
+.row .desc{flex-basis:100%;order:3;font-family:var(--ui);font-weight:500;font-size:12.5px;
+  letter-spacing:.5px;color:var(--muted);margin-top:1px;line-height:1.4}
+/* prix Sénior / Méga */
+.row .prices{order:2;margin-left:auto;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px 16px;white-space:nowrap}
+.row .sz{font-family:var(--ui);font-style:normal;font-weight:700;font-size:14px;color:var(--red)}
+.row .sz i{font-style:normal;font-weight:600;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-right:5px}
+.note{font-size:13px;color:var(--muted);margin-top:18px}
+
+/* ---- cartes offres ---- */
+.offers{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.offer{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:30px 26px;box-shadow:var(--shadow)}
+.offer h3{font-size:24px;margin-bottom:10px}
+.offer .big{font-family:var(--display);color:var(--red);font-size:50px;line-height:1;margin:6px 0}
+.offer p{margin:6px 0;font-size:14.5px}
+.offer .fine{font-size:12.5px;color:var(--muted)}
+
+/* ---- contact ---- */
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:30px}
+.info h3{font-family:var(--ui);font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.info a{font-weight:700}
+.map{width:100%;height:420px;border:3px solid var(--ink);border-radius:18px}
+
+/* ---- footer ---- */
+.site-footer{background:var(--ink);color:#cfcfcf}
+.site-footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding:60px 22px 36px}
+.site-footer h4{color:#fff;font-size:22px;margin-bottom:14px}
+.site-footer a:hover{color:var(--cheese)}
+.site-footer .brand b{color:#fff}.site-footer .brand small{color:var(--cheese)}
+.site-footer p{margin:6px 0;font-size:14.5px}
+.socials{display:flex;gap:14px;margin-top:14px}
+.socials a{width:40px;height:40px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;color:#fff}
+.socials a:hover{background:var(--red);border-color:var(--red)}
+.legal{border-top:1px solid rgba(255,255,255,.15);text-align:center;padding:18px;font-size:13px;color:#9a9a9a}
+
+/* ---- animation d'ouverture (splash) ---- */
+.intro{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;
+  background:radial-gradient(circle at 50% 42%,#c9160f,#6e0707);
+  background-image:radial-gradient(circle at 50% 42%,#c9160f,#6e0707),repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 26px,transparent 26px 52px);
+  animation:introOut .7s 2.2s forwards}
+.intro.skip{display:none}
+.intro-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:20px}
+.intro-logo{width:clamp(130px,32vw,190px);margin:0 auto;filter:drop-shadow(0 16px 28px rgba(0,0,0,.45));
+  animation:introPop 1s cubic-bezier(.2,.8,.2,1.3) both}
+.intro-word{font-family:var(--display);font-size:clamp(34px,7vw,56px);letter-spacing:2px;margin-top:16px;animation:introUp .6s .4s both}
+.intro-sub{font-family:var(--ui);letter-spacing:5px;text-transform:uppercase;font-size:13px;opacity:.9;animation:introUp .6s .62s both}
+@keyframes introPop{0%{transform:scale(.2) rotate(-30deg);opacity:0}55%{opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes introUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes introOut{to{opacity:0;visibility:hidden;transform:scale(1.08)}}
+
+/* ---- apparition au scroll + header dynamique ---- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.site-header{transition:box-shadow .25s,padding .25s}
+.site-header.scrolled{box-shadow:0 10px 26px rgba(0,0,0,.13)}
+@media(prefers-reduced-motion:reduce){
+  .intro{animation:none;display:none}.reveal{opacity:1;transform:none}
+  .hero .art img{animation:none}.marquee .track{animation:none}
+}
+
+/* ---- responsive ---- */
+html,body{max-width:100%;overflow-x:hidden}
+
+/* tablette */
+@media(max-width:900px){
+  .hero .wrap{min-height:clamp(520px,76vh,640px);padding:48px 26px 230px;align-items:center;text-align:center}
+  .hero-content{max-width:560px}
+  .hero p{margin:0 auto}
+  .hero .cta{justify-content:center}
+  .hero-pizza{width:min(460px,86vw);right:50%;transform:translate(50%,40%)}
+  .features,.offers,.info-grid{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .menu-list{grid-template-columns:1fr}
+  .site-footer .wrap{grid-template-columns:1fr}
+  .section{padding:56px 0}
+  .nav{position:fixed;inset:0 0 0 auto;width:min(82vw,330px);background:var(--cream);flex-direction:column;
+    padding:96px 32px;gap:24px;font-size:18px;transform:translateX(100%);transition:.25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+  .nav.open{transform:translateX(0)}
+  .nav .btn{width:100%;justify-content:center}
+  .burger{display:block;z-index:60}
+}
+
+/* mobile */
+@media(max-width:560px){
+  .features,.offers,.info-grid,.cards{grid-template-columns:1fr}
+  .topbar .left{display:none}
+  .topbar .wrap{justify-content:center}
+  .hero .wrap{padding-bottom:215px}
+  .hero-pizza{width:min(300px,78vw);transform:translate(50%,44%)}
+  .hero .cta{width:100%;gap:10px;margin-top:22px}
+  .hero .cta .btn{flex:1;justify-content:center;padding:12px 14px;font-size:12px;letter-spacing:.8px}
+  .brand b{font-size:20px}
+  .menu-cat{flex-wrap:wrap;gap:8px}
+  .menu-cat h2{font-size:28px}
+  .badge-readout{left:8px;right:8px;bottom:8px;text-align:center}
+}
+
+/* petit mobile */
+@media(max-width:380px){
+  .hero h1{font-size:40px}
+  .hero-pizza{width:84vw}
+  .hero .wrap{padding-bottom:190px}
+}

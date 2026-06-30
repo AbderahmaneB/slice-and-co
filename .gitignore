@@ -1,0 +1,5 @@
+# artefacts éventuels de génération d'images
+assets/img/_backup/
+assets/img/_raw/
+.DS_Store
+Thumbs.db
