@@ -90,6 +90,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 .hero-pizza{position:absolute;right:clamp(16px,3vw,90px);bottom:0;width:clamp(460px,56vw,980px);
   transform:translateY(38%);z-index:1;pointer-events:none;container-type:inline-size}
 .hero-pizza img{width:100%;animation:spin 42s linear infinite;filter:drop-shadow(0 26px 48px rgba(0,0,0,.55))}
+/* 2e pizza superposée : révélée part par part (masque géré en JS) pendant la rotation */
+.hero-pizza img.pz-b{position:absolute;inset:0;visibility:hidden;filter:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 /* pastille promo : collée à la pizza (reste au même endroit sur tous les écrans) */
 .hero-pizza .badge{position:absolute;top:11%;right:11%;z-index:6;
