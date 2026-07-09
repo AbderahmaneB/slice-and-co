@@ -1,6 +1,6 @@
 {
   // Déploiement Cloudflare Workers (Static Assets) — site statique servi depuis ./public
-  "name": "slice-co-pizza",
+  "name": "slice-and-co",
   "compatibility_date": "2025-01-01",
   "assets": {
     "directory": "./public"
