@@ -112,7 +112,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 .feature{background:var(--cream);border:2px solid var(--ink);border-radius:18px;padding:26px;text-align:center;
   box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
 .feature:hover{transform:translateY(-4px)}
-.feature .ic{font-size:34px;margin-bottom:8px;filter:grayscale(1) contrast(1.15);opacity:.85}   /* pictos "tampon encré" */
+.feature .ic{font-size:34px;margin-bottom:8px}
 .feature h3{font-size:20px;margin-bottom:4px}
 .feature p{margin:0;font-size:14px;color:var(--muted)}
 
@@ -144,7 +144,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 
 /* ---- menu ---- */
 .menu-cat{margin:54px 0 14px;display:flex;align-items:flex-end;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:10px}
-.menu-cat .ic{font-size:30px;filter:grayscale(1) contrast(1.15);opacity:.85}
+.menu-cat .ic{font-size:30px}
 .menu-cat h2{font-size:34px;margin:0}
 .menu-cat span{font-family:var(--ui);text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--red);margin-bottom:5px;font-weight:600}
 .menu-list{display:grid;grid-template-columns:1fr 1fr;gap:6px 44px}
