@@ -53,39 +53,33 @@
 
       var FADE = 3200;    // durée du fondu (ms) — lent = imperceptible
       var CYCLE = 11000;  // temps entre deux changements
-      var idx = 0, busy = false, heroVisible = true;
+      var idx = 0, busy = false;
 
       function next() { idx = (idx + 1) % PIZZAS.length; return PIZZAS[idx]; }
 
-      function swapSoft() {                 // fondu doux (hero visible)
-        if (busy) return;
+      function swapSoft() {
+        if (busy || document.hidden) return;   // onglet caché : on saute le cycle
         busy = true;
         b.src = next();
-        b.style.transition = "opacity " + FADE + "ms ease-in-out";
-        requestAnimationFrame(function () { requestAnimationFrame(function () {
-          b.style.opacity = "1";
-        }); });
-        setTimeout(function () {
-          a.src = b.src;
-          b.style.transition = "none";
-          b.style.opacity = "0";
-          busy = false;
-        }, FADE + 200);
-      }
-      function swapInstant() {              // hero hors écran : échange invisible
-        if (busy) return;
-        a.src = next();
-      }
-
-      // le hero est-il à l'écran ?
-      var hero = document.querySelector(".hero");
-      if ("IntersectionObserver" in window && hero) {
-        new IntersectionObserver(function (en) {
-          heroVisible = en[0].isIntersecting;
-        }, { threshold: 0.05 }).observe(hero);
+        var start = function () {
+          b.style.transition = "opacity " + FADE + "ms ease-in-out";
+          requestAnimationFrame(function () { requestAnimationFrame(function () {
+            b.style.opacity = "1";
+          }); });
+          setTimeout(function () {
+            a.src = b.src;
+            b.style.transition = "none";
+            b.style.opacity = "0";
+            busy = false;
+          }, FADE + 200);
+        };
+        // on ne démarre le fondu qu'une fois l'image ENTIÈREMENT décodée
+        // (sinon elle apparaît d'un coup au lieu de fondre)
+        if (b.decode) b.decode().then(start).catch(function () { busy = false; });
+        else start();
       }
 
-      setInterval(function () { (heroVisible ? swapSoft : swapInstant)(); }, CYCLE);
+      setInterval(swapSoft, CYCLE);
     })();
   });
 })();
