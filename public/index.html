@@ -6,38 +6,47 @@
 <title>Slice & Co Pizza — Pizzeria façon New York à Paris 15ᵉ</title>
 <meta name="description" content="Slice & Co Pizza : pizza à la part façon New York, esprit Route 66. 111 rue Olivier de Serres, Paris 15e. Sur place, à emporter, Uber Eats & Deliveroo. Livraison offerte dès 25€.">
 <link rel="icon" href="assets/favicon.png">
+<script src="assets/intro.js"></script>
+<link rel="preload" href="assets/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/interactions.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Slice & Co Pizza","servesCuisine":["Pizza","American"],"telephone":"+33782817250","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"111 rue Olivier de Serres","postalCode":"75015","addressLocality":"Paris","addressCountry":"FR"},"url":"https://sliceandco.fr/","sameAs":["https://www.instagram.com/slice_andco/"],"openingHours":["Mo-Th 11:30-14:30","Mo-Th 18:00-24:00","Fr-Sa 11:30-14:30","Fr-Sa 18:00-02:00","Su 18:00-02:00"]}
 </script>
 </head>
-<body>
+<body id="haut">
+<a class="skip-link" href="#contenu">Aller au contenu</a>
 <div id="intro" class="intro" aria-hidden="true"><div class="intro-inner"><img class="intro-logo" src="assets/logo.png" alt="Slice & Co Pizza"><div class="intro-word">SLICE &amp; CO</div><div class="intro-sub">New York Style · Est. 1951</div></div></div>
 
 <!-- TOP BAR -->
-<div class="topbar"><div class="wrap">
-  <div class="left">📍 111 rue Olivier de Serres, Paris 15ᵉ — à 5 min de la Porte de Versailles</div>
+<div class="topbar" role="region" aria-label="Informations rapides"><div class="wrap">
+  <div class="left"><span aria-hidden="true">📍</span> 111 rue Olivier de Serres, Paris 15ᵉ — à 5 min de la Porte de Versailles</div>
   <div class="right">
-    <a href="tel:+33782817250">📞 07 82 81 72 50</a>
-    <a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener">@slice_andco</a>
+    <a href="tel:+33782817250"><svg class="action-icon action-icon--phone" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92Z"/></svg><span>07 82 81 72 50</span></a>
+    <a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener"><img class="topbar-icon" src="assets/icons/instagram.svg" width="17" height="17" alt=""><span>@slice_andco</span><span class="sr-only"> (nouvel onglet)</span></a>
+
+    <button class="motion-toggle" type="button" aria-label="Mettre les animations en pause" aria-pressed="false" hidden><svg class="motion-icon motion-icon--pause" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg><svg class="motion-icon motion-icon--play" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7Z"/></svg><span class="motion-label">Animations</span></button>
   </div>
 </div></div>
 
 <!-- HEADER -->
 <header class="site-header"><div class="wrap">
-  <a class="brand" href="index.html">
-    <img src="assets/logo.png" alt="Slice & Co Pizza" width="58" height="58">
+  <a class="brand" href="index.html" aria-label="Slice &amp; Co — Accueil">
+    <img src="assets/logo.png" alt="" width="58" height="58">
     <span><b>Slice &amp; Co</b><small>New York Style · Est. 1951</small></span>
   </a>
-  <nav class="nav" id="nav">
-    <a href="index.html" class="active">Accueil</a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a href="index.html" class="active" aria-current="page">Accueil</a>
     <a href="menu.html">Menu</a>
     <a href="offres.html">Offres</a>
     <a href="contact.html">Contact</a>
-    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">Commander</a>
+    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener"><span class="btn-label">Commander</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
   </nav>
-  <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-controls="nav" aria-expanded="false"><svg class="burger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path class="burger-line--top" d="M4 6h16"/><path class="burger-line--middle" d="M4 12h16"/><path class="burger-line--bottom" d="M4 18h16"/></svg></button>
 </div></header>
+
+<main id="contenu" tabindex="-1">
 
 <!-- HERO -->
 <section class="hero">
@@ -48,31 +57,32 @@
       <h1>Pizza à la part<br>façon New York</h1>
       <p>Pâte fraîche pétrie chaque jour, cuisson maison et recettes venues tout droit des rues de Brooklyn à Manhattan. Sur place, à emporter ou en livraison dans le 15ᵉ.</p>
       <div class="cta">
-        <a class="btn ghost" href="menu.html">Voir le menu</a>
-        <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">Commander en ligne</a>
+        <a class="btn ghost" href="menu.html"><span class="btn-label">Voir le menu</span><svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener"><span class="btn-label">Commander en ligne</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
       </div>
     </div>
   </div>
   <div class="hero-pizza">
-    <img class="pz-a" src="assets/img/pizza-hero.png" alt="Pizza new-yorkaise Slice & Co vue de dessus, fromage fondant">
-    <img class="pz-b" src="assets/img/pizza-hero.png" alt="" aria-hidden="true">
+    <img class="pz-a" fetchpriority="high" src="assets/img/pizzas/web/pepperoni-800.webp" srcset="assets/img/pizzas/web/pepperoni-480.webp 480w, assets/img/pizzas/web/pepperoni-800.webp 800w" sizes="(max-width: 560px) 300px, (max-width: 900px) 460px, 56vw" width="800" height="800" decoding="async" alt="Pizza new-yorkaise Slice & Co vue de dessus, fromage fondant">
+    <img class="pz-b" src="assets/img/pizzas/web/pepperoni-800.webp" srcset="assets/img/pizzas/web/pepperoni-480.webp 480w, assets/img/pizzas/web/pepperoni-800.webp 800w" sizes="(max-width: 560px) 300px, (max-width: 900px) 460px, 56vw" width="800" height="800" decoding="async" alt="" aria-hidden="true">
     <div class="badge">DÈS<br>9,90€<br>LE MIDI</div>
   </div>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee"><div class="track">
+<div class="marquee"><span class="sr-only">New York Style · Pizza à la part · Est. 1951 · Paris 15ᵉ · Livraison offerte dès 25€ ·</span><div class="track" aria-hidden="true">
   <span>★ New York Style</span><span class="dot">•</span><span>Pizza à la part</span><span class="dot">•</span><span>Est. 1951</span><span class="dot">•</span><span>Paris 15ᵉ</span><span class="dot">•</span><span>Livraison offerte dès 25€</span><span class="dot">•</span>
   <span>★ New York Style</span><span class="dot">•</span><span>Pizza à la part</span><span class="dot">•</span><span>Est. 1951</span><span class="dot">•</span><span>Paris 15ᵉ</span><span class="dot">•</span><span>Livraison offerte dès 25€</span><span class="dot">•</span>
 </div></div>
 
 <!-- FEATURES -->
 <section class="section"><div class="wrap">
+  <h2 class="sr-only">Une pizza à votre façon</h2>
   <div class="features">
-    <div class="feature"><div class="ic">🍕</div><h3>À la part</h3><p>La vraie part new-yorkaise, généreuse et croustillante.</p></div>
-    <div class="feature"><div class="ic">🛵</div><h3>Livraison</h3><p>Uber Eats & Deliveroo. Offerte dès 25€ d'achat.</p></div>
-    <div class="feature"><div class="ic">📦</div><h3>À emporter</h3><p>Commandez, on prépare, vous récupérez.</p></div>
-    <div class="feature"><div class="ic">🇺🇸</div><h3>Ambiance US</h3><p>Déco vintage Route 66, esprit diner américain.</p></div>
+    <div class="feature"><div class="ic" aria-hidden="true">🍕</div><h3>À la part</h3><p>La vraie part new-yorkaise, généreuse et croustillante.</p></div>
+    <div class="feature"><div class="ic" aria-hidden="true">🛵</div><h3>Livraison</h3><p>Uber Eats & Deliveroo. Offerte dès 25€ d'achat.</p></div>
+    <div class="feature"><div class="ic" aria-hidden="true">📦</div><h3>À emporter</h3><p>Commandez, on prépare, vous récupérez.</p></div>
+    <div class="feature"><div class="ic" aria-hidden="true">🇺🇸</div><h3>Ambiance US</h3><p>Déco vintage Route 66, esprit diner américain.</p></div>
   </div>
 </div></section>
 
@@ -84,26 +94,32 @@
     <p>Une sélection de nos best-sellers — la carte complète est sur la page Menu.</p>
   </div>
   <div class="cards">
-    <div class="card"><div class="pic"><img src="assets/img/pizza-01.png" alt="Pizza Brooklyn Hot Honey — pepperoni de bœuf et miel pimenté"></div>
+    <div class="card"><div class="pic"><picture><source type="image/webp" srcset="assets/img/pizzas/web/brooklyn-hot-honey-480.webp 480w, assets/img/pizzas/web/brooklyn-hot-honey-800.webp 800w" sizes="(max-width: 560px) 80vw, (max-width: 900px) 38vw, 310px"><img src="assets/img/pizzas/brooklyn-hot-honey.png" alt="Pizza Brooklyn Hot Honey — pepperoni de bœuf et miel pimenté" width="800" height="800" loading="lazy" decoding="async"></picture></div>
       <div class="body"><span class="tag">Coup de cœur</span><div class="top"><h3>Brooklyn Hot Honey</h3><span class="price">12,90€</span></div>
-      <p>Pepperoni de bœuf, miel pimenté, base tomate — le sucré-épicé qui claque.</p></div></div>
-    <div class="card"><div class="pic"><img src="assets/img/pizzas/bbq-chicken.png" alt="Pizza BBQ Chicken — poulet rôti et sauce barbecue"></div>
+      <p>Pepperoni de bœuf, miel pimenté, base tomate — le sucré-épicé qui claque.</p>
+      <a class="card-link" href="menu.html#pizza-brooklyn-hot-honey">Voir sur la carte <svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg><span class="sr-only"> : Pizza Brooklyn Hot Honey — pepperoni de bœuf et miel pimenté</span></a></div></div>
+    <div class="card"><div class="pic"><picture><source type="image/webp" srcset="assets/img/pizzas/web/bbq-chicken-480.webp 480w, assets/img/pizzas/web/bbq-chicken-800.webp 800w" sizes="(max-width: 560px) 80vw, (max-width: 900px) 38vw, 310px"><img src="assets/img/pizzas/bbq-chicken.png" alt="Pizza BBQ Chicken — poulet rôti et sauce barbecue" width="800" height="800" loading="lazy" decoding="async"></picture></div>
       <div class="body"><span class="tag">Best-seller</span><div class="top"><h3>BBQ Chicken</h3><span class="price">12,90€</span></div>
-      <p>Base BBQ, poulet rôti, mozzarella, cheddar, oignons rouges.</p></div></div>
-    <div class="card"><div class="pic"><img src="assets/img/pizzas/everything-bagel.png" alt="Pizza Everything Bagel — croûte aux graines façon bagel new-yorkais"></div>
+      <p>Base BBQ, poulet rôti, mozzarella, cheddar, oignons rouges.</p>
+      <a class="card-link" href="menu.html#pizza-bbq-chicken">Voir sur la carte <svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg><span class="sr-only"> : Pizza BBQ Chicken — poulet rôti et sauce barbecue</span></a></div></div>
+    <div class="card"><div class="pic"><picture><source type="image/webp" srcset="assets/img/pizzas/web/everything-bagel-480.webp 480w, assets/img/pizzas/web/everything-bagel-800.webp 800w" sizes="(max-width: 560px) 80vw, (max-width: 900px) 38vw, 310px"><img src="assets/img/pizzas/everything-bagel.png" alt="Pizza Everything Bagel — croûte aux graines façon bagel new-yorkais" width="800" height="800" loading="lazy" decoding="async"></picture></div>
       <div class="body"><span class="tag">NYC Original</span><div class="top"><h3>Everything Bagel</h3><span class="price">11,90€</span></div>
-      <p>Croûte aux graines façon bagel, base creamcheese, oignons rouges, sésame.</p></div></div>
-    <div class="card"><div class="pic"><img src="assets/img/pizzas/chicken-creamy-bacon.png" alt="Pizza Chicken Creamy Bacon — poulet rôti et bacon sur base crème"></div>
+      <p>Croûte aux graines façon bagel, base creamcheese, oignons rouges, sésame.</p>
+      <a class="card-link" href="menu.html#pizza-everything-bagel">Voir sur la carte <svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg><span class="sr-only"> : Pizza Everything Bagel — croûte aux graines façon bagel new-yorkais</span></a></div></div>
+    <div class="card"><div class="pic"><picture><source type="image/webp" srcset="assets/img/pizzas/web/chicken-creamy-bacon-480.webp 480w, assets/img/pizzas/web/chicken-creamy-bacon-800.webp 800w" sizes="(max-width: 560px) 80vw, (max-width: 900px) 38vw, 310px"><img src="assets/img/pizzas/chicken-creamy-bacon.png" alt="Pizza Chicken Creamy Bacon — poulet rôti et bacon sur base crème" width="800" height="800" loading="lazy" decoding="async"></picture></div>
       <div class="body"><span class="tag">Crémeuse</span><div class="top"><h3>Chicken Creamy Bacon</h3><span class="price">12,90€</span></div>
-      <p>Base crème fraîche, poulet rôti, bacon, mozzarella, oignons rouges.</p></div></div>
-    <div class="card"><div class="pic"><img src="assets/img/pizzas/brooklyn-choco-dreams.png" alt="Sweet pizza Brooklyn Choco Dreams — chocolat, banane et fraises"></div>
+      <p>Base crème fraîche, poulet rôti, bacon, mozzarella, oignons rouges.</p>
+      <a class="card-link" href="menu.html#pizza-chicken-creamy-bacon">Voir sur la carte <svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg><span class="sr-only"> : Pizza Chicken Creamy Bacon — poulet rôti et bacon sur base crème</span></a></div></div>
+    <div class="card"><div class="pic"><picture><source type="image/webp" srcset="assets/img/pizzas/web/brooklyn-choco-dreams-480.webp 480w, assets/img/pizzas/web/brooklyn-choco-dreams-800.webp 800w" sizes="(max-width: 560px) 80vw, (max-width: 900px) 38vw, 310px"><img src="assets/img/pizzas/brooklyn-choco-dreams.png" alt="Sweet pizza Brooklyn Choco Dreams — chocolat, banane et fraises" width="800" height="800" loading="lazy" decoding="async"></picture></div>
       <div class="body"><span class="tag">Sweet Pizza</span><div class="top"><h3>Brooklyn Choco Dreams</h3><span class="price">9,90€</span></div>
-      <p>Base nutella, banane, fraises fraîches, noisettes caramélisées.</p></div></div>
-    <div class="card"><div class="pic"><img src="assets/img/pizza-12.png" alt="Pizza Chicago — viande hachée, bacon et cheddar sur base crème"></div>
+      <p>Base nutella, banane, fraises fraîches, noisettes caramélisées.</p>
+      <a class="card-link" href="menu.html#pizza-brooklyn-choco-dreams">Voir sur la carte <svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg><span class="sr-only"> : Sweet pizza Brooklyn Choco Dreams — chocolat, banane et fraises</span></a></div></div>
+    <div class="card"><div class="pic"><picture><source type="image/webp" srcset="assets/img/pizzas/web/chicago-480.webp 480w, assets/img/pizzas/web/chicago-800.webp 800w" sizes="(max-width: 560px) 80vw, (max-width: 900px) 38vw, 310px"><img src="assets/img/pizzas/chicago.png" alt="Pizza Chicago — viande hachée, bacon et cheddar sur base crème" width="800" height="800" loading="lazy" decoding="async"></picture></div>
       <div class="body"><span class="tag">Généreuse</span><div class="top"><h3>Chicago</h3><span class="price">12,90€</span></div>
-      <p>Base crème fraîche, viande hachée, bacon, cheddar — la comfort food de Chicago.</p></div></div>
+      <p>Base crème fraîche, viande hachée, bacon, cheddar — la comfort food de Chicago.</p>
+      <a class="card-link" href="menu.html#pizza-chicago">Voir sur la carte <svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg><span class="sr-only"> : Pizza Chicago — viande hachée, bacon et cheddar sur base crème</span></a></div></div>
   </div>
-  <div class="center" style="margin-top:40px"><a class="btn ink" href="menu.html">Voir toute la carte</a></div>
+  <div class="center" style="margin-top:40px"><a class="btn ink" href="menu.html"><span class="btn-label">Voir toute la carte</span><svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
 </div></section>
 
 <!-- OFFRE -->
@@ -113,8 +129,8 @@
   <div class="big">9,90€</div>
   <p style="opacity:.85;max-width:540px;margin:14px auto 0">Le midi en semaine. Et le soir en semaine, sur place ou à emporter : <strong>2 pizzas achetées = 1 offerte</strong> (la moins chère des 3).</p>
   <div class="cta">
-    <a class="btn" href="offres.html">Toutes les offres</a>
-    <a class="btn ghost" href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener">Deliveroo</a>
+    <a class="btn" href="offres.html"><span class="btn-label">Toutes les offres</span><svg class="action-icon action-icon--arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    <a class="btn ghost" href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener"><span class="btn-label">Deliveroo</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
   </div>
 </div></section>
 
@@ -122,41 +138,86 @@
 <section class="section"><div class="wrap">
   <div class="section-head"><span class="eyebrow">Pourquoi nous choisir</span><h2>Ce qui fait la différence</h2></div>
   <div class="features">
-    <div class="feature"><div class="ic">🥖</div><h3>Pâte maison</h3><p>Pétrie et maturée chaque jour sur place.</p></div>
-    <div class="feature"><div class="ic">🧀</div><h3>Produits choisis</h3><p>Fromages & charcuteries sélectionnés.</p></div>
-    <div class="feature"><div class="ic">🔥</div><h3>Recettes NY</h3><p>Brooklyn, Soho, Manhattan, Times Square…</p></div>
-    <div class="feature"><div class="ic">⭐</div><h3>Carte fidélité</h3><p>5 pizzas = 1 dessert · 9 pizzas = 1 méga offerte.</p></div>
+    <div class="feature"><div class="ic" aria-hidden="true">🥖</div><h3>Pâte maison</h3><p>Pétrie et maturée chaque jour sur place.</p></div>
+    <div class="feature"><div class="ic" aria-hidden="true">🧀</div><h3>Produits choisis</h3><p>Fromages & charcuteries sélectionnés.</p></div>
+    <div class="feature"><div class="ic" aria-hidden="true">🔥</div><h3>Recettes NY</h3><p>Brooklyn, Soho, Manhattan, Times Square…</p></div>
+    <div class="feature"><div class="ic" aria-hidden="true">⭐</div><h3>Carte fidélité</h3><p>5 pizzas = 1 dessert · 9 pizzas = 1 méga offerte.</p></div>
   </div>
 </div></section>
 
 <!-- FOOTER -->
-<footer class="site-footer">
+</main>
+
+<footer class="site-footer" id="pied-de-page" aria-label="Informations Slice &amp; Co">
+  <h2 class="sr-only">Informations pratiques</h2>
   <div class="wrap">
-    <div>
-      <div class="brand"><span><b>Slice &amp; Co Pizza</b><small>NEW YORK STYLE · EST. 1951</small></span></div>
-      <p>Pizza à la part façon New York, au cœur du 15ᵉ arrondissement de Paris.</p>
-      <div class="socials">
-        <a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
-        <a href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener" aria-label="Uber Eats">U</a>
-        <a href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener" aria-label="Deliveroo">D</a>
+    <div class="footer-grid">
+      <div class="footer-identity">
+        <a class="footer-brand" href="index.html" aria-label="Slice & Co — Accueil">
+          <img src="assets/logo.png" alt="" width="76" height="76" loading="lazy" decoding="async">
+          <span><b>Slice &amp; Co</b><small>New York Style · Est. 1951</small></span>
+        </a>
+        <p>Une part de New York,<br>au cœur de Paris 15ᵉ.</p>
+        <a class="footer-instagram" href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener">
+          <img src="assets/icons/instagram.svg" alt="" width="21" height="21" loading="lazy">
+          <span>@slice_andco</span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
+      </div>
+
+      <div class="footer-visit">
+        <h3>On vous attend</h3>
+        <address class="footer-contact">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=111+rue+Olivier+de+Serres+75015+Paris" target="_blank" rel="noopener">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>111 rue Olivier de Serres<br>75015 Paris</span>
+          <span class="sr-only"> (nouvel onglet)</span></a>
+          <a href="tel:+33782817250"><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92Z"/></svg><span>07 82 81 72 50</span></a>
+        </address>
+        <a class="footer-text-link" href="contact.html">Plan &amp; accès <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="footer-schedule">
+        <h3><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Les horaires</h3>
+        <dl class="footer-hours">
+          <div><dt>Lun–Jeu</dt><dd>11h30–14h30<br>18h00–00h00</dd></div>
+          <div><dt>Ven–Sam</dt><dd>11h30–14h30<br>18h00–02h00</dd></div>
+          <div><dt>Dimanche</dt><dd>18h00–02h00</dd></div>
+        </dl>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liens utiles">
+        <h3>À découvrir</h3>
+        <a href="index.html">L’accueil</a>
+        <a href="menu.html">La carte</a>
+        <a href="offres.html">Les offres</a>
+        <a href="contact.html">Contact &amp; accès</a>
+      </nav>
+    </div>
+
+    <div class="footer-order">
+      <div>
+        <span class="footer-eyebrow">Sur place · À emporter · En livraison</span>
+        <p>La prochaine part vous attend.</p>
+      </div>
+      <div class="footer-delivery">
+        <a href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">
+          <img src="assets/icons/uber-eats.svg" alt="" width="36" height="36" loading="lazy">
+          <span><small>Commander sur</small><b>Uber Eats</b></span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
+        <a href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener">
+          <img src="assets/icons/deliveroo.svg" alt="" width="30" height="30" loading="lazy">
+          <span><small>Commander sur</small><b>Deliveroo</b></span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
       </div>
     </div>
-    <div>
-      <h4>Nous trouver</h4>
-      <p>111 rue Olivier de Serres<br>75015 Paris</p>
-      <p><a href="tel:+33782817250">07 82 81 72 50</a></p>
-      <p><a href="contact.html">Plan & accès →</a></p>
-    </div>
-    <div>
-      <h4>Horaires</h4>
-      <p>Lun–Jeu : 11h30–14h30 · 18h00–00h00</p>
-      <p>Ven–Sam : 11h30–14h30 · 18h00–02h00</p>
-      <p>Dimanche : 18h00–02h00</p>
+
+    <div class="footer-bottom">
+      <p>© 2026 Slice &amp; Co Pizza <span>— Tous droits réservés.</span></p>
+      <a class="footer-back-top" href="#haut">Retour en haut <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></a>
     </div>
   </div>
-  <div class="legal">© 2026 Slice &amp; Co Pizza — Tous droits réservés.</div>
 </footer>
 
 <script src="assets/site.js" defer></script>
+<span id="motion-preference-note" class="sr-only" hidden>Les animations sont arrêtées selon le réglage de votre appareil.</span>
 </body>
 </html>

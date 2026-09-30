@@ -1,0 +1,138 @@
+/* Compléments de lecture à la carte d'origine. */
+.menu-with-photos{
+  --menu-nav-height:64px;
+  padding-top:36px;
+}
+.menu-with-photos.reveal{opacity:1;transform:none}
+.menu-intro{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.menu-count{display:flex;align-items:center;gap:14px;margin:0;line-height:1}
+.menu-count-number{font-size:68px;color:var(--red-text,var(--red-deep));letter-spacing:-2px}
+.menu-count-label{font:600 15px/1.4 var(--ui);letter-spacing:1px}
+.menu-formats{display:flex;gap:24px;margin:0;flex-shrink:0}
+.menu-formats>div+div{padding-left:24px;border-left:1px solid var(--line)}
+.menu-formats dt{font:500 11px/1.5 var(--ui);letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.menu-formats dd{margin:0;font:500 19px/1.5 var(--ui);white-space:nowrap}
+.menu-formats dd>span{font:400 12px var(--body);color:var(--muted);padding-inline:3px}
+.menu-formats small{font:500 13px var(--ui);color:var(--red-text,var(--red-deep));margin-left:3px}
+
+/* Liens sur grand écran, sélecteur natif dépliable sur mobile. */
+.menu-category-nav{
+  position:sticky;top:var(--header-height,85px);z-index:35;
+  margin:30px 0 34px;background:var(--cream);
+  border-bottom:1px solid var(--line);
+}
+.menu-category-picker{position:relative}
+.menu-category-picker summary{display:none}
+.menu-category-nav ul{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 8px;
+  list-style:none;margin:0;padding:4px 0;min-width:0;
+}
+.menu-category-nav li{min-width:0}
+.menu-category-nav a{
+  display:flex;align-items:center;min-height:48px;padding:10px 6px;
+  font-family:var(--ui);font-size:14px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.65px;white-space:nowrap;
+  border-bottom:2px solid transparent;transition:color .15s,background .15s;
+}
+.menu-category-nav a[aria-current="location"]{
+  color:var(--red-text,var(--red-deep));border-bottom-color:currentColor;
+}
+.menu-category-nav a:focus-visible{outline-offset:-3px}
+.menu-with-photos .menu-cat h2[id],
+.menu-list--pizzas .row--pizza[id]{
+  scroll-margin-top:calc(var(--header-height,85px) + var(--category-nav-height,var(--menu-nav-height)) + var(--menu-anchor-gap,30px));
+}
+.menu-with-photos .menu-cat h2:focus-visible{outline:3px solid var(--red);outline-offset:6px}
+.menu-category-nav + .menu-cat{margin-top:24px}
+
+/* La photo prend sa place ; nom, prix et recette restent alignés et faciles à lire. */
+.menu-list--pizzas{grid-template-columns:repeat(2,minmax(0,1fr))}
+.menu-list--pizzas .row--pizza{
+  display:grid;grid-template-columns:150px minmax(0,1fr);
+  align-items:center;gap:20px;min-width:0;padding:24px 0;
+}
+.menu-list--pizzas .pizza-thumb{display:block;width:150px;aspect-ratio:1}
+.menu-list--pizzas .pizza-thumb img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 5px rgba(20,20,20,.12))}
+.menu-list--pizzas .pizza-copy{
+  min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;
+}
+.menu-list--pizzas .n{grid-row:1;min-width:0;max-width:100%;font-size:22px;line-height:1.25}
+.menu-list--pizzas .lead{display:none}
+.menu-list--pizzas .prices,.menu-list--pizzas .p{grid-row:2;gap:4px 14px;margin-left:0;justify-content:flex-start}
+.menu-list--pizzas .sz{white-space:nowrap}
+.menu-list--pizzas .desc{grid-row:3;font-size:14px;line-height:1.55;margin-top:0}
+.menu-list--pizzas .row--pizza:target .n{color:var(--red)}
+
+@media(max-width:900px){
+  .menu-category-nav{margin:22px 0 24px;border:0;padding:6px 0}
+  .menu-category-picker summary{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 16px;
+    align-items:center;min-height:66px;padding:10px 18px;
+    border:2px solid var(--red-action,#c51b14);border-radius:4px;list-style:none;
+    background:var(--red-action,#c51b14);color:#fff;cursor:pointer;touch-action:manipulation;
+    transition:background-color .18s,border-color .18s;
+  }
+  .menu-category-picker summary::-webkit-details-marker{display:none}
+  .menu-picker-label{font:400 11px/1.4 var(--body)}
+  .menu-current-category{font:600 20px/1.4 var(--ui);letter-spacing:.6px;text-transform:uppercase}
+  .menu-picker-chevron{grid-column:2;grid-row:1 / 3;transition:transform .18s}
+  .menu-category-picker[open] .menu-picker-chevron{transform:rotate(180deg)}
+  .menu-category-picker summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .menu-category-picker[open] summary{border-color:var(--ink);background:var(--ink)}
+  .menu-category-nav ul{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;
+    padding:12px;margin-top:6px;border:1px solid var(--line);border-radius:6px;
+    background:var(--cream);
+  }
+  html.nav-ready .menu-category-nav ul{
+    position:absolute;inset:auto 0 auto;box-shadow:0 12px 28px rgba(20,20,20,.12);
+    max-height:min(360px,calc(100dvh - var(--header-height,85px) - 90px));overflow-y:auto;
+  }
+  .menu-category-nav a{font-size:13px;padding:10px 8px;min-height:44px;white-space:normal;overflow-wrap:anywhere}
+  .menu-list--pizzas{grid-template-columns:minmax(0,1fr)}
+  /* Sans JavaScript, la liste ouverte et le header défilent avec la carte. */
+  html:not(.nav-ready) .menu-category-nav{position:static}
+  html:not(.nav-ready) .menu-with-photos .menu-cat h2[id],
+  html:not(.nav-ready) .menu-list--pizzas .row--pizza[id]{
+    scroll-margin-top:var(--menu-anchor-gap,30px);
+  }
+}
+@media(max-width:560px){
+  .menu-with-photos{padding-top:26px;--menu-nav-height:78px}
+  .menu-intro{gap:18px}
+  .menu-count{gap:10px}
+  .menu-count-number{font-size:62px}
+  .menu-count-label{font-size:12px;letter-spacing:.6px}
+  .menu-formats{flex-direction:column;gap:9px}
+  .menu-formats>div+div{padding-left:0;border-left:0}
+  .menu-formats dt{font-size:10px;margin:0;letter-spacing:.8px}
+  .menu-formats dd{font-size:16px}
+  .menu-formats dd>span{font-size:11px;padding-inline:1px}
+  .menu-category-nav{margin-top:18px}
+  .menu-with-photos .menu-cat h2[id]{--menu-anchor-gap:42px}
+  .menu-list--pizzas .row--pizza{grid-template-columns:112px minmax(0,1fr);gap:16px;padding:22px 0;align-items:start}
+  .menu-list--pizzas .pizza-thumb{width:112px;align-self:start;margin-top:3px}
+  .menu-list--pizzas .n{font-size:20px}
+  .menu-list--pizzas .desc{font-size:13px}
+  .menu-list--pizzas .prices{gap:6px 14px}
+  .menu-list--pizzas .sz{display:flex;flex-direction:column;line-height:1.3;gap:3px;font-size:18px}
+  .menu-list--pizzas .sz i{font-size:10px;margin-right:0}
+}
+@media(max-width:360px){
+  .menu-count{flex-direction:column;align-items:flex-start;gap:2px}
+  .menu-count-number{font-size:54px}
+  .menu-count-label{font-size:10px}
+  .menu-list--pizzas .row--pizza{grid-template-columns:96px minmax(0,1fr);gap:14px}
+  .menu-list--pizzas .pizza-thumb{width:96px}
+}
+@media(hover:hover) and (pointer:fine){
+  .menu-category-picker summary:hover{border-color:var(--ink);background:var(--ink)}
+}
+@media(prefers-reduced-motion:reduce){
+  .menu-picker-chevron,.menu-category-picker summary{transition:none}
+}
+@media(forced-colors:active){
+  .menu-category-picker summary,.menu-category-nav ul{border-color:ButtonText}
+  .menu-category-picker summary,.menu-category-picker[open] summary{background:ButtonFace;color:ButtonText}
+  .menu-category-picker summary:focus-visible{outline-color:Highlight}
+}

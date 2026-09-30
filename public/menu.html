@@ -6,27 +6,37 @@
 <title>Menu — Slice & Co Pizza | Paris 15ᵉ</title>
 <meta name="description" content="La carte Slice & Co Pizza : pizzas Back to Basics, NYC Originals, Over the Top, sweet pizzas, finger foods, box, desserts et boissons. Prix et offres à Paris 15e.">
 <link rel="icon" href="assets/favicon.png">
+<script src="assets/intro.js"></script>
+<link rel="preload" href="assets/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/menu.css?v=20260930-3">
+<link rel="stylesheet" href="assets/interactions.css">
 </head>
-<body>
+<body id="haut">
+<a class="skip-link" href="#contenu">Aller au contenu</a>
 <div id="intro" class="intro" aria-hidden="true"><div class="intro-inner"><img class="intro-logo" src="assets/logo.png" alt="Slice & Co Pizza"><div class="intro-word">SLICE &amp; CO</div><div class="intro-sub">New York Style · Est. 1951</div></div></div>
 
-<div class="topbar"><div class="wrap">
-  <div class="left">📍 111 rue Olivier de Serres, Paris 15ᵉ</div>
-  <div class="right"><a href="tel:+33782817250">📞 07 82 81 72 50</a><a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener">@slice_andco</a></div>
+<div class="topbar" role="region" aria-label="Informations rapides"><div class="wrap">
+  <div class="left"><span aria-hidden="true">📍</span> 111 rue Olivier de Serres, Paris 15ᵉ</div>
+  <div class="right"><a href="tel:+33782817250"><svg class="action-icon action-icon--phone" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92Z"/></svg><span>07 82 81 72 50</span></a><a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener"><img class="topbar-icon" src="assets/icons/instagram.svg" width="17" height="17" alt=""><span>@slice_andco</span><span class="sr-only"> (nouvel onglet)</span></a>
+    <button class="motion-toggle" type="button" aria-label="Mettre les animations en pause" aria-pressed="false" hidden><svg class="motion-icon motion-icon--pause" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg><svg class="motion-icon motion-icon--play" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7Z"/></svg><span class="motion-label">Animations</span></button>
+  </div>
 </div></div>
 
 <header class="site-header"><div class="wrap">
-  <a class="brand" href="index.html"><img src="assets/logo.png" alt="Slice & Co Pizza" width="58" height="58"><span><b>Slice &amp; Co</b><small>New York Style · Est. 1951</small></span></a>
-  <nav class="nav" id="nav">
+  <a class="brand" href="index.html" aria-label="Slice &amp; Co — Accueil"><img src="assets/logo.png" alt="" width="58" height="58"><span><b>Slice &amp; Co</b><small>New York Style · Est. 1951</small></span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
     <a href="index.html">Accueil</a>
-    <a href="menu.html" class="active">Menu</a>
+    <a href="menu.html" class="active" aria-current="page">Menu</a>
     <a href="offres.html">Offres</a>
     <a href="contact.html">Contact</a>
-    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">Commander</a>
+    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener"><span class="btn-label">Commander</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
   </nav>
-  <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-controls="nav" aria-expanded="false"><svg class="burger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path class="burger-line--top" d="M4 6h16"/><path class="burger-line--middle" d="M4 12h16"/><path class="burger-line--bottom" d="M4 18h16"/></svg></button>
 </div></header>
+
+<main id="contenu" tabindex="-1">
 
 <section class="page-hero">
   <span class="script">La carte</span>
@@ -34,53 +44,220 @@
   <div class="est">Est. 1951 · New York Style · Paris 15ᵉ</div>
 </section>
 
-<div class="marquee"><div class="track">
+<div class="marquee"><span class="sr-only">Pâte fraîche maison · Pizza à la part · Offre midi 9,90€ · 2 achetées = 1 offerte le soir en semaine ·</span><div class="track" aria-hidden="true">
   <span>★ Pâte fraîche maison</span><span class="dot">•</span><span>Pizza à la part</span><span class="dot">•</span><span>Offre midi 9,90€</span><span class="dot">•</span><span>2 achetées = 1 offerte le soir en semaine</span><span class="dot">•</span>
   <span>★ Pâte fraîche maison</span><span class="dot">•</span><span>Pizza à la part</span><span class="dot">•</span><span>Offre midi 9,90€</span><span class="dot">•</span><span>2 achetées = 1 offerte le soir en semaine</span><span class="dot">•</span>
 </div></div>
 
-<section class="section"><div class="wrap">
+<section class="section menu-with-photos"><div class="wrap">
 
-  <div class="menu-cat"><span class="ic">🍕</span><div><span>Pizzas classiques</span><h2>Back to Basics</h2></div></div>
-  <div class="menu-list">
-    <div class="row"><span class="n">Margherita</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>10,90€</b><b class="sz"><i>Méga</i>14,90€</b></span><span class="desc">Base tomate, mozzarella, basilic, filet d'huile d'olive</span></div>
-    <div class="row"><span class="n">Pepperoni</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>11,90€</b><b class="sz"><i>Méga</i>15,90€</b></span><span class="desc">Base tomate, pepperoni de bœuf, mozzarella, origan</span></div>
-    <div class="row"><span class="n">Sausage &amp; Peppers</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, saucisse, mozzarella, poivrons, oignons rouges</span></div>
-    <div class="row"><span class="n">BBQ Chicken</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base BBQ, poulet rôti, mozzarella, cheddar, oignons rouges</span></div>
-    <div class="row"><span class="n">White Pizza</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème fraîche, champignons, ricotta, mozzarella, huile de truffe noire, persil</span></div>
+  <div class="menu-intro">
+    <h2 class="menu-count"><span class="menu-count-number">23</span><span class="menu-count-label">recettes<br>à découvrir</span></h2>
+    <dl class="menu-formats">
+      <div><dt>Pizzas salées</dt><dd>Sénior <span>ou</span> Méga <small>+4€</small></dd></div>
+      <div><dt>Pizzas sucrées</dt><dd>9,90€</dd></div>
+    </dl>
   </div>
 
-  <div class="menu-cat"><span class="ic">🗽</span><div><span>Les signatures new-yorkaises</span><h2>NYC Originals</h2></div></div>
-  <div class="menu-list">
-    <div class="row"><span class="n">Everything Bagel</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>11,90€</b><b class="sz"><i>Méga</i>15,90€</b></span><span class="desc">Croûte façon everything bagel, base creamcheese, mozzarella, oignons rouges, graines de sésame, persil</span></div>
-    <div class="row"><span class="n">Pastrami &amp; Pickles</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème de moutarde, pastrami, mozzarella, pickles</span></div>
-    <div class="row"><span class="n">Hot Hawaïenne</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, jambon, ananas rôti, mozzarella, jalapeños</span></div>
-    <div class="row"><span class="n">Brooklyn Hot Honey</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, pepperoni de bœuf, mozzarella, chili flakes, filet de miel</span></div>
+  <nav class="menu-category-nav" aria-label="Catégories de la carte">
+    <details class="menu-category-picker" open>
+      <summary>
+        <span class="menu-picker-label">Explorer les 9 catégories</span>
+        <span class="menu-current-category">Toutes les catégories</span>
+        <svg class="menu-picker-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+    <ul>
+      <li><a href="#classiques">Classiques</a></li>
+      <li><a href="#signatures">Signatures</a></li>
+      <li><a href="#genereuses">Généreuses</a></li>
+      <li><a href="#sucrees">Sucrées</a></li>
+      <li><a href="#a-partager">À partager</a></li>
+      <li><a href="#box">Box</a></li>
+      <li><a href="#desserts">Desserts</a></li>
+      <li><a href="#boissons">Boissons</a></li>
+      <li><a href="#supplements">Suppléments</a></li>
+    </ul>
+    </details>
+  </nav>
+
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🍕</span><div><span>Pizzas classiques</span><h2 id="classiques" tabindex="-1">Back to Basics</h2></div></div>
+  <div class="menu-list menu-list--pizzas">
+    <div class="row row--pizza" id="pizza-margherita">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/margherita-480.webp">
+        <img src="assets/img/pizzas/margherita.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Margherita</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>10,90€</b><b class="sz"><i>Méga</i>14,90€</b></span><span class="desc">Base tomate, mozzarella, basilic, filet d'huile d'olive</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-pepperoni">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/pepperoni-480.webp">
+        <img src="assets/img/pizzas/pepperoni.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Pepperoni</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>11,90€</b><b class="sz"><i>Méga</i>15,90€</b></span><span class="desc">Base tomate, pepperoni de bœuf, mozzarella, origan</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-sausage-and-peppers">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/sausage-and-peppers-480.webp">
+        <img src="assets/img/pizzas/sausage-and-peppers.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Sausage &amp; Peppers</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, saucisse, mozzarella, poivrons, oignons rouges</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-bbq-chicken">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/bbq-chicken-480.webp">
+        <img src="assets/img/pizzas/bbq-chicken.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">BBQ Chicken</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base BBQ, poulet rôti, mozzarella, cheddar, oignons rouges</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-white-pizza">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/white-pizza-480.webp">
+        <img src="assets/img/pizzas/white-pizza.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">White Pizza</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème fraîche, champignons, ricotta, mozzarella, huile de truffe noire, persil</span></div>
+    </div>
   </div>
 
-  <div class="menu-cat"><span class="ic">🔥</span><div><span>Les généreuses — Sénior ou Méga (+4€)</span><h2>Over the Top</h2></div></div>
-  <div class="menu-list">
-    <div class="row"><span class="n">Meat Lover</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>13,90€</b><b class="sz"><i>Méga</i>17,90€</b></span><span class="desc">Base tomate, viande hachée, pepperoni de bœuf, bacon, mozzarella, parmesan</span></div>
-    <div class="row"><span class="n">Veggie Supreme</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, poivrons, champignons, oignons rouges, olives noires, mozzarella, basilic</span></div>
-    <div class="row"><span class="n">Full Cheesy</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème fraîche, mozzarella, gorgonzola, cheddar</span></div>
-    <div class="row"><span class="n">Salmon Lover</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>13,90€</b><b class="sz"><i>Méga</i>17,90€</b></span><span class="desc">Base creamcheese, saumon fumé, dés de saumon, mozzarella, aneth</span></div>
-    <div class="row"><span class="n">Indiana</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème de curry, poulet tikka, mozzarella, poivrons, oignons rouges</span></div>
-    <div class="row"><span class="n">Chicago</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème fraîche, viande hachée, mozzarella, bacon, cheddar</span></div>
-    <div class="row"><span class="n">Madison Queen</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, jambon, mozzarella, champignons, oignons rouges</span></div>
-    <div class="row"><span class="n">Buffalo Spicy Chicken</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, poulet épicé, mozzarella, oignons rouges, poivrons, jalapeños</span></div>
-    <div class="row"><span class="n">Empire State Beef</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, viande hachée, mozzarella, champignons, oignons rouges, poivrons, origan</span></div>
-    <div class="row"><span class="n">Chicken Creamy Bacon</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème fraîche, poulet rôti, bacon, mozzarella, oignons rouges</span></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🗽</span><div><span>Les signatures new-yorkaises</span><h2 id="signatures" tabindex="-1">NYC Originals</h2></div></div>
+  <div class="menu-list menu-list--pizzas">
+    <div class="row row--pizza" id="pizza-everything-bagel">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/everything-bagel-480.webp">
+        <img src="assets/img/pizzas/everything-bagel.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Everything Bagel</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>11,90€</b><b class="sz"><i>Méga</i>15,90€</b></span><span class="desc">Croûte façon everything bagel, base creamcheese, mozzarella, oignons rouges, graines de sésame, persil</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-pastrami-and-pickles">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/pastrami-and-pickles-480.webp">
+        <img src="assets/img/pizzas/pastrami-and-pickles.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Pastrami &amp; Pickles</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème de moutarde, pastrami, mozzarella, pickles</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-hot-hawaienne">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/hot-hawaienne-480.webp">
+        <img src="assets/img/pizzas/hot-hawaienne.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Hot Hawaïenne</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, jambon, ananas rôti, mozzarella, jalapeños</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-brooklyn-hot-honey">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/brooklyn-hot-honey-480.webp">
+        <img src="assets/img/pizzas/brooklyn-hot-honey.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Brooklyn Hot Honey</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, pepperoni de bœuf, mozzarella, chili flakes, filet de miel</span></div>
+    </div>
   </div>
 
-  <div class="menu-cat"><span class="ic">🍫</span><div><span>Les pizzas dessert</span><h2>Sweet Pizza</h2></div></div>
-  <div class="menu-list">
-    <div class="row"><span class="n">Brooklyn Choco Dreams</span><span class="lead"></span><span class="p">9,90€</span><span class="desc">Base nutella, rondelles de banane, fraises fraîches, éclats de noisettes caramélisées</span></div>
-    <div class="row"><span class="n">Soho Apple Pie</span><span class="lead"></span><span class="p">9,90€</span><span class="desc">Base crème vanillée, pommes caramélisées à la cannelle, crumble croustillant</span></div>
-    <div class="row"><span class="n">Times Square S'mores</span><span class="lead"></span><span class="p">9,90€</span><span class="desc">Base nutella, marshmallows, pépites de chocolat noir, biscuit émietté</span></div>
-    <div class="row"><span class="n">Manhattan Cheesecake</span><span class="lead"></span><span class="p">9,90€</span><span class="desc">Base creamcheese sucrée, coulis de fruits rouges, spéculoos concassés</span></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🔥</span><div><span>Les généreuses — Sénior ou Méga (+4€)</span><h2 id="genereuses" tabindex="-1">Over the Top</h2></div></div>
+  <div class="menu-list menu-list--pizzas">
+    <div class="row row--pizza" id="pizza-meat-lover">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/meat-lover-480.webp">
+        <img src="assets/img/pizzas/meat-lover.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Meat Lover</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>13,90€</b><b class="sz"><i>Méga</i>17,90€</b></span><span class="desc">Base tomate, viande hachée, pepperoni de bœuf, bacon, mozzarella, parmesan</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-veggie-supreme">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/veggie-supreme-480.webp">
+        <img src="assets/img/pizzas/veggie-supreme.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Veggie Supreme</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, poivrons, champignons, oignons rouges, olives noires, mozzarella, basilic</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-full-cheesy">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/full-cheesy-480.webp">
+        <img src="assets/img/pizzas/full-cheesy.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Full Cheesy</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème fraîche, mozzarella, gorgonzola, cheddar</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-salmon-lover">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/salmon-lover-480.webp">
+        <img src="assets/img/pizzas/salmon-lover.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Salmon Lover</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>13,90€</b><b class="sz"><i>Méga</i>17,90€</b></span><span class="desc">Base creamcheese, saumon fumé, dés de saumon, mozzarella, aneth</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-indiana">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/indiana-480.webp">
+        <img src="assets/img/pizzas/indiana.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Indiana</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème de curry, poulet tikka, mozzarella, poivrons, oignons rouges</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-chicago">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/chicago-480.webp">
+        <img src="assets/img/pizzas/chicago.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Chicago</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème fraîche, viande hachée, mozzarella, bacon, cheddar</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-madison-queen">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/madison-queen-480.webp">
+        <img src="assets/img/pizzas/madison-queen.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Madison Queen</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, jambon, mozzarella, champignons, oignons rouges</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-buffalo-spicy-chicken">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/buffalo-spicy-chicken-480.webp">
+        <img src="assets/img/pizzas/buffalo-spicy-chicken.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Buffalo Spicy Chicken</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, poulet épicé, mozzarella, oignons rouges, poivrons, jalapeños</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-empire-state-beef">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/empire-state-beef-480.webp">
+        <img src="assets/img/pizzas/empire-state-beef.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Empire State Beef</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base tomate, viande hachée, mozzarella, champignons, oignons rouges, poivrons, origan</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-chicken-creamy-bacon">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/chicken-creamy-bacon-480.webp">
+        <img src="assets/img/pizzas/chicken-creamy-bacon.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Chicken Creamy Bacon</span><span class="lead"></span><span class="prices"><b class="sz"><i>Sénior</i>12,90€</b><b class="sz"><i>Méga</i>16,90€</b></span><span class="desc">Base crème fraîche, poulet rôti, bacon, mozzarella, oignons rouges</span></div>
+    </div>
   </div>
 
-  <div class="menu-cat"><span class="ic">🍗</span><div><span>À partager</span><h2>Finger Foods</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🍫</span><div><span>Les pizzas dessert</span><h2 id="sucrees" tabindex="-1">Sweet Pizza</h2></div></div>
+  <div class="menu-list menu-list--pizzas">
+    <div class="row row--pizza" id="pizza-brooklyn-choco-dreams">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/brooklyn-choco-dreams-480.webp">
+        <img src="assets/img/pizzas/brooklyn-choco-dreams.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Brooklyn Choco Dreams</span><span class="lead"></span><span class="p">9,90€</span><span class="desc">Base nutella, rondelles de banane, fraises fraîches, éclats de noisettes caramélisées</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-soho-apple-pie">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/soho-apple-pie-480.webp">
+        <img src="assets/img/pizzas/soho-apple-pie.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Soho Apple Pie</span><span class="lead"></span><span class="p">9,90€</span><span class="desc">Base crème vanillée, pommes caramélisées à la cannelle, crumble croustillant</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-times-square-smores">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/times-square-smores-480.webp">
+        <img src="assets/img/pizzas/times-square-smores.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Times Square S'mores</span><span class="lead"></span><span class="p">9,90€</span><span class="desc">Base nutella, marshmallows, pépites de chocolat noir, biscuit émietté</span></div>
+    </div>
+    <div class="row row--pizza" id="pizza-manhattan-cheesecake">
+      <picture class="pizza-thumb">
+        <source type="image/webp" srcset="assets/img/pizzas/web/manhattan-cheesecake-480.webp">
+        <img src="assets/img/pizzas/manhattan-cheesecake.png" alt="" width="100" height="100" loading="lazy" decoding="async">
+      </picture>
+      <div class="pizza-copy"><span class="n">Manhattan Cheesecake</span><span class="lead"></span><span class="p">9,90€</span><span class="desc">Base creamcheese sucrée, coulis de fruits rouges, spéculoos concassés</span></div>
+    </div>
+  </div>
+
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🍗</span><div><span>À partager</span><h2 id="a-partager" tabindex="-1">Finger Foods</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Wings</span><span class="lead"></span><span class="prices"><b class="sz"><i>×4</i>4,90€</b><b class="sz"><i>×6</i>5,90€</b></span></div>
     <div class="row"><span class="n">Nuggets</span><span class="lead"></span><span class="prices"><b class="sz"><i>×4</i>4,90€</b><b class="sz"><i>×6</i>5,90€</b></span></div>
@@ -90,13 +267,13 @@
     <div class="row"><span class="n">Frites de patate douce</span><span class="lead"></span><span class="p">4,50€</span></div>
   </div>
 
-  <div class="menu-cat"><span class="ic">🍟</span><div><span>Menus à composer</span><h2>Slice Box</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🍟</span><div><span>Menus à composer</span><h2 id="box" tabindex="-1">Slice Box</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Slice Box Solo</span><span class="desc">4 wings, potatoes, 3 onion rings, 2 mozza sticks, 1 sauce</span><span class="p">9,90€</span></div>
     <div class="row"><span class="n">Ultimate Slice Box</span><span class="desc">6 wings, potatoes, 4 onion rings, 3 mozza sticks, 3 chili cheese, 3 nuggets, 2 sauces</span><span class="p">14,90€</span></div>
   </div>
 
-  <div class="menu-cat"><span class="ic">🍮</span><div><span>Desserts</span><h2>Something Sweet</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🍮</span><div><span>Desserts</span><h2 id="desserts" tabindex="-1">Something Sweet</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Pina Mango (50cl)</span><span class="desc">Mix frais mangue &amp; coco</span><span class="p">5,90€</span></div>
     <div class="row"><span class="n">Milkshake</span><span class="desc">Vanille, fraise, chocolat — Kinder, Oreo, spéculoos… +1€</span><span class="p">4,90€</span></div>
@@ -104,14 +281,14 @@
     <div class="row"><span class="n">Tiramisu</span><span class="desc">Caramel, spéculoos, cookies, chocolat, pistache</span><span class="p">3,90€</span></div>
   </div>
 
-  <div class="menu-cat"><span class="ic">🥤</span><div><span>Boissons</span><h2>Our Drinks</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🥤</span><div><span>Boissons</span><h2 id="boissons" tabindex="-1">Our Drinks</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Thé glacé maison (50cl)</span><span class="lead"></span><span class="p">3,90€</span></div>
     <div class="row"><span class="n">Citronnade maison (50cl)</span><span class="lead"></span><span class="p">3,90€</span></div>
     <div class="row"><span class="n">Soda classique (33cl)</span><span class="lead"></span><span class="p">1,50€</span></div>
   </div>
 
-  <div class="menu-cat"><span class="ic">🧀</span><div><span>Suppléments</span><h2>Extra Topping</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true">🧀</span><div><span>Suppléments</span><h2 id="supplements" tabindex="-1">Extra Topping</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Meat</span><span class="desc">Pepperoni, viande hachée…</span><span class="p">2,00€</span></div>
     <div class="row"><span class="n">Veggie</span><span class="lead"></span><span class="p">1,50€</span></div>
@@ -120,29 +297,84 @@
 
   <p class="note">Prix indicatifs susceptibles d'évoluer. Photos non contractuelles. Retrouvez les prix à jour sur Uber&nbsp;Eats et Deliveroo.</p>
   <div class="center" style="margin-top:30px">
-    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">Commander sur Uber Eats</a>
-    <a class="btn ink" href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener">Commander sur Deliveroo</a>
+    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener"><span class="btn-label">Commander sur Uber Eats</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
+    <a class="btn ink" href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener"><span class="btn-label">Commander sur Deliveroo</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
   </div>
 
 </div></section>
 
-<footer class="site-footer">
+</main>
+
+<footer class="site-footer" id="pied-de-page" aria-label="Informations Slice &amp; Co">
+  <h2 class="sr-only">Informations pratiques</h2>
   <div class="wrap">
-    <div>
-      <div class="brand"><span><b>Slice &amp; Co Pizza</b><small>NEW YORK STYLE · EST. 1951</small></span></div>
-      <p>Pizza à la part façon New York, au cœur du 15ᵉ arrondissement de Paris.</p>
-      <div class="socials">
-        <a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
-        <a href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener" aria-label="Uber Eats">U</a>
-        <a href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener" aria-label="Deliveroo">D</a>
+    <div class="footer-grid">
+      <div class="footer-identity">
+        <a class="footer-brand" href="index.html" aria-label="Slice & Co — Accueil">
+          <img src="assets/logo.png" alt="" width="76" height="76" loading="lazy" decoding="async">
+          <span><b>Slice &amp; Co</b><small>New York Style · Est. 1951</small></span>
+        </a>
+        <p>Une part de New York,<br>au cœur de Paris 15ᵉ.</p>
+        <a class="footer-instagram" href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener">
+          <img src="assets/icons/instagram.svg" alt="" width="21" height="21" loading="lazy">
+          <span>@slice_andco</span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
+      </div>
+
+      <div class="footer-visit">
+        <h3>On vous attend</h3>
+        <address class="footer-contact">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=111+rue+Olivier+de+Serres+75015+Paris" target="_blank" rel="noopener">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>111 rue Olivier de Serres<br>75015 Paris</span>
+          <span class="sr-only"> (nouvel onglet)</span></a>
+          <a href="tel:+33782817250"><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92Z"/></svg><span>07 82 81 72 50</span></a>
+        </address>
+        <a class="footer-text-link" href="contact.html">Plan &amp; accès <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="footer-schedule">
+        <h3><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Les horaires</h3>
+        <dl class="footer-hours">
+          <div><dt>Lun–Jeu</dt><dd>11h30–14h30<br>18h00–00h00</dd></div>
+          <div><dt>Ven–Sam</dt><dd>11h30–14h30<br>18h00–02h00</dd></div>
+          <div><dt>Dimanche</dt><dd>18h00–02h00</dd></div>
+        </dl>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liens utiles">
+        <h3>À découvrir</h3>
+        <a href="index.html">L’accueil</a>
+        <a href="menu.html">La carte</a>
+        <a href="offres.html">Les offres</a>
+        <a href="contact.html">Contact &amp; accès</a>
+      </nav>
+    </div>
+
+    <div class="footer-order">
+      <div>
+        <span class="footer-eyebrow">Sur place · À emporter · En livraison</span>
+        <p>La prochaine part vous attend.</p>
+      </div>
+      <div class="footer-delivery">
+        <a href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">
+          <img src="assets/icons/uber-eats.svg" alt="" width="36" height="36" loading="lazy">
+          <span><small>Commander sur</small><b>Uber Eats</b></span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
+        <a href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener">
+          <img src="assets/icons/deliveroo.svg" alt="" width="30" height="30" loading="lazy">
+          <span><small>Commander sur</small><b>Deliveroo</b></span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
       </div>
     </div>
-    <div><h4>Nous trouver</h4><p>111 rue Olivier de Serres<br>75015 Paris</p><p><a href="tel:+33782817250">07 82 81 72 50</a></p><p><a href="contact.html">Plan & accès →</a></p></div>
-    <div><h4>Horaires</h4><p>Lun–Jeu : 11h30–14h30 · 18h00–00h00</p><p>Ven–Sam : 11h30–14h30 · 18h00–02h00</p><p>Dimanche : 18h00–02h00</p></div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Slice &amp; Co Pizza <span>— Tous droits réservés.</span></p>
+      <a class="footer-back-top" href="#haut">Retour en haut <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></a>
+    </div>
   </div>
-  <div class="legal">© 2026 Slice &amp; Co Pizza — Tous droits réservés.</div>
 </footer>
 
-<script src="assets/site.js" defer></script>
+<script src="assets/site.js?v=20260930-3" defer></script>
+<span id="motion-preference-note" class="sr-only" hidden>Les animations sont arrêtées selon le réglage de votre appareil.</span>
 </body>
 </html>

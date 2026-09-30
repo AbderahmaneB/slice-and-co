@@ -6,27 +6,36 @@
 <title>Offres & fidélité — Slice & Co Pizza | Paris 15ᵉ</title>
 <meta name="description" content="Les offres Slice & Co Pizza : offre midi à 9,90€, le soir 2 pizzas achetées = 1 offerte, carte de fidélité et livraison offerte dès 25€.">
 <link rel="icon" href="assets/favicon.png">
+<script src="assets/intro.js"></script>
+<link rel="preload" href="assets/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/interactions.css">
 </head>
-<body>
+<body id="haut">
+<a class="skip-link" href="#contenu">Aller au contenu</a>
 <div id="intro" class="intro" aria-hidden="true"><div class="intro-inner"><img class="intro-logo" src="assets/logo.png" alt="Slice & Co Pizza"><div class="intro-word">SLICE &amp; CO</div><div class="intro-sub">New York Style · Est. 1951</div></div></div>
 
-<div class="topbar"><div class="wrap">
-  <div class="left">📍 111 rue Olivier de Serres, Paris 15ᵉ</div>
-  <div class="right"><a href="tel:+33782817250">📞 07 82 81 72 50</a><a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener">@slice_andco</a></div>
+<div class="topbar" role="region" aria-label="Informations rapides"><div class="wrap">
+  <div class="left"><span aria-hidden="true">📍</span> 111 rue Olivier de Serres, Paris 15ᵉ</div>
+  <div class="right"><a href="tel:+33782817250"><svg class="action-icon action-icon--phone" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92Z"/></svg><span>07 82 81 72 50</span></a><a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener"><img class="topbar-icon" src="assets/icons/instagram.svg" width="17" height="17" alt=""><span>@slice_andco</span><span class="sr-only"> (nouvel onglet)</span></a>
+    <button class="motion-toggle" type="button" aria-label="Mettre les animations en pause" aria-pressed="false" hidden><svg class="motion-icon motion-icon--pause" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg><svg class="motion-icon motion-icon--play" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7Z"/></svg><span class="motion-label">Animations</span></button>
+  </div>
 </div></div>
 
 <header class="site-header"><div class="wrap">
-  <a class="brand" href="index.html"><img src="assets/logo.png" alt="Slice & Co Pizza" width="58" height="58"><span><b>Slice &amp; Co</b><small>New York Style · Est. 1951</small></span></a>
-  <nav class="nav" id="nav">
+  <a class="brand" href="index.html" aria-label="Slice &amp; Co — Accueil"><img src="assets/logo.png" alt="" width="58" height="58"><span><b>Slice &amp; Co</b><small>New York Style · Est. 1951</small></span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
     <a href="index.html">Accueil</a>
     <a href="menu.html">Menu</a>
-    <a href="offres.html" class="active">Offres</a>
+    <a href="offres.html" class="active" aria-current="page">Offres</a>
     <a href="contact.html">Contact</a>
-    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">Commander</a>
+    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener"><span class="btn-label">Commander</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
   </nav>
-  <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-controls="nav" aria-expanded="false"><svg class="burger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path class="burger-line--top" d="M4 6h16"/><path class="burger-line--middle" d="M4 12h16"/><path class="burger-line--bottom" d="M4 18h16"/></svg></button>
 </div></header>
+
+<main id="contenu" tabindex="-1">
 
 <section class="page-hero">
   <span class="script">Le bon plan du quartier</span>
@@ -35,6 +44,7 @@
 </section>
 
 <section class="section"><div class="wrap">
+  <h2 class="sr-only">Les offres du restaurant</h2>
   <div class="offers">
     <div class="offer"><h3>Offre Midi</h3><div class="big">9,90€</div>
       <p>Pizza Sénior + boisson.</p><p class="fine">+2€ pour Meat Lover, Salmon Lover, Pastrami &amp; Pickles. Le midi en semaine.</p></div>
@@ -49,28 +59,83 @@
   </div>
 
   <div class="center" style="margin-top:46px">
-    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">Commander sur Uber Eats</a>
-    <a class="btn ink" href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener">Commander sur Deliveroo</a>
+    <a class="btn" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener"><span class="btn-label">Commander sur Uber Eats</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
+    <a class="btn ink" href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener"><span class="btn-label">Commander sur Deliveroo</span><svg class="action-icon action-icon--external" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg><span class="sr-only"> (nouvel onglet)</span></a>
   </div>
 </div></section>
 
-<footer class="site-footer">
+</main>
+
+<footer class="site-footer" id="pied-de-page" aria-label="Informations Slice &amp; Co">
+  <h2 class="sr-only">Informations pratiques</h2>
   <div class="wrap">
-    <div>
-      <div class="brand"><span><b>Slice &amp; Co Pizza</b><small>NEW YORK STYLE · EST. 1951</small></span></div>
-      <p>Pizza à la part façon New York, au cœur du 15ᵉ arrondissement de Paris.</p>
-      <div class="socials">
-        <a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
-        <a href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener" aria-label="Uber Eats">U</a>
-        <a href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener" aria-label="Deliveroo">D</a>
+    <div class="footer-grid">
+      <div class="footer-identity">
+        <a class="footer-brand" href="index.html" aria-label="Slice & Co — Accueil">
+          <img src="assets/logo.png" alt="" width="76" height="76" loading="lazy" decoding="async">
+          <span><b>Slice &amp; Co</b><small>New York Style · Est. 1951</small></span>
+        </a>
+        <p>Une part de New York,<br>au cœur de Paris 15ᵉ.</p>
+        <a class="footer-instagram" href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener">
+          <img src="assets/icons/instagram.svg" alt="" width="21" height="21" loading="lazy">
+          <span>@slice_andco</span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
+      </div>
+
+      <div class="footer-visit">
+        <h3>On vous attend</h3>
+        <address class="footer-contact">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=111+rue+Olivier+de+Serres+75015+Paris" target="_blank" rel="noopener">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>111 rue Olivier de Serres<br>75015 Paris</span>
+          <span class="sr-only"> (nouvel onglet)</span></a>
+          <a href="tel:+33782817250"><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92Z"/></svg><span>07 82 81 72 50</span></a>
+        </address>
+        <a class="footer-text-link" href="contact.html">Plan &amp; accès <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="footer-schedule">
+        <h3><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Les horaires</h3>
+        <dl class="footer-hours">
+          <div><dt>Lun–Jeu</dt><dd>11h30–14h30<br>18h00–00h00</dd></div>
+          <div><dt>Ven–Sam</dt><dd>11h30–14h30<br>18h00–02h00</dd></div>
+          <div><dt>Dimanche</dt><dd>18h00–02h00</dd></div>
+        </dl>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liens utiles">
+        <h3>À découvrir</h3>
+        <a href="index.html">L’accueil</a>
+        <a href="menu.html">La carte</a>
+        <a href="offres.html">Les offres</a>
+        <a href="contact.html">Contact &amp; accès</a>
+      </nav>
+    </div>
+
+    <div class="footer-order">
+      <div>
+        <span class="footer-eyebrow">Sur place · À emporter · En livraison</span>
+        <p>La prochaine part vous attend.</p>
+      </div>
+      <div class="footer-delivery">
+        <a href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener">
+          <img src="assets/icons/uber-eats.svg" alt="" width="36" height="36" loading="lazy">
+          <span><small>Commander sur</small><b>Uber Eats</b></span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
+        <a href="https://deliveroo.fr/fr/menu/paris/Vaugirard/slice-and-co-111-rue-olivier-de-serres" target="_blank" rel="noopener">
+          <img src="assets/icons/deliveroo.svg" alt="" width="30" height="30" loading="lazy">
+          <span><small>Commander sur</small><b>Deliveroo</b></span><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+        <span class="sr-only"> (nouvel onglet)</span></a>
       </div>
     </div>
-    <div><h4>Nous trouver</h4><p>111 rue Olivier de Serres<br>75015 Paris</p><p><a href="tel:+33782817250">07 82 81 72 50</a></p><p><a href="contact.html">Plan & accès →</a></p></div>
-    <div><h4>Horaires</h4><p>Lun–Jeu : 11h30–14h30 · 18h00–00h00</p><p>Ven–Sam : 11h30–14h30 · 18h00–02h00</p><p>Dimanche : 18h00–02h00</p></div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Slice &amp; Co Pizza <span>— Tous droits réservés.</span></p>
+      <a class="footer-back-top" href="#haut">Retour en haut <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></a>
+    </div>
   </div>
-  <div class="legal">© 2026 Slice &amp; Co Pizza — Tous droits réservés.</div>
 </footer>
 
 <script src="assets/site.js" defer></script>
+<span id="motion-preference-note" class="sr-only" hidden>Les animations sont arrêtées selon le réglage de votre appareil.</span>
 </body>
 </html>
