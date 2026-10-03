@@ -198,7 +198,16 @@
     if (!box) return;
     var a = box.querySelector("img.pz-a"), b = box.querySelector("img.pz-b");
     if (!a || !b) return;
-    var pizzas = ["pepperoni", "bbq-chicken", "brooklyn-hot-honey", "everything-bagel", "chicago", "chicken-creamy-bacon", "brooklyn-choco-dreams"];
+    var pizzas = [
+      { slug: "margherita", name: "Margherita", width: 1254 },
+      { slug: "pepperoni", name: "Pepperoni", width: 1024 },
+      { slug: "bbq-chicken", name: "BBQ Chicken", width: 760 },
+      { slug: "veggie-supreme", name: "Veggie Supreme", width: 1254 },
+      { slug: "full-cheesy", name: "Full Cheesy", width: 1254 },
+      { slug: "buffalo-spicy-chicken", name: "Buffalo Spicy Chicken", width: 1254 },
+      { slug: "manhattan-cheesecake", name: "Manhattan Cheesecake", width: 1254 }
+    ];
+    var imageVersion = "20261003";
     var index = 0, busy = false, heroVisible = true, fadeTimer = null, transitionVersion = 0;
     function paused() {
       var pause = document.hidden || !heroVisible || motionIsPaused();
@@ -219,9 +228,14 @@
     }
     document.addEventListener("visibilitychange", syncHeroMotion);
     document.addEventListener("sco:motionchange", syncHeroMotion);
-    function setImage(img, slug) {
-      img.srcset = "assets/img/pizzas/web/" + slug + "-480.webp 480w, assets/img/pizzas/web/" + slug + "-800.webp 800w";
-      img.src = "assets/img/pizzas/web/" + slug + "-800.webp";
+    function setImage(img, pizza) {
+      var base = "assets/img/pizzas/web/" + pizza.slug + "-";
+      var sizes = [480, 800].filter(function (size) { return size < pizza.width; }).concat(pizza.width);
+      img.srcset = sizes.map(function (size) { return base + size + ".webp?v=" + imageVersion + " " + size + "w"; }).join(", ");
+      img.src = base + Math.min(800, pizza.width) + ".webp?v=" + imageVersion;
+      img.width = pizza.width;
+      img.height = pizza.width;
+      if (img === a) img.alt = "Pizza " + pizza.name + " Slice & Co, vue de dessus";
     }
     async function swap() {
       if (busy || paused()) return;

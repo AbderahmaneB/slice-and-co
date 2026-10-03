@@ -7,13 +7,13 @@ import { existsSync } from 'node:fs';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceDir = path.join(root, 'public/assets/img/pizzas');
 const outputDir = path.join(sourceDir, 'web');
-const sizes = [480, 800];
-const quality = 0.82;
+const sizes = [320, 480, 800];
+const quality = 0.90;
 const browserCandidates = [
   process.env.BROWSER_PATH,
   path.join(process.env.PROGRAMFILES || 'C:/Program Files', 'Google/Chrome/Application/chrome.exe'),
@@ -30,8 +30,7 @@ await mkdir(outputDir, { recursive: true });
 const profile = await mkdtemp(path.join(tmpdir(), 'slice-pizza-webp-'));
 const browser = spawn(browserPath, [
   '--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check',
-  '--allow-file-access-from-files', '--remote-debugging-port=0', `--user-data-dir=${profile}`,
-  pathToFileURL(path.join(sourceDir, sourceNames[0])).href,
+  '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank',
 ], { windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'] });
 
 let socket;
@@ -84,7 +83,10 @@ try {
       image.src = sourceUrl;
       await image.decode();
       const variants = [];
-      for (const size of targetSizes) {
+      const nativeSize = Math.max(image.naturalWidth, image.naturalHeight);
+      // Keep the original detail for large displays, without enlarging small sources.
+      const availableSizes = [...new Set([...targetSizes.filter(size => size < nativeSize), nativeSize])];
+      for (const size of availableSizes) {
         const canvas = document.createElement('canvas');
         canvas.width = size;
         canvas.height = size;
@@ -127,7 +129,7 @@ try {
         variants.push({ size, dataUrl, transparentPixels, translucentPixels, maxAlpha, alphaMaxDelta, alphaDifferentPixels });
       }
       return { width: image.naturalWidth, height: image.naturalHeight, variants };
-    }})(${JSON.stringify(pathToFileURL(sourcePath).href)}, ${JSON.stringify(sizes)}, ${quality})`;
+    }})(${JSON.stringify(`data:image/png;base64,${source.toString('base64')}`)}, ${JSON.stringify(sizes)}, ${quality})`;
     const response = await call('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
     if (response.exceptionDetails) throw new Error(response.exceptionDetails.exception?.description || 'Image conversion failed.');
     const converted = response.result.value;
@@ -144,12 +146,16 @@ try {
     console.log(`${name}: ${entry.variants.map(variant => `${variant.size}px ${Math.round(variant.bytes / 1024)} KiB`).join(', ')}`);
   }
   const sourceBytes = assets.reduce((sum, entry) => sum + entry.sourceBytes, 0);
-  const totals = Object.fromEntries(sizes.map(size => [size, assets.reduce((sum, entry) => sum + entry.variants.find(variant => variant.size === size).bytes, 0)]));
-  const report = { encoder: 'Chromium Canvas WebP', quality, fit: 'contain, centered, transparent, no crop', sourceCount: assets.length, sourceBytes, totals, assets };
+  const totals = {};
+  for (const entry of assets) for (const variant of entry.variants) {
+    totals[variant.size] = (totals[variant.size] || 0) + variant.bytes;
+  }
+  const nativeBytes = assets.reduce((sum, entry) => sum + entry.variants.at(-1).bytes, 0);
+  const report = { encoder: 'Chromium Canvas WebP', quality, fit: 'contain, centered, transparent, no crop, no upscale', sourceCount: assets.length, sourceBytes, nativeBytes, totals, assets };
   const reportDir = path.join(root, 'output');
   await mkdir(reportDir, { recursive: true });
   await writeFile(path.join(reportDir, 'pizza-optimization-report.json'), `${JSON.stringify(report, null, 2)}\n`);
-  console.log(JSON.stringify({ sourceCount: assets.length, sourceBytes, totals, savings: Object.fromEntries(sizes.map(size => [size, `${(100 - totals[size] / sourceBytes * 100).toFixed(1)}%`])) }, null, 2));
+  console.log(JSON.stringify({ sourceCount: assets.length, sourceBytes, nativeBytes, totals, nativeSavings: `${(100 - nativeBytes / sourceBytes * 100).toFixed(1)}%` }, null, 2));
 } finally {
   if (socket?.readyState === WebSocket.OPEN) socket.close();
   browser.kill();
