@@ -123,16 +123,54 @@
   .home .hero .cta .sco-arrow{width:22px;height:22px;flex-basis:22px}
 }
 
+/* Retour en haut : un disque fixe, au-dessus des actions mobiles. */
+.footer-back-top.is-floating{
+  position:fixed;z-index:44;
+  left:max(24px,env(safe-area-inset-left,0px));right:auto;
+  bottom:calc(max(var(--mobile-actions-height,0px),env(safe-area-inset-bottom,0px)) + 24px);
+  display:grid;place-items:center;width:48px;height:48px;min-height:48px;
+  padding:0;gap:0;border:1px solid var(--cream);border-radius:50%;
+  background:var(--ink);color:var(--cream);text-decoration:none;
+  box-shadow:0 3px 12px #14141422;view-transition-name:back-to-top;
+  transition:background-color var(--sco-color),color var(--sco-color),border-color var(--sco-color);
+  animation:back-top-appear .18s ease-out;
+}
+.footer-back-top.is-floating[hidden],.nav-open .footer-back-top.is-floating{display:none!important}
+.footer-back-top.is-floating .back-top-label{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;
+}
+.footer-back-top.is-floating .sco-arrow{
+  width:28px;height:28px;padding:0;border:0;border-radius:0;
+}
+.footer-back-top.is-floating:focus-visible{background:var(--red-action);color:var(--cream)}
+@media(hover:hover) and (pointer:fine){
+  .footer-back-top.is-floating:hover{background:var(--red-action);color:var(--cream)}
+}
+@media(max-width:760px){
+  .footer-back-top.is-floating{
+    left:max(16px,env(safe-area-inset-left,0px));
+    bottom:calc(max(var(--mobile-actions-height,0px),env(safe-area-inset-bottom,0px)) + 16px);
+  }
+}
+@keyframes back-top-appear{from{opacity:0}to{opacity:1}}
+::view-transition-group(back-to-top),::view-transition-new(back-to-top){animation:none}
+::view-transition-old(back-to-top){display:none}
+
 /* Le choix de mouvement réduit garde une seule flèche et tous les états utiles. */
 html.motion-paused .sco-arrow-mark{transform:translate(0,0)!important}
+html.motion-paused .footer-back-top.is-floating{animation:none}
 html.motion-paused :is(.brand-art,.action-icon--phone,.topbar-icon,.footer-contact .footer-icon){transform:none!important}
 @media(prefers-reduced-motion:reduce){
+  .footer-back-top.is-floating{animation:none;transition:none}
   .sco-arrow-mark{transform:translate(0,0)!important}
   .sco-arrow,.sco-arrow-mark,.faq-plus,.menu-picker-chevron,
   .burger-line--top,.burger-line--middle,.burger-line--bottom{transition:none!important}
   .brand-art,.action-icon--phone,.topbar-icon,.footer-contact .footer-icon{transform:none!important}
 }
 @media(forced-colors:active){
+  .footer-back-top.is-floating{background:ButtonFace;color:ButtonText;border-color:ButtonText;box-shadow:none}
+  .footer-back-top.is-floating:focus-visible{background:Highlight;color:HighlightText;border-color:Highlight}
   .sco-arrow{stroke:currentColor;forced-color-adjust:auto}
   .pizza-tile .sco-arrow,.footer-back-top .sco-arrow{border-color:currentColor}
 }

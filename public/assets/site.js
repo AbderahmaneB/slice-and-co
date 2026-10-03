@@ -50,6 +50,21 @@
     }
 
     var header = document.querySelector(".site-header");
+    var headerBrand = header && header.querySelector(".brand");
+    var mobileActions = document.querySelector(".mobile-actions");
+    var backTop = document.querySelector(".footer-back-top");
+    var backTopVisible = false;
+    if (backTop) {
+      backTop.classList.add("is-floating");
+      backTop.setAttribute("aria-label", "Retour en haut de la page");
+      backTop.hidden = true;
+      backTop.addEventListener("click", function (event) {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        scrollTo({ top: 0, behavior: motionIsPaused() ? "instant" : "smooth" });
+        if (headerBrand) headerBrand.focus({ preventScroll: true });
+      });
+    }
     var categoryNav = document.querySelector(".menu-category-nav");
     var categoryLinks = categoryNav ? Array.from(categoryNav.querySelectorAll('a[href^="#"]')) : [];
     var categories = categoryLinks.map(function (link) { return document.getElementById(link.hash.slice(1)); });
@@ -86,15 +101,28 @@
     function updateHeaderSize() {
       if (header) root.style.setProperty("--header-height", header.offsetHeight + "px");
       if (categoryNav) root.style.setProperty("--category-nav-height", categoryNav.offsetHeight + "px");
+      root.style.setProperty("--mobile-actions-height", (mobileActions ? mobileActions.offsetHeight : 0) + "px");
     }
     updateHeaderSize();
     if ("ResizeObserver" in window) {
       var sizes = new ResizeObserver(updateHeaderSize);
       if (header) sizes.observe(header);
       if (categoryNav) sizes.observe(categoryNav);
+      if (mobileActions) sizes.observe(mobileActions);
     } else addEventListener("resize", updateHeaderSize);
     function updateScroll() {
       if (header) header.classList.toggle("scrolled", scrollY > 8);
+      if (backTop) {
+        var availableScroll = Math.max(0, root.scrollHeight - innerHeight);
+        var backTopThreshold = Math.min(Math.max(320, innerHeight * 0.65), availableScroll * 0.65);
+        var backTopMargin = Math.min(60, backTopThreshold * 0.2);
+        var showBackTop = scrollY > (backTopVisible ? backTopThreshold - backTopMargin : backTopThreshold);
+        if (showBackTop !== backTopVisible) {
+          if (!showBackTop && backTop.contains(document.activeElement) && headerBrand) headerBrand.focus({ preventScroll: true });
+          backTopVisible = showBackTop;
+          backTop.hidden = !showBackTop;
+        }
+      }
       if (!categoryLinks.length) return;
       var limit = (header ? header.offsetHeight : 85) + categoryNav.offsetHeight + 80;
       var current = 0;
@@ -115,6 +143,8 @@
       scheduled = true;
       requestAnimationFrame(function () { updateScroll(); scheduled = false; });
     }, { passive: true });
+    addEventListener("resize", updateScroll);
+    addEventListener("pageshow", updateScroll);
     updateScroll();
 
     var nav = document.getElementById("nav");
