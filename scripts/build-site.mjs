@@ -62,7 +62,9 @@ ${noindex ? '' : `<link rel="canonical" href="${url}">`}
 
 for (const page of pages) {
   let html = await readFile(`public/${page.file}`, 'utf8');
-  html = html.replace(/<!-- SEO:START -->[\s\S]*?<!-- SEO:END -->\s*/g, '')
+  html = html.replace(/\s*<button class="motion-toggle"[^>]*>[\s\S]*?<\/button>/g, '')
+    .replace(/<span id="motion-preference-note"[^>]*>[\s\S]*?<\/span>\s*/g, '')
+    .replace(/<!-- SEO:START -->[\s\S]*?<!-- SEO:END -->\s*/g, '')
     .replace(/<title>[\s\S]*?<\/title>\s*/g, '')
     .replace(/<meta name="description"[^>]*>\s*/g, '')
     .replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>\s*/g, '')
@@ -71,8 +73,10 @@ for (const page of pages) {
   if (!html.includes('assets/enhancements.css')) html = html.replace('</head>', '<link rel="stylesheet" href="assets/enhancements.css?v=20261003-optimize">\n</head>');
   if (!html.includes('assets/enhancements.js')) html = html.replace('</body>', '<script type="module" src="assets/enhancements.js?v=20261003-optimize"></script>\n</body>');
   html = html.replace(/<!-- QUICK-ACTIONS:START -->[\s\S]*?<!-- QUICK-ACTIONS:END -->\s*/g, '');
-  html = html.replace(/assets\/site\.js\?v=[^" ]+/g, 'assets/site.js?v=20261003-optimize');
-  html = html.replace(/assets\/intro\.js(?:\?v=[^" ]+)?/g, 'assets/intro.js?v=20261003-optimize');
+  html = html.replace(/assets\/site\.js\?v=[^" ]+/g, 'assets/site.js?v=20261003-click');
+  html = html.replace(/assets\/intro\.js(?:\?v=[^" ]+)?/g, 'assets/intro.js?v=20261003-click');
+  html = html.replace(/assets\/home\.css\?v=[^" ]+/g, 'assets/home.css?v=20261003-click');
+  html = html.replace(/assets\/interactions\.css(?:\?v=[^" ]+)?/g, 'assets/interactions.css?v=20261003-click');
   html = html.replace('</body>', `${page.path === '/' ? quickActions.replace('/contact#commander-livraison', '#commander') : quickActions}\n</body>`);
   if (!html.includes('data-business-status')) html = html.replace(/(<dl class="footer-hours">)/, `${status}\n        $1`);
   if (page.path === '/') {

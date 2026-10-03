@@ -112,24 +112,6 @@ a.brand:focus-visible img,.footer-brand:focus-visible img{transform:rotate(-3deg
 .burger:focus-visible{background:rgba(20,20,20,.06)}
 .burger:active{background:rgba(20,20,20,.1)}
 
-/* Un interrupteur de mouvement discret, avec un libellé lisible. */
-.topbar .motion-toggle{
-  display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  min-height:40px;min-width:40px;max-width:100%;padding:7px 10px;
-  border:1px solid rgba(253,246,238,.5);border-radius:5px;
-  background:transparent;color:var(--cream);font:inherit;line-height:1.2;
-  cursor:pointer;transition:background-color .18s,border-color .18s;
-}
-.motion-toggle[hidden]{display:none!important}
-.motion-icon{display:block;width:18px;height:18px;flex:0 0 18px}
-.motion-toggle .motion-icon--play{display:none}
-.motion-toggle[aria-pressed="true"] .motion-icon--pause{display:none}
-.motion-toggle[aria-pressed="true"] .motion-icon--play{display:block}
-.topbar .motion-toggle[aria-pressed="true"]{background:rgba(253,246,238,.12);border-color:var(--cream)}
-.topbar .motion-toggle:focus-visible{background:rgba(253,246,238,.16);border-color:var(--cream)}
-.topbar .motion-toggle:not([aria-disabled="true"]):active{background:rgba(253,246,238,.24)}
-.topbar .motion-toggle[aria-disabled="true"]{cursor:default;opacity:.7}
-
 /* Les survols ne s'appliquent qu'à un pointeur qui peut réellement survoler. */
 @media(hover:hover) and (pointer:fine){
   .btn:hover{background:var(--ink);border-color:var(--ink);color:#fff;transform:translate(-2px,-2px)}
@@ -150,9 +132,6 @@ a.brand:focus-visible img,.footer-brand:focus-visible img{transform:rotate(-3deg
   :is(.btn,.card-link,.directions):hover .action-icon--external{transform:translate(2px,-2px)}
   a.brand:hover img,.footer-brand:hover img{transform:rotate(-3deg)}
   .burger:hover{background:rgba(20,20,20,.06)}
-  .topbar .motion-toggle:not([aria-disabled="true"]):hover{
-    background:rgba(253,246,238,.16);border-color:var(--cream);
-  }
   .btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
   .nav .btn:active{transform:translateY(1px);box-shadow:none}
 }
@@ -179,11 +158,6 @@ a.brand:focus-visible img,.footer-brand:focus-visible img{transform:rotate(-3deg
 @media(max-width:560px){
   .topbar .right{gap:6px;min-width:0}
   .topbar .right>a{padding-inline:3px}
-  .topbar .motion-toggle{width:40px;padding:9px;flex:0 0 40px}
-  .motion-toggle .motion-label{
-    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
-  }
   .hero .cta .btn{min-width:0;gap:6px;padding-inline:10px}
   .hero .cta .action-icon{width:18px;height:18px;flex-basis:18px}
 }
@@ -204,29 +178,19 @@ html.motion-paused :is(.btn,.action-icon,.footer-icon,.brand img,.footer-brand i
     transform:none!important;transition:none!important;
   }
   .burger-line--top,.burger-line--middle,.burger-line--bottom,
-  .nav a::after,.card-link,.info .directions,.motion-toggle{transition:none!important}
+  .nav a::after,.card-link,.info .directions{transition:none!important}
   .hero-pizza img,.marquee .track{animation:none!important}
 }
 @media(forced-colors:active){
   :is(a,button,[tabindex]):focus-visible{outline:3px solid Highlight!important;outline-offset:4px;box-shadow:none!important}
   .menu-category-nav a:focus-visible{outline-offset:-4px}
-  .btn,.topbar .motion-toggle,.footer-instagram,.footer-delivery a{
+  .btn,.footer-instagram,.footer-delivery a{
     border:2px solid ButtonText;background:ButtonFace;color:ButtonText;box-shadow:none;
   }
-  .btn:focus-visible,.btn:active,.topbar .motion-toggle[aria-pressed="true"]{
+  .btn:focus-visible,.btn:active{
     background:Highlight;color:HighlightText;border-color:Highlight;
   }
-  .topbar .motion-toggle[aria-disabled="true"]{color:GrayText;opacity:1}
   .nav a.active::after,.nav a[aria-current="page"]::after{background:Highlight}
   .menu-category-nav a[aria-current="location"]{color:LinkText;border-bottom-color:LinkText}
-  .action-icon,.footer-icon,.burger-icon,.motion-icon{forced-color-adjust:auto}
-  /* Le pictogramme garde le contraste de la paire de couleurs système du bouton. */
-  .topbar .motion-toggle .motion-icon{
-    forced-color-adjust:none;color:ButtonText;stroke:currentColor;
-  }
-  .topbar .motion-toggle[aria-pressed="true"] .motion-icon{color:HighlightText}
-  .topbar .motion-toggle[aria-pressed="true"]:not([aria-disabled="true"]):active .motion-icon{color:ButtonText}
-  @media(hover:hover) and (pointer:fine){
-    .topbar .motion-toggle[aria-pressed="true"]:not([aria-disabled="true"]):hover .motion-icon{color:ButtonText}
-  }
+  .action-icon,.footer-icon,.burger-icon{forced-color-adjust:auto}
 }

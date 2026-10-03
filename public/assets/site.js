@@ -3,10 +3,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     var root = document.documentElement;
     var motion = matchMedia("(prefers-reduced-motion: reduce)");
-    var motionUserPaused = false;
-    try { motionUserPaused = localStorage.getItem("sco_motion_paused") === "1"; } catch (e) {}
-    var motionButton = document.querySelector(".motion-toggle");
-    function motionIsPaused() { return motion.matches || motionUserPaused; }
+    function motionIsPaused() { return motion.matches; }
     function applyMotionPreference() {
       var paused = motionIsPaused();
       root.classList.toggle("motion-paused", paused);
@@ -16,34 +13,10 @@
         root.classList.add("intro-seen");
         document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
       }
-      if (motionButton) {
-        motionButton.hidden = false;
-        motionButton.setAttribute("aria-pressed", String(paused));
-        motionButton.setAttribute("aria-disabled", String(motion.matches));
-        motionButton.title = motion.matches ? "Animations arrêtées selon votre appareil" : paused ? "Reprendre les animations" : "Mettre les animations en pause";
-        motionButton.setAttribute("aria-label", motionButton.title);
-        if (motion.matches) motionButton.setAttribute("aria-describedby", "motion-preference-note");
-        else motionButton.removeAttribute("aria-describedby");
-      }
       document.dispatchEvent(new Event("sco:motionchange"));
     }
-    if (motionButton) motionButton.addEventListener("click", function () {
-      if (motion.matches) return;
-      motionUserPaused = !motionUserPaused;
-      try { localStorage.setItem("sco_motion_paused", motionUserPaused ? "1" : "0"); } catch (e) {}
-      applyMotionPreference();
-    });
     motion.addEventListener("change", applyMotionPreference);
-    addEventListener("storage", function (event) {
-      if (event.key === "sco_motion_paused") {
-        motionUserPaused = event.newValue === "1";
-        applyMotionPreference();
-      }
-    });
-    addEventListener("pageshow", function () {
-      try { motionUserPaused = localStorage.getItem("sco_motion_paused") === "1"; } catch (e) {}
-      applyMotionPreference();
-    });
+    addEventListener("pageshow", applyMotionPreference);
     applyMotionPreference();
     var intro = document.getElementById("intro");
     if (intro) intro.addEventListener("animationend", function (event) {
@@ -197,11 +170,12 @@
       setOpen(false, false);
     }
 
-    // Même rotation et fondu doux, avec des WebP chargés à la demande.
+    // Rotation automatique et changement au clic, avec des WebP chargés à la demande.
     var box = document.querySelector(".hero-pizza");
     if (!box) return;
+    var pizzaButton = box.querySelector(".hero-pizza-switch");
     var a = box.querySelector("img.pz-a"), b = box.querySelector("img.pz-b");
-    if (!a || !b) return;
+    if (!a || !b || !pizzaButton) return;
     var pizzas = [
       { slug: "margherita", name: "Margherita", width: 1254 },
       { slug: "pepperoni", name: "Pepperoni", width: 1024 },
@@ -212,11 +186,18 @@
       { slug: "manhattan-cheesecake", name: "Manhattan Cheesecake", width: 1254 }
     ];
     var imageVersion = "20261003";
-    var index = 0, busy = false, heroVisible = true, fadeTimer = null, transitionVersion = 0;
+    var announcement = document.getElementById("hero-pizza-announcement");
+    var index = 0, busy = false, heroVisible = true, fadeTimer = null, autoTimer = null;
+    var transitionVersion = 0, pendingManual = 0, activeManual = false, finishCurrent = null, keyboardFocused = false;
     function paused() {
-      var pause = document.hidden || !heroVisible || motionIsPaused();
+      var pause = document.hidden || !heroVisible || motionIsPaused() || keyboardFocused;
       box.classList.toggle("is-paused", pause);
       return pause;
+    }
+    function scheduleAuto() {
+      clearTimeout(autoTimer);
+      autoTimer = null;
+      if (!paused()) autoTimer = setTimeout(function () { autoTimer = null; swap(false); }, 11000);
     }
     function cancelSwap() {
       transitionVersion += 1;
@@ -225,13 +206,34 @@
       b.style.transition = "none";
       b.style.opacity = "0";
       busy = false;
+      pendingManual = 0;
+      finishCurrent = null;
     }
-    function syncHeroMotion() { if (paused()) cancelSwap(); }
+    function syncHeroMotion() {
+      paused();
+      if (document.hidden || !heroVisible || motionIsPaused()) cancelSwap();
+      scheduleAuto();
+    }
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (entries) { heroVisible = entries[0].isIntersecting; syncHeroMotion(); }).observe(box);
     }
     document.addEventListener("visibilitychange", syncHeroMotion);
     document.addEventListener("sco:motionchange", syncHeroMotion);
+    function syncKeyboardFocus() {
+      paused();
+      clearTimeout(autoTimer);
+      if (keyboardFocused && busy && !activeManual) cancelSwap();
+    }
+    pizzaButton.addEventListener("focus", function () {
+      keyboardFocused = pizzaButton.matches(":focus-visible");
+      syncKeyboardFocus();
+    });
+    pizzaButton.addEventListener("keydown", function () { keyboardFocused = true; syncKeyboardFocus(); });
+    // Un clic sur un bouton déjà utilisé au clavier ne déclenche pas un nouveau focus.
+    pizzaButton.addEventListener("pointerdown", function () { keyboardFocused = false; scheduleAuto(); });
+    pizzaButton.addEventListener("blur", function () { keyboardFocused = false; scheduleAuto(); });
+    addEventListener("pagehide", function () { clearTimeout(autoTimer); cancelSwap(); });
+    addEventListener("pageshow", syncHeroMotion);
     function setImage(img, pizza) {
       var base = "assets/img/pizzas/web/" + pizza.slug + "-";
       var sizes = [480, 800].filter(function (size) { return size < pizza.width; }).concat(pizza.width);
@@ -241,32 +243,67 @@
       img.height = pizza.width;
       if (img === a) img.alt = "Pizza " + pizza.name + " Slice & Co, vue de dessus";
     }
-    async function swap() {
-      if (busy || paused()) return;
+    async function swap(manual) {
+      if (document.hidden || (!manual && paused())) return;
+      clearTimeout(autoTimer);
+      if (busy) {
+        if (manual) {
+          pendingManual += 1;
+          if (!activeManual && finishCurrent && fadeTimer !== null) {
+            clearTimeout(fadeTimer);
+            b.style.transition = "opacity 420ms ease-in-out";
+            fadeTimer = setTimeout(finishCurrent, 470);
+          }
+        }
+        return;
+      }
       busy = true;
+      activeManual = manual;
       var version = ++transitionVersion;
       var next = (index + 1) % pizzas.length;
       setImage(b, pizzas[next]);
-      try { await b.decode(); } catch (e) { if (version === transitionVersion) busy = false; return; }
+      try { await b.decode(); } catch (e) {
+        if (version === transitionVersion) { cancelSwap(); scheduleAuto(); }
+        return;
+      }
       if (version !== transitionVersion) return;
-      if (paused()) { cancelSwap(); return; }
-      b.style.transition = "opacity 2400ms ease-in-out";
-      requestAnimationFrame(function () { requestAnimationFrame(function () {
-        if (version === transitionVersion && !paused()) b.style.opacity = "1";
-      }); });
-      fadeTimer = setTimeout(async function () {
-        if (version !== transitionVersion || paused()) return;
+      if (document.hidden || !heroVisible || (!manual && paused())) { cancelSwap(); scheduleAuto(); return; }
+      var duration = motionIsPaused() ? 0 : manual || pendingManual ? 420 : 2400;
+      async function commit() {
+        if (version !== transitionVersion) return;
+        if (document.hidden || !heroVisible || (!manual && paused())) { cancelSwap(); scheduleAuto(); return; }
+        index = next;
         setImage(a, pizzas[next]);
+        pizzaButton.setAttribute("aria-label", "Afficher la pizza suivante — " + pizzas[next].name + " affichée");
+        if (manual && announcement) announcement.textContent = "Pizza " + pizzas[next].name;
         try { await a.decode(); } catch (e) {}
         if (version !== transitionVersion) return;
         b.style.transition = "none";
         b.style.opacity = "0";
-        index = next;
         busy = false;
         fadeTimer = null;
-      }, 2500);
+        finishCurrent = null;
+        if (pendingManual) { pendingManual -= 1; swap(true); }
+        else scheduleAuto();
+      }
+      finishCurrent = commit;
+      if (!duration) {
+        b.style.transition = "none";
+        b.style.opacity = "1";
+        await commit();
+        return;
+      }
+      b.style.transition = "opacity " + duration + "ms ease-in-out";
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        if (version !== transitionVersion) return;
+        if (document.hidden || !heroVisible || (!manual && paused())) { cancelSwap(); scheduleAuto(); return; }
+        if (pendingManual && !manual) { duration = 420; b.style.transition = "opacity 420ms ease-in-out"; }
+        b.style.opacity = "1";
+        fadeTimer = setTimeout(commit, duration + 50);
+      }); });
     }
-    paused();
-    setInterval(swap, 11000);
+    pizzaButton.addEventListener("click", function () { swap(true); });
+    pizzaButton.disabled = false;
+    scheduleAuto();
   });
 })();

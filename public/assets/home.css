@@ -6,6 +6,13 @@
 .home .hero .cta>.btn:not(.home-primary):is(:hover,:focus-visible){background:var(--ink);border-color:var(--ink)}
 .home .hero-pizza .badge{font-size:clamp(11px,4.2cqw,25px);line-height:1.15;display:flex;flex-direction:column;justify-content:center}
 .home .hero-pizza .badge small{font:500 clamp(8px,2.2cqw,13px)/1.5 var(--ui)}
+.home .hero .wrap{pointer-events:none}
+.home .hero-content{pointer-events:auto}
+.hero-pizza-switch{display:block;position:relative;width:100%;aspect-ratio:1;border:0;padding:0;background:transparent;color:inherit;clip-path:circle(49.2% at 50% 50%);pointer-events:auto;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.hero-pizza-switch:disabled{cursor:default}
+.hero-pizza-switch:focus-visible{outline:none;box-shadow:none}
+.hero-pizza-switch:focus-visible::after{content:"";position:absolute;inset:6%;border:3px solid var(--cream);border-radius:50%;box-shadow:0 0 0 3px var(--ink);pointer-events:none}
+@media(forced-colors:active){.hero-pizza-switch:focus-visible::after{border-color:Highlight;box-shadow:none;forced-color-adjust:none}}
 /* La photo, la recette et son prix forment une seule fiche. */
 .home-pizzas{padding-block:54px 60px}
 /* Composition d'affiche : titre typographique et panneau de formats imprimé. */
