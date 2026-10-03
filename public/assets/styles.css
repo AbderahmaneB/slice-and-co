@@ -1,6 +1,6 @@
 /* =========================================================
    SLICE & CO PIZZA — feuille de style globale
-   Identité : New York / diner US, rouge brochure, Est. 1951
+   Identité : pizzeria Slice & Co, rouge et crème, esprit imprimé
    ========================================================= */
 
 :root{
@@ -51,6 +51,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:2px;padding-bottom:2px;flex-wrap:wrap}
 .topbar a{opacity:.85;transition:.15s;display:inline-block;padding:8px 6px}.topbar a:hover{opacity:1;color:var(--cheese)}
 .topbar .right{display:flex;gap:18px;align-items:center}
+.location-mark{display:inline-block;vertical-align:-3px;margin-right:4px}
+.menu-cat .ic img{width:48px;height:42px;object-fit:contain}
+.offer-art{margin-bottom:16px}
 
 /* ---- header / nav ---- */
 .site-header{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:3px solid var(--ink)}

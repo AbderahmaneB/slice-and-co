@@ -9,7 +9,7 @@
 <script src="assets/intro.js"></script>
 <link rel="preload" href="assets/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css">
-<link rel="stylesheet" href="assets/styles.css?v=20261003-halo">
+<link rel="stylesheet" href="assets/styles.css?v=20261003-brand">
 <link rel="stylesheet" href="assets/menu.css?v=20261003-menu-guide">
 <link rel="stylesheet" href="assets/interactions.css">
 </head>
@@ -18,7 +18,7 @@
 <div id="intro" class="intro" aria-hidden="true"><div class="intro-inner"><img class="intro-logo" src="assets/logo.png" alt="Slice & Co Pizza"><div class="intro-word">SLICE &amp; CO</div><div class="intro-sub">Pizzeria · Paris 15ᵉ</div></div></div>
 
 <div class="topbar" role="region" aria-label="Informations rapides"><div class="wrap">
-  <div class="left"><span aria-hidden="true">📍</span> 111 rue Olivier de Serres, Paris 15ᵉ</div>
+  <div class="left"><svg class="location-mark" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg> 111 rue Olivier de Serres, Paris 15ᵉ</div>
   <div class="right"><a href="tel:+33782817250"><svg class="action-icon action-icon--phone" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92Z"/></svg><span>07 82 81 72 50</span></a><a href="https://www.instagram.com/slice_andco/" target="_blank" rel="noopener"><img class="topbar-icon" src="assets/icons/instagram.svg" width="17" height="17" alt=""><span>@slice_andco</span><span class="sr-only"> (nouvel onglet)</span></a>
     <button class="motion-toggle" type="button" aria-label="Mettre les animations en pause" aria-pressed="false" hidden><svg class="motion-icon motion-icon--pause" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg><svg class="motion-icon motion-icon--play" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7Z"/></svg><span class="motion-label">Animations</span></button>
   </div>
@@ -91,7 +91,7 @@
     </details>
   </nav>
 
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🍕</span><div><span>Pizzas classiques</span><h2 id="classiques" tabindex="-1">Back to Basics</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true"><img src="assets/illustrations/pizza.svg" alt="" width="48" height="42" loading="lazy"></span><div><span>Pizzas classiques</span><h2 id="classiques" tabindex="-1">Back to Basics</h2></div></div>
   <div class="menu-list menu-list--pizzas">
     <div class="row row--pizza" id="pizza-margherita">
       <picture class="pizza-thumb">
@@ -130,7 +130,7 @@
     </div>
   </div>
 
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🗽</span><div><span>Nos recettes signature</span><h2 id="signatures" tabindex="-1">NYC Originals</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true"><img src="assets/illustrations/pizza.svg" alt="" width="48" height="42" loading="lazy"></span><div><span>Nos recettes signature</span><h2 id="signatures" tabindex="-1">NYC Originals</h2></div></div>
   <div class="menu-list menu-list--pizzas">
     <div class="row row--pizza" id="pizza-everything-bagel">
       <picture class="pizza-thumb">
@@ -162,7 +162,7 @@
     </div>
   </div>
 
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🔥</span><div><span>Les généreuses — Sénior ou Méga (+4€)</span><h2 id="genereuses" tabindex="-1">Over the Top</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true"><img src="assets/illustrations/oven.svg" alt="" width="48" height="42" loading="lazy"></span><div><span>Les généreuses — Sénior ou Méga (+4€)</span><h2 id="genereuses" tabindex="-1">Over the Top</h2></div></div>
   <div class="menu-list menu-list--pizzas">
     <div class="row row--pizza" id="pizza-meat-lover">
       <picture class="pizza-thumb">
@@ -236,7 +236,7 @@
     </div>
   </div>
 
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🍫</span><div><span>Les pizzas dessert</span><h2 id="sucrees" tabindex="-1">Sweet Pizza</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true"><img src="assets/illustrations/sweet.svg" alt="" width="48" height="42" loading="lazy"></span><div><span>Les pizzas dessert</span><h2 id="sucrees" tabindex="-1">Sweet Pizza</h2></div></div>
   <div class="menu-list menu-list--pizzas">
     <div class="row row--pizza" id="pizza-brooklyn-choco-dreams">
       <picture class="pizza-thumb">
@@ -268,7 +268,7 @@
     </div>
   </div>
 
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🍗</span><div><span>À partager</span><h2 id="a-partager" tabindex="-1">Finger Foods</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true"><img src="assets/illustrations/sides.svg" alt="" width="48" height="42" loading="lazy"></span><div><span>À partager</span><h2 id="a-partager" tabindex="-1">Finger Foods</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Wings</span><span class="lead"></span><span class="prices"><b class="sz"><i>×4</i>4,90€</b><b class="sz"><i>×6</i>5,90€</b></span></div>
     <div class="row"><span class="n">Nuggets</span><span class="lead"></span><span class="prices"><b class="sz"><i>×4</i>4,90€</b><b class="sz"><i>×6</i>5,90€</b></span></div>
@@ -278,13 +278,13 @@
     <div class="row"><span class="n">Frites de patate douce</span><span class="lead"></span><span class="p">4,50€</span></div>
   </div>
 
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🍟</span><div><span>Menus à composer</span><h2 id="box" tabindex="-1">Slice Box</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true"><img src="assets/illustrations/takeaway.svg" alt="" width="48" height="42" loading="lazy"></span><div><span>Menus à composer</span><h2 id="box" tabindex="-1">Slice Box</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Slice Box Solo</span><span class="desc">4 wings, potatoes, 3 onion rings, 2 mozza sticks, 1 sauce</span><span class="p">9,90€</span></div>
     <div class="row"><span class="n">Ultimate Slice Box</span><span class="desc">6 wings, potatoes, 4 onion rings, 3 mozza sticks, 3 chili cheese, 3 nuggets, 2 sauces</span><span class="p">14,90€</span></div>
   </div>
 
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🍮</span><div><span>Desserts</span><h2 id="desserts" tabindex="-1">Something Sweet</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true"><img src="assets/illustrations/sweet.svg" alt="" width="48" height="42" loading="lazy"></span><div><span>Desserts</span><h2 id="desserts" tabindex="-1">Something Sweet</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Pina Mango (50cl)</span><span class="desc">Mix frais mangue &amp; coco</span><span class="p">5,90€</span></div>
     <div class="row"><span class="n">Milkshake</span><span class="desc">Vanille, fraise, chocolat — Kinder, Oreo, spéculoos… +1€</span><span class="p">4,90€</span></div>
@@ -292,7 +292,7 @@
     <div class="row"><span class="n">Tiramisu</span><span class="desc">Caramel, spéculoos, cookies, chocolat, pistache</span><span class="p">3,90€</span></div>
   </div>
 
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🥤</span><div><span>Boissons</span><h2 id="boissons" tabindex="-1">Our Drinks</h2></div></div>
+  <div class="menu-cat"><span class="ic" aria-hidden="true"><img src="assets/illustrations/drink.svg" alt="" width="48" height="42" loading="lazy"></span><div><span>Boissons</span><h2 id="boissons" tabindex="-1">Our Drinks</h2></div></div>
   <div class="menu-list">
     <div class="row"><span class="n">Thé glacé maison (50cl)</span><span class="lead"></span><span class="p">3,90€</span></div>
     <div class="row"><span class="n">Citronnade maison (50cl)</span><span class="lead"></span><span class="p">3,90€</span></div>

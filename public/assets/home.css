@@ -1,0 +1,112 @@
+/* Accueil : photographie d'abord, illustrations imprimées et chemins de commande. */
+.home .hero p{font-style:normal;font-size:18px;line-height:1.65;max-width:490px}
+.home .hero .home-primary{background:var(--cream);border-color:var(--cream);color:var(--ink)}
+.home .hero .home-primary:is(:hover,:focus-visible){background:var(--cheese);border-color:var(--cheese);color:var(--ink)}
+.home .hero .cta>.btn:not(.home-primary){background:transparent;border-color:var(--cream)}
+.home .hero .cta>.btn:not(.home-primary):is(:hover,:focus-visible){background:var(--ink);border-color:var(--ink)}
+.home .hero-pizza .badge{font-size:clamp(11px,4.2cqw,25px);line-height:1.15;display:flex;flex-direction:column;justify-content:center}
+.home .hero-pizza .badge small{font:500 clamp(8px,2.2cqw,13px)/1.5 var(--ui)}
+.home-pizzas{padding-block:62px 66px}
+.home-pizzas .section-head{max-width:780px;margin-bottom:34px}
+.home-pizzas .section-head h2{font-size:clamp(32px,4.5vw,54px)}
+.home-pizzas .section-head p{margin-top:16px;font-size:15px}
+.home-pizzas .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.home-pizzas .card{background:transparent;box-shadow:none;border:0;border-radius:0}
+.home-pizzas .card:is(:hover,:focus-within){box-shadow:none}
+.home-pizzas .card .pic{border-radius:50%;background:#f3e6d5;padding:12px;position:relative}
+.home-pizzas .card .pic::after{content:"";position:absolute;inset:9px;border:1px dashed #b4a18b;border-radius:50%;pointer-events:none}
+.home-pizzas .card .pic picture{width:96%;position:relative;z-index:1}
+.home-pizzas .card .body{border-top:0;padding:22px 0 0}
+.home-pizzas .card .tag{background:transparent;color:var(--red-text);border:1px solid currentColor;border-radius:2px;transform:rotate(-2deg);font-size:10px}
+.home-pizzas .card h3{font-size:25px;max-width:100%}
+.home-pizzas .card .body .top{align-items:flex-start;flex-wrap:nowrap}
+.home-pizzas .card .price{font-size:25px}
+.home-pizzas .card-link{font-size:13px}
+.home-formats{text-align:center;font-size:12px;color:var(--muted);margin:30px 0 0}
+.home-order{background:#f4e8d7;border-block:1px solid var(--line);padding-block:58px 64px}
+.home-order .section-head{margin-bottom:32px}
+.home-order .section-head p{font-size:15px;margin-top:14px}
+#commander{scroll-margin-top:calc(var(--header-height,85px) + 24px)}
+.order-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.order-option{display:flex;flex-direction:column;align-items:flex-start;padding:0 32px;min-width:0}
+.order-option:first-child{padding-left:0}
+.order-option:last-child{padding-right:0}
+.order-option+.order-option{border-left:1px solid #cfc1af}
+.brand-art{width:160px;height:140px;object-fit:contain;margin:0 0 14px;transition:transform .2s ease;transform-origin:50% 80%}
+.order-number{font:500 11px/1.5 var(--ui);letter-spacing:1.2px;color:var(--red-text);margin-bottom:8px}
+.order-option h3{font:400 32px/1.1 var(--display);margin-bottom:12px}
+.order-option p{font-size:14px;line-height:1.65;margin-bottom:16px;color:#414141;max-width:285px}
+.order-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:auto}
+.order-links a{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border-bottom:2px solid var(--ink);font:600 16px/1.4 var(--ui);transition:color .18s,border-color .18s}
+.order-links a>span[aria-hidden]{display:inline-block;transition:transform .18s}
+.order-links a:is(:hover,:focus-visible){color:var(--red-text);border-color:var(--red-text)}
+.order-links a:is(:hover,:focus-visible)>span[aria-hidden]{transform:translate(2px,-2px)}
+.order-detail{font-size:12px;line-height:1.5;margin-top:10px;color:var(--muted)}
+.home .lunch-detail{margin:16px auto 0;max-width:540px;font-size:17px}
+.lunch-detail small{display:block;margin-top:8px;font-size:12px;color:#ddd}
+.home-details{padding-block:36px}
+.house-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.house-note{display:flex;align-items:center;gap:14px;min-width:0}
+.house-note img{flex:0 0 88px;width:88px;height:77px}
+.house-note h2{font:600 21px/1.2 var(--ui);margin-bottom:6px}
+.house-note p,.house-note a{font-size:12px;line-height:1.6;margin:0;color:var(--muted)}
+.house-note a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--red-text);text-decoration:underline;text-underline-offset:4px}
+.house-note a:is(:hover,:focus-visible){color:var(--ink)}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .order-option:has(a:hover) .brand-art{transform:translateY(-3px) rotate(-3deg)}
+}
+@media(max-width:1000px){
+  .order-option{padding-inline:22px}
+  .home-pizzas .cards{gap:22px}
+  .home-pizzas .card .body .top{display:block}
+  .home-pizzas .card h3{min-height:2.2em}
+  .home-pizzas .card .price{display:block;margin-top:8px}
+  .house-notes{gap:16px}
+  .house-note{gap:8px}
+  .house-note img{flex-basis:64px;width:64px;height:56px}
+}
+@media(max-width:760px){
+  .home-pizzas{padding-block:40px 44px}
+  .home-pizzas .cards{grid-template-columns:1fr;gap:28px}
+  .home-pizzas .card{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center}
+  .home-pizzas .card .body{padding:0}
+  .home-pizzas .card .body .top{display:block}
+  .home-pizzas .card .price{display:block;margin-top:8px;font-size:23px}
+  .home-pizzas .card h3{font-size:23px;min-height:0}
+  .home-pizzas .card .body p{margin-bottom:6px;font-size:13px}
+  .home-order{padding-block:40px}
+  .home-order .section-head{margin-bottom:24px}
+  .order-options{grid-template-columns:1fr;gap:26px}
+  .order-option{position:relative;padding:0 0 26px 132px;min-height:160px}
+  .order-option:first-child,.order-option:last-child{padding:0 0 26px 132px}
+  .order-option:last-child{padding-bottom:0}
+  .order-option+.order-option{border-left:0}
+  .order-option:not(:last-child){border-bottom:1px solid #cfc1af}
+  .brand-art{position:absolute;top:0;left:0;width:112px;height:98px;margin:0}
+  .order-option h3{font-size:28px}
+  .order-option p{max-width:100%;font-size:13px;margin-bottom:10px}
+  .order-links{gap:5px 20px}
+  .order-links a{font-size:15px}
+  .house-notes{grid-template-columns:1fr;gap:20px;max-width:560px}
+  .house-note{gap:20px}
+  .house-note img{flex-basis:78px;width:78px;height:68px}
+  .house-note h2{font-size:22px}
+  .house-note p,.house-note a{font-size:13px}
+}
+@media(max-width:420px){
+  .home .hero p{font-size:16px}
+  .home-pizzas .card{grid-template-columns:105px minmax(0,1fr);gap:16px;align-items:start}
+  .home-pizzas .card .pic{padding:0;margin-top:10px}
+  .home-pizzas .card .pic::after{inset:3px}
+  .home-pizzas .card h3{font-size:21px}
+  .home-pizzas .card-link{letter-spacing:.2px;font-size:12px;gap:6px}
+  .order-option,.order-option:first-child,.order-option:last-child{padding-left:92px}
+  .brand-art{width:80px;height:70px}
+  .order-option h3{font-size:25px}
+  .order-number{font-size:10px;letter-spacing:.5px}
+}
+@media(prefers-reduced-motion:reduce){.brand-art,.order-links a>span[aria-hidden]{transition:none}}
+@media(forced-colors:active){
+  .home .hero .cta>.btn{background:ButtonFace;border-color:ButtonText;color:ButtonText}
+  .home .hero .cta>.btn:is(:hover,:focus-visible){background:Highlight;border-color:Highlight;color:HighlightText}
+}

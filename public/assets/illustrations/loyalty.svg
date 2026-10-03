@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 140" fill="none">
+  <g stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m24 42 112-11 7 81-113 11Z" fill="#f6c44e"/>
+    <path d="m17 33 113-9 8 82-112 10Z" fill="#fdf6ee"/>
+    <path d="m18 34 112-10 2 24-112 10Z" fill="#e2231a"/>
+    <text x="34" y="47" transform="rotate(-5 34 47)" fill="#fdf6ee" stroke="none" font-family="Arial,sans-serif" font-weight="900" font-size="13">SLICE &amp; CO</text>
+    <g stroke-width="2">
+      <circle cx="40" cy="77" r="9"/><circle cx="69" cy="74" r="9"/><circle cx="99" cy="71" r="9"/>
+      <path d="m35 76 4 4 8-10m16 3 4 4 8-10" stroke="#b71912" stroke-width="3"/>
+      <path d="m37 99 25-2m11-1 28-3m-62-81 2 9m-15-6 6 7m105 94 8 5m-12 1 5 8"/>
+    </g>
+    <path d="m115 81 6 7 10-2-2 10 7 7-10 4-2 10-9-5-9 5-1-10-10-4 8-7-1-10 9 2Z" fill="#e2231a"/>
+    <path d="m109 99 5 5 9-12" stroke="#fdf6ee"/>
+  </g>
+</svg>
