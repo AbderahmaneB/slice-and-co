@@ -13,9 +13,13 @@
 .home-pizzas .section-head h2{font-size:clamp(30px,3.8vw,48px);margin:8px 0 0}
 .home-pizzas .section-head p{margin-top:14px;font-size:14px}
 .pizza-section-heading>.btn{flex-shrink:0;margin:0;font-size:12px;padding:13px 20px;box-shadow:none}
-.home-formats{font-size:12px;color:var(--muted);margin:0 0 24px;padding-top:16px;border-top:1px solid var(--line)}
-.home-formats>span[aria-hidden]{margin-inline:8px}
-.home-formats .format-group{display:inline-block}
+.home-formats{display:grid;grid-template-columns:1.2fr 1fr;width:min(100%,510px);margin:0 0 28px;padding:16px 20px;background:#f3e7d7;border:1px solid #dfd0bd;border-radius:6px;gap:20px}
+.home-formats>div+div{border-left:1px solid #d7c5af;padding-left:20px}
+.home-formats dt{font:500 11px/1.4 var(--ui);text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
+.home-formats dd{margin:0;font:600 23px/1.3 var(--ui);color:var(--ink)}
+.home-formats dd>span{font:400 12px var(--body);padding-inline:3px;color:var(--muted)}
+.home-formats dd>small{display:block;margin-top:5px;font:400 11px/1.5 var(--body);color:var(--muted)}
+.home-formats .sweet-price{color:var(--red-text);font-family:var(--display);font-weight:400}
 /* Une mini-carte visible d'un coup d'œil ; chaque recette est un lien complet. */
 .pizza-gallery{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px}
 .pizza-gallery>li{display:flex;min-width:0}
@@ -87,7 +91,7 @@
   .home-pizzas{padding-block:36px 42px}
   .pizza-section-heading{display:block}
   .pizza-section-heading>.btn{margin-top:20px}
-  .home-formats{line-height:1.6;margin-bottom:20px}
+  .home-formats{margin-bottom:20px}
   .home-deals{padding:34px 0 22px}
   .deals-heading{align-items:start;gap:12px}
   .deals-all{font-size:13px;gap:8px}
@@ -150,4 +154,11 @@
 @media(forced-colors:active){.pizza-tile{border-color:ButtonText}.tile-arrow{border-color:ButtonText}}
 
 @media(min-width:1200px){.tile-copy h3{min-height:29px}}
-@media(max-width:560px){.home-formats>span[aria-hidden]{display:none}.home-formats .format-group{display:block;margin-bottom:4px}}
+@media(max-width:560px){
+  .home-formats{padding:14px;gap:14px;grid-template-columns:1.25fr 1fr}
+  .home-formats>div+div{padding-left:14px}
+  .home-formats dt{font-size:10px;letter-spacing:.6px}
+  .home-formats dd{font-size:19px}
+  .home-formats dd>span{font-size:11px;padding:0}
+  .home-formats dd>small{font-size:10px}
+}
