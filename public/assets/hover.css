@@ -7,28 +7,22 @@
 
 /* La flèche courbe est dessinée dans le HTML : elle fonctionne aussi sans JS. */
 .sco-action .sco-arrow{
-  --arrow-x:115%;--arrow-y:0%;
+  --arrow-x:2.5px;--arrow-y:0px;
   display:block;flex:0 0 28px;width:28px;height:28px;padding:0;
   box-sizing:border-box;overflow:hidden;pointer-events:none;
   transform:none!important;
   transition:color var(--sco-color),background-color var(--sco-color),border-color var(--sco-color);
 }
-.sco-action .sco-arrow--external{--arrow-x:85%;--arrow-y:-85%}
-.sco-action .sco-arrow--up{--arrow-x:0%;--arrow-y:-115%}
-.sco-arrow-out,.sco-arrow-in{
+.sco-action .sco-arrow--external{--arrow-x:1.75px;--arrow-y:-1.75px}
+.sco-action .sco-arrow--up{--arrow-x:0px;--arrow-y:-2.5px}
+/* Un seul tracé reste entier ; le retour repart de la position en cours. */
+.sco-arrow-mark{
   transform-box:view-box;
-  transition:transform .34s var(--sco-ease),opacity .16s ease;
+  transform:translate(0,0);
+  transition:transform .24s cubic-bezier(.25,.1,.25,1);
 }
-.sco-arrow-out{transform:translate(0,0);opacity:1}
-.sco-arrow-in{
-  transform:translate(calc(-1 * var(--arrow-x)),calc(-1 * var(--arrow-y)));
-  opacity:0;
-}
-.sco-action:focus-visible:not([aria-disabled="true"]):not(:disabled) .sco-arrow-out{
-  transform:translate(var(--arrow-x),var(--arrow-y));opacity:0;
-}
-.sco-action:focus-visible:not([aria-disabled="true"]):not(:disabled) .sco-arrow-in{
-  transform:translate(0,0);opacity:1;
+.sco-action:focus-visible:not([aria-disabled="true"]):not(:disabled) .sco-arrow-mark{
+  transform:translate(var(--arrow-x),var(--arrow-y));
 }
 .pizza-tile .sco-arrow{width:32px;height:32px;flex-basis:32px;padding:3px}
 .footer-back-top .sco-arrow{width:32px;height:32px;flex-basis:32px;padding:3px}
@@ -87,11 +81,10 @@
 }
 
 @media(hover:hover) and (pointer:fine){
-  .sco-action:hover:not([aria-disabled="true"]):not(:disabled) .sco-arrow-out{
-    transform:translate(var(--arrow-x),var(--arrow-y));opacity:0;
-  }
-  .sco-action:hover:not([aria-disabled="true"]):not(:disabled) .sco-arrow-in{
-    transform:translate(0,0);opacity:1;
+  /* Garder la cible fixe évite les entrées/sorties au bord du bouton. */
+  .btn:hover,.nav .btn:hover{transform:none}
+  .sco-action:hover:not([aria-disabled="true"]):not(:disabled) .sco-arrow-mark{
+    transform:translate(var(--arrow-x),var(--arrow-y));
   }
   .poster-menu:hover,.faq-heading>a:hover,.order-links a:hover,.map-directions:hover,
   .deals-all:hover,.deals-loyalty a:hover,.card-link:hover,.footer-text-link:hover{
@@ -107,9 +100,9 @@
   .topbar a:hover .topbar-icon{transform:rotate(-5deg)}
   .footer-contact a:not([href^="tel:"]):hover .footer-icon{transform:translateY(-2px)}
   .btn:not([aria-disabled="true"]):not(:disabled):active{
-    transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink);
+    transform:none;box-shadow:1px 1px 0 var(--ink);
   }
-  .nav .btn:not([aria-disabled="true"]):not(:disabled):active{transform:translateY(1px);box-shadow:none}
+  .nav .btn:not([aria-disabled="true"]):not(:disabled):active{transform:none;box-shadow:none}
 }
 
 /* Un appui tactile ne simule jamais un survol conservé après le tap. */
@@ -122,23 +115,20 @@
 .btn.btn[aria-disabled="true"],.btn:disabled{
   cursor:default;transform:none!important;box-shadow:none;
 }
-.btn.btn[aria-disabled="true"] .sco-arrow-out,.btn:disabled .sco-arrow-out{
-  opacity:1;transform:translate(0,0);
+.btn.btn[aria-disabled="true"] .sco-arrow-mark,.btn:disabled .sco-arrow-mark{
+  transform:translate(0,0);
 }
-.btn.btn[aria-disabled="true"] .sco-arrow-in,.btn:disabled .sco-arrow-in{opacity:0}
 
 @media(max-width:560px){
   .home .hero .cta .sco-arrow{width:22px;height:22px;flex-basis:22px}
 }
 
 /* Le choix de mouvement réduit garde une seule flèche et tous les états utiles. */
-html.motion-paused .sco-arrow-out{transform:translate(0,0)!important;opacity:1!important}
-html.motion-paused .sco-arrow-in{transform:translate(0,0)!important;opacity:0!important}
+html.motion-paused .sco-arrow-mark{transform:translate(0,0)!important}
 html.motion-paused :is(.brand-art,.action-icon--phone,.topbar-icon,.footer-contact .footer-icon){transform:none!important}
 @media(prefers-reduced-motion:reduce){
-  .sco-arrow-out{transform:translate(0,0)!important;opacity:1!important}
-  .sco-arrow-in{transform:translate(0,0)!important;opacity:0!important}
-  .sco-arrow,.sco-arrow-out,.sco-arrow-in,.faq-plus,.menu-picker-chevron,
+  .sco-arrow-mark{transform:translate(0,0)!important}
+  .sco-arrow,.sco-arrow-mark,.faq-plus,.menu-picker-chevron,
   .burger-line--top,.burger-line--middle,.burger-line--bottom{transition:none!important}
   .brand-art,.action-icon--phone,.topbar-icon,.footer-contact .footer-icon{transform:none!important}
 }

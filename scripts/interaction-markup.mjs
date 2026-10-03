@@ -40,11 +40,15 @@ function addActionClass(attributes) {
   return attributes.slice(0, match.index) + replacement + attributes.slice(match.index + match[0].length);
 }
 
-function renderArrow(direction, oldClasses = '') {
-  const classes = [...new Set(['sco-arrow', `sco-arrow--${direction}`, ...oldClasses.split(/\s+/).filter(Boolean)])].join(' ');
+function renderArrowMark(direction) {
   const rotation = direction === 'external' ? -45 : direction === 'up' ? -90 : 0;
   const inner = `<g${rotation ? ` transform="rotate(${rotation} 16 16)"` : ''}><path d="${arrowPath}"/></g>`;
-  return `<svg class="${classes.replaceAll('"', '&quot;')}" viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="sco-arrow-out">${inner}</g><g class="sco-arrow-in">${inner}</g></svg>`;
+  return `<g class="sco-arrow-mark">${inner}</g>`;
+}
+
+function renderArrow(direction, oldClasses = '') {
+  const classes = [...new Set(['sco-arrow', `sco-arrow--${direction}`, ...oldClasses.split(/\s+/).filter(Boolean)])].join(' ');
+  return `<svg class="${classes.replaceAll('"', '&quot;')}" viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${renderArrowMark(direction)}</svg>`;
 }
 
 function hasIcon(content) {
@@ -77,7 +81,12 @@ export function enhanceInteractionMarkup(html) {
   const svgPattern = new RegExp(`<svg\\b(${attributesPattern})>([\\s\\S]*?)<\\/svg\\s*>`, 'gi');
   const singlePathPattern = new RegExp(`^\\s*<path\\b(${attributesPattern})(?:\\/\\s*>|>\\s*<\\/path\\s*>)\\s*$`, 'i');
   markup = markup.replace(svgPattern, (original, attributes, content) => {
-    if (hasClass(attributes, 'sco-arrow')) return original;
+    if (hasClass(attributes, 'sco-arrow')) {
+      const direction = ['right', 'external', 'up'].find(value => hasClass(attributes, `sco-arrow--${value}`));
+      if (!direction) return original;
+      const mark = renderArrowMark(direction);
+      return content === mark ? original : `<svg${attributes}>${mark}</svg>`;
+    }
     const path = content.match(singlePathPattern);
     if (!path) return original;
     const direction = pathDirections.get((attributeValue(path[1], 'd') || '').replace(/\s+/g, ''));

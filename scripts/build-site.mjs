@@ -79,7 +79,8 @@ for (const page of pages) {
   html = html.replace(/assets\/home\.css\?v=[^" ]+/g, 'assets/home.css?v=20261003-hover');
   html = html.replace(/assets\/interactions\.css(?:\?v=[^" ]+)?/g, 'assets/interactions.css?v=20261003-click');
   html = html.replace(/assets\/(styles|enhancements)\.css(?:\?v=[^" ]+)?/g, 'assets/$1.css?v=20261003-hover');
-  if (!html.includes('assets/hover.css')) html = html.replace('</head>', '<link rel="stylesheet" href="assets/hover.css?v=20261003-hover">\n</head>');
+  if (!html.includes('assets/hover.css')) html = html.replace('</head>', '<link rel="stylesheet" href="assets/hover.css">\n</head>');
+  html = html.replace(/assets\/hover\.css(?:\?v=[^" ]+)?/g, 'assets/hover.css?v=20261003-arrow-smooth');
   html = html.replace('</body>', `${page.path === '/' ? quickActions.replace('/contact#commander-livraison', '#commander') : quickActions}\n</body>`);
   if (!html.includes('data-business-status')) html = html.replace(/(<dl class="footer-hours">)/, `${status}\n        $1`);
   if (page.path === '/') {
