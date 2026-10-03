@@ -41,7 +41,8 @@ function addActionClass(attributes) {
 }
 
 function renderArrowMark(direction) {
-  const rotation = direction === 'external' ? -45 : direction === 'up' ? -90 : 0;
+  if (direction === 'up') return '<g class="sco-arrow-mark"><path d="M16 26V6m-7 7 7-7 7 7"/></g>';
+  const rotation = direction === 'external' ? -45 : 0;
   const inner = `<g${rotation ? ` transform="rotate(${rotation} 16 16)"` : ''}><path d="${arrowPath}"/></g>`;
   return `<g class="sco-arrow-mark">${inner}</g>`;
 }
