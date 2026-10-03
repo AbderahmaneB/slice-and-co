@@ -1,0 +1,148 @@
+/* Slice & Co : un même rythme pour les actions, sans déplacer les sections. */
+:root{
+  --sco-ease:cubic-bezier(.22,1,.36,1);
+  --sco-move:.28s;
+  --sco-color:.18s;
+}
+
+/* La flèche courbe est dessinée dans le HTML : elle fonctionne aussi sans JS. */
+.sco-action .sco-arrow{
+  --arrow-x:115%;--arrow-y:0%;
+  display:block;flex:0 0 28px;width:28px;height:28px;padding:0;
+  box-sizing:border-box;overflow:hidden;pointer-events:none;
+  transform:none!important;
+  transition:color var(--sco-color),background-color var(--sco-color),border-color var(--sco-color);
+}
+.sco-action .sco-arrow--external{--arrow-x:85%;--arrow-y:-85%}
+.sco-action .sco-arrow--up{--arrow-x:0%;--arrow-y:-115%}
+.sco-arrow-out,.sco-arrow-in{
+  transform-box:view-box;
+  transition:transform .34s var(--sco-ease),opacity .16s ease;
+}
+.sco-arrow-out{transform:translate(0,0);opacity:1}
+.sco-arrow-in{
+  transform:translate(calc(-1 * var(--arrow-x)),calc(-1 * var(--arrow-y)));
+  opacity:0;
+}
+.sco-action:focus-visible:not([aria-disabled="true"]):not(:disabled) .sco-arrow-out{
+  transform:translate(var(--arrow-x),var(--arrow-y));opacity:0;
+}
+.sco-action:focus-visible:not([aria-disabled="true"]):not(:disabled) .sco-arrow-in{
+  transform:translate(0,0);opacity:1;
+}
+.pizza-tile .sco-arrow{width:32px;height:32px;flex-basis:32px;padding:3px}
+.footer-back-top .sco-arrow{width:32px;height:32px;flex-basis:32px;padding:3px}
+.footer-delivery .sco-arrow{width:26px;height:26px;flex-basis:26px}
+.footer-instagram .sco-arrow{width:24px;height:24px;flex-basis:24px}
+.home .hero .cta .sco-arrow{width:26px;height:26px;flex-basis:26px}
+
+/* Les transitions du CTA du header ont la même durée que celles des grands CTA. */
+.btn,.nav .btn{
+  transition:background-color var(--sco-color),border-color var(--sco-color),
+    color var(--sco-color),box-shadow var(--sco-move) var(--sco-ease),
+    transform var(--sco-move) var(--sco-ease);
+}
+.burger,.menu-category-picker summary,.mobile-actions a{
+  transition:background-color var(--sco-color),border-color var(--sco-color),color var(--sco-color);
+}
+.nav a:not(.btn)::after{transition:transform var(--sco-move) var(--sco-ease)}
+.menu-category-nav a{
+  transition:color var(--sco-color),border-color var(--sco-color),background-color var(--sco-color);
+}
+
+/* Une ligne fine au repos, puis un trait d'encre progressif sous l'action. */
+.poster-menu,.faq-heading>a,.order-links a,.map-directions,.pizza-gallery-more,
+.deals-all,.deals-loyalty a,.card-link,.footer-text-link{
+  background-image:linear-gradient(currentColor,currentColor);
+  background-position:left bottom;background-repeat:no-repeat;background-size:0% 2px;
+  text-decoration:none;
+  transition:color var(--sco-color),border-color var(--sco-color),
+    background-size var(--sco-move) var(--sco-ease);
+}
+.pizza-gallery-more{background-position:center bottom}
+.poster-menu:focus-visible,.faq-heading>a:focus-visible,.order-links a:focus-visible,
+.map-directions:focus-visible,.deals-all:focus-visible,.deals-loyalty a:focus-visible,
+.card-link:focus-visible,.footer-text-link:focus-visible{background-size:100% 2px}
+.pizza-gallery-more:focus-visible{background-size:min(100%,300px) 2px}
+.faq-heading>a{gap:18px;border-bottom-color:var(--line)}
+.faq-heading>a:focus-visible{border-bottom-color:var(--red-text)}
+.topbar a,.footer-nav a,.footer-contact a,.footer-instagram,.footer-delivery a,
+.footer-back-top,.breadcrumbs a,.info p a,.faq-answer a{
+  transition:color var(--sco-color),background-color var(--sco-color),
+    border-color var(--sco-color),text-decoration-color var(--sco-color),opacity var(--sco-color);
+}
+.breadcrumbs a,.info p a,.faq-answer a{
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;
+}
+.info p a:focus-visible,.faq-answer a:focus-visible{color:var(--red-text)}
+.breadcrumbs a:focus-visible{color:var(--cheese)}
+.faq-list summary{transition:color var(--sco-color)}
+.faq-plus{transition:transform var(--sco-move) var(--sco-ease)}
+.burger-line--top,.burger-line--bottom{transition:transform var(--sco-move) var(--sco-ease)}
+.burger-line--middle{transition:transform var(--sco-move) var(--sco-ease),opacity var(--sco-color)}
+.menu-picker-chevron{transition:transform var(--sco-move) var(--sco-ease)}
+.tile-photo img,.brand-art,.brand img,.footer-brand img,
+.action-icon--phone,.topbar-icon,.footer-contact .footer-icon{
+  transition:transform var(--sco-move) var(--sco-ease);
+}
+
+@media(hover:hover) and (pointer:fine){
+  .sco-action:hover:not([aria-disabled="true"]):not(:disabled) .sco-arrow-out{
+    transform:translate(var(--arrow-x),var(--arrow-y));opacity:0;
+  }
+  .sco-action:hover:not([aria-disabled="true"]):not(:disabled) .sco-arrow-in{
+    transform:translate(0,0);opacity:1;
+  }
+  .poster-menu:hover,.faq-heading>a:hover,.order-links a:hover,.map-directions:hover,
+  .deals-all:hover,.deals-loyalty a:hover,.card-link:hover,.footer-text-link:hover{
+    background-size:100% 2px;
+  }
+  .pizza-gallery-more:hover{background-size:min(100%,300px) 2px}
+  .faq-heading>a:hover{border-bottom-color:var(--red-text)}
+  .info p a:hover,.faq-answer a:hover{color:var(--red-text)}
+  .breadcrumbs a:hover{color:var(--cheese)}
+  .menu-category-nav a:hover{background-color:rgba(226,35,26,.05)}
+  .topbar a[href^="tel:"]:hover .action-icon--phone,
+  .footer-contact a[href^="tel:"]:hover .footer-icon{transform:rotate(-9deg)}
+  .topbar a:hover .topbar-icon{transform:rotate(-5deg)}
+  .footer-contact a:not([href^="tel:"]):hover .footer-icon{transform:translateY(-2px)}
+  .btn:not([aria-disabled="true"]):not(:disabled):active{
+    transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink);
+  }
+  .nav .btn:not([aria-disabled="true"]):not(:disabled):active{transform:translateY(1px);box-shadow:none}
+}
+
+/* Un appui tactile ne simule jamais un survol conservé après le tap. */
+@media(hover:none),(pointer:coarse){
+  .btn:not([aria-disabled="true"]):not(:disabled):active{transform:none}
+  .mobile-actions a:active{background:var(--cream);border-color:var(--cream);color:var(--ink)}
+  .order-links a:active,.faq-heading>a:active,.map-directions:active{color:var(--red-text)}
+  .footer-delivery a:hover:not(:focus-visible){color:var(--cream)}
+}
+.btn.btn[aria-disabled="true"],.btn:disabled{
+  cursor:default;transform:none!important;box-shadow:none;
+}
+.btn.btn[aria-disabled="true"] .sco-arrow-out,.btn:disabled .sco-arrow-out{
+  opacity:1;transform:translate(0,0);
+}
+.btn.btn[aria-disabled="true"] .sco-arrow-in,.btn:disabled .sco-arrow-in{opacity:0}
+
+@media(max-width:560px){
+  .home .hero .cta .sco-arrow{width:22px;height:22px;flex-basis:22px}
+}
+
+/* Le choix de mouvement réduit garde une seule flèche et tous les états utiles. */
+html.motion-paused .sco-arrow-out{transform:translate(0,0)!important;opacity:1!important}
+html.motion-paused .sco-arrow-in{transform:translate(0,0)!important;opacity:0!important}
+html.motion-paused :is(.brand-art,.action-icon--phone,.topbar-icon,.footer-contact .footer-icon){transform:none!important}
+@media(prefers-reduced-motion:reduce){
+  .sco-arrow-out{transform:translate(0,0)!important;opacity:1!important}
+  .sco-arrow-in{transform:translate(0,0)!important;opacity:0!important}
+  .sco-arrow,.sco-arrow-out,.sco-arrow-in,.faq-plus,.menu-picker-chevron,
+  .burger-line--top,.burger-line--middle,.burger-line--bottom{transition:none!important}
+  .brand-art,.action-icon--phone,.topbar-icon,.footer-contact .footer-icon{transform:none!important}
+}
+@media(forced-colors:active){
+  .sco-arrow{stroke:currentColor;forced-color-adjust:auto}
+  .pizza-tile .sco-arrow,.footer-back-top .sco-arrow{border-color:currentColor}
+}

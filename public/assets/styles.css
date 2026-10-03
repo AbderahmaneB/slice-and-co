@@ -40,16 +40,25 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
   text-transform:uppercase;letter-spacing:1.5px;font-size:14px;padding:15px 30px;border-radius:50px;
   background:var(--red);color:#fff;border:2px solid var(--red);transition:.18s;cursor:pointer;
   box-shadow:4px 4px 0 var(--ink)}   /* effet "tampon" print 1951 */
-.btn:hover{background:var(--ink);border-color:var(--ink);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+@media(hover:hover) and (pointer:fine){
+  .btn:hover{background:var(--ink);border-color:var(--ink);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+}
 .btn.ghost{background:transparent;color:#fff;border-color:#fff}
-.btn.ghost:hover{background:#fff;color:var(--ink)}
+@media(hover:hover) and (pointer:fine){
+  .btn.ghost:hover{background:#fff;color:var(--ink)}
+}
 .btn.ink{background:var(--ink);border-color:var(--ink)}
-.btn.ink:hover{background:var(--red);border-color:var(--red)}
+@media(hover:hover) and (pointer:fine){
+  .btn.ink:hover{background:var(--red);border-color:var(--red)}
+}
 
 /* ---- top bar ---- */
 .topbar{background:var(--ink);color:#fff;font-family:var(--ui);font-size:13px;letter-spacing:.5px}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:2px;padding-bottom:2px;flex-wrap:wrap}
-.topbar a{opacity:.85;transition:.15s;display:inline-block;padding:8px 6px}.topbar a:hover{opacity:1;color:var(--cheese)}
+.topbar a{opacity:.85;transition:.15s;display:inline-block;padding:8px 6px}
+@media(hover:hover) and (pointer:fine){
+  .topbar a:hover{opacity:1;color:var(--cheese)}
+}
 .topbar .right{display:flex;gap:18px;align-items:center}
 .location-mark{display:inline-block;vertical-align:-3px;margin-right:4px}
 .menu-cat .ic img{width:48px;height:42px;object-fit:contain}
@@ -66,8 +75,13 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 .nav a{position:relative;padding:4px 0;transition:color .18s}
 /* le petit bouton Commander du header reste plat (l'ombre tampon est pour les gros CTA) */
 .nav .btn{box-shadow:none;padding:11px 22px}
-.nav .btn:hover{transform:translateY(-2px);box-shadow:none}
-.nav a.active,.nav a:hover{color:var(--red)}
+@media(hover:hover) and (pointer:fine){
+  .nav .btn:hover{transform:translateY(-2px);box-shadow:none}
+}
+.nav a.active{color:var(--red)}
+@media(hover:hover) and (pointer:fine){
+  .nav a:hover{color:var(--red)}
+}
 .nav a.active:after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:3px;background:var(--red)}
 .burger{display:none;background:none;border:0;font-size:28px;cursor:pointer;color:var(--ink);padding:8px 12px}
 
@@ -114,7 +128,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 .features{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .feature{background:var(--cream);border:2px solid var(--ink);border-radius:18px;padding:26px;text-align:center;
   box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
-.feature:hover{transform:translateY(-4px)}
+@media(hover:hover) and (pointer:fine){
+  .feature:hover{transform:translateY(-4px)}
+}
 .feature .ic{font-size:34px;margin-bottom:8px}
 .feature h3{font-size:20px;margin-bottom:4px}
 .feature p{margin:0;font-size:14px;color:var(--muted)}
@@ -122,7 +138,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 /* ---- cartes pizzas ---- */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .card{background:var(--cream);border:2px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
-.card:hover{transform:translateY(-4px);box-shadow:10px 10px 0 var(--ink)}
+@media(hover:hover) and (pointer:fine){
+  .card:hover{transform:translateY(-4px);box-shadow:10px 10px 0 var(--ink)}
+}
 .card .pic{aspect-ratio:1/1;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#fff,#f0e4d4);padding:18px}
 .card .pic img{width:88%}
 .card .body{padding:18px 20px 22px;border-top:2px solid var(--ink)}
@@ -170,7 +188,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 .offers{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .offer{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:30px 26px;box-shadow:var(--shadow);
   transition:transform .2s,box-shadow .2s}
-.offer:hover{transform:translateY(-4px)}
+@media(hover:hover) and (pointer:fine){
+  .offer:hover{transform:translateY(-4px)}
+}
 .offer h3{font-size:24px;margin-bottom:10px}
 .offer .big{font-family:var(--display);color:var(--red);font-size:clamp(40px,6vw,54px);line-height:1;margin:6px 0}
 .offer p{margin:6px 0;font-size:14.5px}
@@ -209,8 +229,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 .footer-hours dd{margin:0;text-align:right;white-space:nowrap}
 .footer-nav a{display:flex;align-items:center;min-height:44px;font-size:14px}
 .site-footer a{transition:color .18s,background .18s,border-color .18s}
-.site-footer a:hover{color:var(--cheese)}
-.footer-instagram:hover{border-color:var(--cheese);background:rgba(246,196,78,.06)}
+@media(hover:hover) and (pointer:fine){
+  .site-footer a:hover{color:var(--cheese)}
+  .footer-instagram:hover{border-color:var(--cheese);background:rgba(246,196,78,.06)}
+}
 .footer-order{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:25px 0;border-top:1px solid rgba(253,246,238,.18);border-bottom:1px solid rgba(253,246,238,.18)}
 .footer-eyebrow{display:block;font-family:var(--ui);font-size:11px;letter-spacing:1.7px;text-transform:uppercase;color:var(--cheese)}
 .site-footer .footer-order p{margin:7px 0 0;font-family:var(--heading);font-size:25px;font-weight:600;text-transform:uppercase;line-height:1.2;color:var(--cream)}
@@ -220,7 +242,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 .footer-delivery small{display:block;font-size:10px;line-height:1.5;color:#cfcfcf}
 .footer-delivery b{display:block;font-family:var(--ui);font-weight:500;font-size:19px;line-height:1.3;white-space:nowrap}
 .footer-delivery .footer-icon{width:16px;height:16px;margin-left:8px}
-.footer-delivery a:hover{border-color:var(--cheese);background:rgba(246,196,78,.06)}
+@media(hover:hover) and (pointer:fine){
+  .footer-delivery a:hover{border-color:var(--cheese);background:rgba(246,196,78,.06)}
+}
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 0 22px}
 .site-footer .footer-bottom p{font-size:12px;line-height:1.6;margin:0;color:#aaa}
 .footer-back-top{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:12px;color:var(--cream);white-space:nowrap}
@@ -343,7 +367,10 @@ main{display:block}
 .intro-seen .intro{display:none}
 .hero-pizza img{height:auto}
 .hero-pizza.is-paused img{animation-play-state:paused}
-.nav .btn,.nav .btn:hover{color:#fff}
+.nav .btn{color:#fff}
+@media(hover:hover) and (pointer:fine){
+  .nav .btn:hover{color:#fff}
+}
 .nav a{min-height:44px;display:inline-flex;align-items:center}
 .nav-backdrop{position:fixed;inset:0;z-index:45;border:0;background:rgba(20,20,20,.42);cursor:pointer}
 .nav-backdrop[hidden]{display:none}
@@ -358,9 +385,11 @@ main{display:block}
 .card .price{white-space:nowrap;line-height:1.2}
 .card .body p{margin-bottom:16px}
 .card-link{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:12px;min-height:44px;font-family:var(--ui);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.7px;color:var(--red);border-bottom:1px solid var(--line)}
-.card-link:hover{color:var(--ink);border-color:var(--ink)}
+@media(hover:hover) and (pointer:fine){
+  .card-link:hover{color:var(--ink);border-color:var(--ink)}
+}
 .info .directions{display:inline-flex;align-items:center;min-height:44px;font-family:var(--ui);color:var(--red);border-bottom:1px solid var(--line)}
-@media(hover:hover) and (prefers-reduced-motion:no-preference){
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
   .card:hover .pic img{transform:scale(1.035) rotate(-2deg)}
 }
 @media(max-width:900px){

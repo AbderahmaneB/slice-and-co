@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { site, pages, faq } from '../site.config.mjs';
+import { enhanceInteractionMarkup } from './interaction-markup.mjs';
 
 const origin = new URL(process.env.SITE_ORIGIN || site.origin).origin;
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
@@ -75,8 +76,10 @@ for (const page of pages) {
   html = html.replace(/<!-- QUICK-ACTIONS:START -->[\s\S]*?<!-- QUICK-ACTIONS:END -->\s*/g, '');
   html = html.replace(/assets\/site\.js\?v=[^" ]+/g, 'assets/site.js?v=20261003-veggie');
   html = html.replace(/assets\/intro\.js(?:\?v=[^" ]+)?/g, 'assets/intro.js?v=20261003-click');
-  html = html.replace(/assets\/home\.css\?v=[^" ]+/g, 'assets/home.css?v=20261003-click');
+  html = html.replace(/assets\/home\.css\?v=[^" ]+/g, 'assets/home.css?v=20261003-hover');
   html = html.replace(/assets\/interactions\.css(?:\?v=[^" ]+)?/g, 'assets/interactions.css?v=20261003-click');
+  html = html.replace(/assets\/(styles|enhancements)\.css(?:\?v=[^" ]+)?/g, 'assets/$1.css?v=20261003-hover');
+  if (!html.includes('assets/hover.css')) html = html.replace('</head>', '<link rel="stylesheet" href="assets/hover.css?v=20261003-hover">\n</head>');
   html = html.replace('</body>', `${page.path === '/' ? quickActions.replace('/contact#commander-livraison', '#commander') : quickActions}\n</body>`);
   if (!html.includes('data-business-status')) html = html.replace(/(<dl class="footer-hours">)/, `${status}\n        $1`);
   if (page.path === '/') {
@@ -85,7 +88,7 @@ for (const page of pages) {
     html = html.replace('<section class="page-hero">', `<section class="page-hero">\n  <nav class="breadcrumbs" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">${escape(page.label)}</span></nav>`);
   }
   // Existing HTML files remain the source of the site's design and content.
-  await writeFile(`public/${page.file}`, html);
+  await writeFile(`public/${page.file}`, enhanceInteractionMarkup(html));
 }
 
 let notFound = await readFile('public/contact.html', 'utf8');
@@ -94,7 +97,7 @@ notFound = notFound.replace(/<main id="contenu"[^>]*>[\s\S]*?<\/main>/, '<main i
 notFound = notFound.replace(/ class="active" aria-current="page"/g, '');
 // Absolute asset paths work even for missing URLs nested in subdirectories.
 notFound = notFound.replace(/(src|href)="assets\//g, '$1="/assets/');
-await writeFile('public/404.html', notFound);
+await writeFile('public/404.html', enhanceInteractionMarkup(notFound));
 await writeFile('public/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(page => `  <url><loc>${origin}${page.path}</loc></url>`).join('\n')}\n</urlset>\n`);
 await writeFile('public/robots.txt', `User-agent: *\nAllow: /\nDisallow: /motion/\nDisallow: /assets/img/pizzas.zip\n\nSitemap: ${origin}/sitemap.xml\n`);
 console.log(`SEO, FAQ, sitemap et page 404 générés pour ${origin} (${pages.length} pages).`);
