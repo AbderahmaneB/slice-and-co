@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Requires Node 22+ and an installed Chromium browser. No npm dependencies.
 // BROWSER_PATH may point to Chrome/Edge/Chromium on another machine.
+// Optional arguments: source PNG filenames to regenerate only selected pizzas.
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync } from 'node:fs';
@@ -24,7 +25,10 @@ const browserCandidates = [
 const browserPath = browserCandidates.find(existsSync);
 if (!browserPath) throw new Error('Install Chrome/Edge/Chromium or set BROWSER_PATH.');
 
-const sourceNames = (await readdir(sourceDir)).filter(name => name.endsWith('.png')).sort();
+const availableSources = (await readdir(sourceDir)).filter(name => name.endsWith('.png')).sort();
+const requestedSources = process.argv.slice(2);
+if (requestedSources.some(name => !availableSources.includes(name))) throw new Error('Unknown source PNG filename.');
+const sourceNames = requestedSources.length ? availableSources.filter(name => requestedSources.includes(name)) : availableSources;
 if (!sourceNames.length) throw new Error('No source PNGs found.');
 await mkdir(outputDir, { recursive: true });
 const profile = await mkdtemp(path.join(tmpdir(), 'slice-pizza-webp-'));
