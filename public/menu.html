@@ -10,7 +10,7 @@
 <link rel="preload" href="assets/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/styles.css?v=20261003-halo">
-<link rel="stylesheet" href="assets/menu.css?v=20260930-3">
+<link rel="stylesheet" href="assets/menu.css?v=20261003-extras">
 <link rel="stylesheet" href="assets/interactions.css">
 </head>
 <body id="haut">
@@ -59,10 +59,19 @@
     </dl>
   </div>
 
+  <div class="menu-extras" id="supplements" role="group" aria-labelledby="supplements-label" tabindex="-1">
+    <p id="supplements-label">Suppléments pizza</p>
+    <dl>
+      <div><dt>Viande <small>(pepperoni, viande hachée…)</small></dt><dd>+2,00€</dd></div>
+      <div><dt>Légumes</dt><dd>+1,50€</dd></div>
+      <div><dt>Fromage</dt><dd>+1,50€</dd></div>
+    </dl>
+  </div>
+
   <nav class="menu-category-nav" aria-label="Catégories de la carte">
     <details class="menu-category-picker" open>
       <summary>
-        <span class="menu-picker-label">Explorer les 9 catégories</span>
+        <span class="menu-picker-label">Explorer les 8 catégories</span>
         <span class="menu-current-category">Toutes les catégories</span>
         <svg class="menu-picker-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
@@ -75,7 +84,6 @@
       <li><a href="#box">Box</a></li>
       <li><a href="#desserts">Desserts</a></li>
       <li><a href="#boissons">Boissons</a></li>
-      <li><a href="#supplements">Suppléments</a></li>
     </ul>
     </details>
   </nav>
@@ -286,13 +294,6 @@
     <div class="row"><span class="n">Thé glacé maison (50cl)</span><span class="lead"></span><span class="p">3,90€</span></div>
     <div class="row"><span class="n">Citronnade maison (50cl)</span><span class="lead"></span><span class="p">3,90€</span></div>
     <div class="row"><span class="n">Soda classique (33cl)</span><span class="lead"></span><span class="p">1,50€</span></div>
-  </div>
-
-  <div class="menu-cat"><span class="ic" aria-hidden="true">🧀</span><div><span>Suppléments</span><h2 id="supplements" tabindex="-1">Extra Topping</h2></div></div>
-  <div class="menu-list">
-    <div class="row"><span class="n">Meat</span><span class="desc">Pepperoni, viande hachée…</span><span class="p">2,00€</span></div>
-    <div class="row"><span class="n">Veggie</span><span class="lead"></span><span class="p">1,50€</span></div>
-    <div class="row"><span class="n">Cheese</span><span class="lead"></span><span class="p">1,50€</span></div>
   </div>
 
   <p class="note">Prix indicatifs susceptibles d'évoluer. Photos non contractuelles. Retrouvez les prix à jour sur Uber&nbsp;Eats et Deliveroo.</p>

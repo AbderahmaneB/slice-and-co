@@ -15,6 +15,20 @@
 .menu-formats dd>span{font:400 12px var(--body);color:var(--muted);padding-inline:3px}
 .menu-formats small{font:500 13px var(--ui);color:var(--red-text,var(--red-deep));margin-left:3px}
 
+/* Les suppléments accompagnent le choix du format de pizza. */
+.menu-extras{
+  display:flex;align-items:baseline;gap:12px 26px;flex-wrap:wrap;
+  margin-top:22px;padding-top:16px;border-top:1px solid var(--line);
+  scroll-margin-top:calc(var(--header-height,85px) + 20px);
+}
+.menu-extras>p{margin:0;font:500 12px/1.5 var(--ui);letter-spacing:1px;text-transform:uppercase}
+.menu-extras dl{display:flex;flex-wrap:wrap;gap:10px 26px;margin:0}
+.menu-extras dl>div{display:flex;align-items:baseline;gap:8px;min-width:0}
+.menu-extras dt{font:400 13px/1.5 var(--body);min-width:0}
+.menu-extras dt small{font-size:11px;color:var(--muted)}
+.menu-extras dd{margin:0;white-space:nowrap;font:600 15px/1.5 var(--ui);color:var(--red-text,var(--red-deep))}
+.menu-extras:focus-visible{outline:3px solid var(--red);outline-offset:6px}
+
 /* Liens sur grand écran, sélecteur natif dépliable sur mobile. */
 .menu-category-nav{
   position:sticky;top:var(--header-height,85px);z-index:35;
@@ -108,6 +122,10 @@
   .menu-formats dt{font-size:10px;margin:0;letter-spacing:.8px}
   .menu-formats dd{font-size:16px}
   .menu-formats dd>span{font-size:11px;padding-inline:1px}
+  .menu-extras{display:block;margin-top:18px;padding-top:14px}
+  .menu-extras>p{margin-bottom:9px;font-size:11px}
+  .menu-extras dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+  .menu-extras dl>div:first-child{grid-column:1/-1}
   .menu-category-nav{margin-top:18px}
   .menu-with-photos .menu-cat h2[id]{--menu-anchor-gap:42px}
   .menu-list--pizzas .row--pizza{grid-template-columns:112px minmax(0,1fr);gap:16px;padding:22px 0;align-items:start}
