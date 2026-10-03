@@ -6,106 +6,124 @@
 .home .hero .cta>.btn:not(.home-primary):is(:hover,:focus-visible){background:var(--ink);border-color:var(--ink)}
 .home .hero-pizza .badge{font-size:clamp(11px,4.2cqw,25px);line-height:1.15;display:flex;flex-direction:column;justify-content:center}
 .home .hero-pizza .badge small{font:500 clamp(8px,2.2cqw,13px)/1.5 var(--ui)}
-.home-pizzas{padding-block:62px 66px}
-.home-pizzas .section-head{max-width:780px;margin-bottom:34px}
-.home-pizzas .section-head h2{font-size:clamp(32px,4.5vw,54px)}
-.home-pizzas .section-head p{margin-top:16px;font-size:15px}
-.home-pizzas .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
-.home-pizzas .card{background:transparent;box-shadow:none;border:0;border-radius:0}
-.home-pizzas .card:is(:hover,:focus-within){box-shadow:none}
-.home-pizzas .card .pic{border-radius:50%;background:#f3e6d5;padding:12px;position:relative}
-.home-pizzas .card .pic::after{content:"";position:absolute;inset:9px;border:1px dashed #b4a18b;border-radius:50%;pointer-events:none}
-.home-pizzas .card .pic picture{width:96%;position:relative;z-index:1}
-.home-pizzas .card .body{border-top:0;padding:22px 0 0}
-.home-pizzas .card .tag{background:transparent;color:var(--red-text);border:1px solid currentColor;border-radius:2px;transform:rotate(-2deg);font-size:10px}
-.home-pizzas .card h3{font-size:25px;max-width:100%}
-.home-pizzas .card .body .top{align-items:flex-start;flex-wrap:nowrap}
-.home-pizzas .card .price{font-size:25px}
-.home-pizzas .card-link{font-size:13px}
-.home-formats{text-align:center;font-size:12px;color:var(--muted);margin:30px 0 0}
-.home-order{background:#f4e8d7;border-block:1px solid var(--line);padding-block:58px 64px}
-.home-order .section-head{margin-bottom:32px}
-.home-order .section-head p{font-size:15px;margin-top:14px}
+/* La photo, la recette et son prix forment une seule fiche. */
+.home-pizzas{padding-block:54px 60px}
+.pizza-section-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
+.home-pizzas .section-head{max-width:760px;text-align:left;margin:0}
+.home-pizzas .section-head h2{font-size:clamp(30px,3.8vw,48px);margin:8px 0 0}
+.home-pizzas .section-head p{margin-top:14px;font-size:14px}
+.pizza-section-heading>.btn{flex-shrink:0;margin:0;font-size:12px;padding:13px 20px;box-shadow:none}
+.home-formats{font-size:12px;color:var(--muted);margin:0 0 24px;padding-top:16px;border-top:1px solid var(--line)}
+.home-formats span{margin-inline:8px}
+.home-pizzas .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.home-pizzas .card{background:#fffaf4;border:1px solid #d8cabb;border-radius:8px;box-shadow:none;overflow:hidden;min-width:0;transition:border-color .2s,box-shadow .2s}
+.home-pizzas .card:is(:hover,:focus-within){border-color:var(--red-text);box-shadow:0 5px 18px #40230c0b;transform:none}
+.home-pizzas .card .pic{aspect-ratio:auto;height:270px;background:#f4e9db;padding:34px 18px 12px;position:relative;border-bottom:1px solid #e4d8ca}
+.home-pizzas .card .pic::after{content:none}
+.home-pizzas .card .pic picture{width:100%;max-width:220px;position:relative}
+.home-pizzas .card .pic img{filter:drop-shadow(0 6px 5px #40230c20)}
+.home-pizzas .card .tag{position:absolute;top:14px;left:16px;z-index:2;background:transparent;color:var(--red-text);padding:0;border:0;border-radius:0;transform:none;font:600 10px/1.4 var(--ui);letter-spacing:1px;margin:0}
+.home-pizzas .card .body{border-top:0;padding:20px 20px 0}
+.home-pizzas .card .body .top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:12px;min-height:56px}
+.home-pizzas .card h3{font-size:23px;line-height:1.2;max-width:100%;margin:0;min-height:0}
+.home-pizzas .card .price{font-size:24px;line-height:1.2;margin:0}
+.home-pizzas .card .body p{font-size:13px;line-height:1.65;margin:8px 0 20px}
+.home-pizzas .card-link{align-self:stretch;justify-content:space-between;min-height:52px;margin-top:auto;border-top:1px solid #e4d8ca;border-bottom:0;font-size:12px;letter-spacing:.5px;background:none;color:var(--ink)}
+.home-pizzas .card-link .action-icon{padding:4px;width:28px;height:28px;flex-basis:28px;border:1px solid #d8cabb;border-radius:50%;transition:color .2s,background .2s,border-color .2s}
+.home-pizzas .card-link:is(:hover,:focus-visible){color:var(--red-text)}
+.home-pizzas .card-link:is(:hover,:focus-visible) .action-icon{color:var(--cream);background:var(--red-text);border-color:var(--red-text);transform:none}
+.home-pizzas .card-link:focus-visible{outline-offset:-3px;box-shadow:none}
+/* Une séquence continue : la carte, les offres, puis la commande. */
+.home-deals{background:var(--ink);color:var(--cream);padding:48px 0 28px;--focus-ring:var(--cream);--focus-halo:var(--ink)}
+.deals-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:26px}
+.deals-heading .eyebrow{color:var(--cheese)}
+.deals-heading h2{font-size:clamp(32px,4vw,46px);margin:8px 0 0}
+.deals-all{display:inline-flex;align-items:center;gap:16px;min-height:44px;font:500 15px var(--ui);text-decoration:underline;text-underline-offset:5px;white-space:nowrap}
+.deals-all:is(:hover,:focus-visible){color:var(--cheese)}
+.deals-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-block:1px solid #56514a}
+.deal{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 30px 28px 0;min-width:0}
+.deal+.deal{border-left:1px solid #56514a;padding:28px 0 28px 30px}
+.deal-time{display:block;margin-bottom:12px;color:var(--cheese);font:500 12px var(--ui);letter-spacing:1.4px;text-transform:uppercase}
+.deal h3{font:600 23px/1.25 var(--ui);max-width:280px;margin-bottom:10px}
+.deal p{font-size:13px;margin-bottom:10px;line-height:1.6}
+.deal-copy>small{display:block;max-width:290px;color:#bcb6ae;font-size:11px;line-height:1.6}
+.deal-price{font:400 clamp(34px,4vw,54px)/1 var(--display);color:var(--cheese);white-space:nowrap;flex-shrink:0}
+.deal-price small{font:inherit;font-size:.55em}
+.deals-loyalty{margin:20px 0 0;font-size:12px;color:#bcb6ae}
+.deals-loyalty a{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-left:10px;color:var(--cream);text-decoration:underline;text-underline-offset:4px}
+.deals-loyalty a:is(:hover,:focus-visible){color:var(--cheese)}
+.home-order{background:var(--cream);padding-block:56px 64px}
+.home-order .section-head{max-width:none;text-align:left;margin:0 0 32px}
+.home-order .section-head h2{font-size:clamp(32px,4vw,46px);margin-top:8px}
+.home-order .section-head p{font-size:14px;margin-top:12px}
 #commander{scroll-margin-top:calc(var(--header-height,85px) + 24px)}
-.order-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
-.order-option{display:flex;flex-direction:column;align-items:flex-start;padding:0 32px;min-width:0}
-.order-option:first-child{padding-left:0}
-.order-option:last-child{padding-right:0}
-.order-option+.order-option{border-left:1px solid #cfc1af}
-.brand-art{width:160px;height:140px;object-fit:contain;margin:0 0 14px;transition:transform .2s ease;transform-origin:50% 80%}
-.order-number{font:500 11px/1.5 var(--ui);letter-spacing:1.2px;color:var(--red-text);margin-bottom:8px}
-.order-option h3{font:400 32px/1.1 var(--display);margin-bottom:12px}
-.order-option p{font-size:14px;line-height:1.65;margin-bottom:16px;color:#414141;max-width:285px}
-.order-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:auto}
-.order-links a{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border-bottom:2px solid var(--ink);font:600 16px/1.4 var(--ui);transition:color .18s,border-color .18s}
+.order-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.order-option{display:grid;grid-template-columns:minmax(0,1fr) 72px;grid-template-rows:auto 1fr auto;gap:0 12px;align-content:start;padding-top:20px;border-top:2px solid var(--ink);min-width:0}
+.brand-art{grid-column:2;grid-row:1 / 3;width:72px;height:63px;object-fit:contain;transition:transform .2s ease;transform-origin:50% 80%}
+.order-option h3{grid-column:1;grid-row:1;font:600 25px/1.2 var(--ui);margin-bottom:12px}
+.order-option p{grid-column:1;grid-row:2;font-size:13px;line-height:1.65;margin-bottom:18px;color:#414141;max-width:285px}
+.order-links{grid-column:1 / -1;grid-row:3;display:flex;flex-wrap:wrap;gap:6px 18px;align-self:end}
+.order-links a{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border-bottom:1px solid var(--ink);font:600 16px/1.4 var(--ui);transition:color .18s,border-color .18s}
 .order-links a>span[aria-hidden]{display:inline-block;transition:transform .18s}
 .order-links a:is(:hover,:focus-visible){color:var(--red-text);border-color:var(--red-text)}
 .order-links a:is(:hover,:focus-visible)>span[aria-hidden]{transform:translate(2px,-2px)}
-.order-detail{font-size:12px;line-height:1.5;margin-top:10px;color:var(--muted)}
-.home .lunch-detail{margin:16px auto 0;max-width:540px;font-size:17px}
-.lunch-detail small{display:block;margin-top:8px;font-size:12px;color:#ddd}
-.home-details{padding-block:36px}
-.house-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.house-note{display:flex;align-items:center;gap:14px;min-width:0}
-.house-note img{flex:0 0 88px;width:88px;height:77px}
-.house-note h2{font:600 21px/1.2 var(--ui);margin-bottom:6px}
-.house-note p,.house-note a{font-size:12px;line-height:1.6;margin:0;color:var(--muted)}
-.house-note a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--red-text);text-decoration:underline;text-underline-offset:4px}
-.house-note a:is(:hover,:focus-visible){color:var(--ink)}
+.order-detail{display:block;font-size:11px;line-height:1.5;margin-top:8px;color:var(--muted)}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
   .order-option:has(a:hover) .brand-art{transform:translateY(-3px) rotate(-3deg)}
 }
 @media(max-width:1000px){
-  .order-option{padding-inline:22px}
-  .home-pizzas .cards{gap:22px}
-  .home-pizzas .card .body .top{display:block}
-  .home-pizzas .card h3{min-height:2.2em}
-  .home-pizzas .card .price{display:block;margin-top:8px}
-  .house-notes{gap:16px}
-  .house-note{gap:8px}
-  .house-note img{flex-basis:64px;width:64px;height:56px}
+  .pizza-section-heading{align-items:start}
+  .pizza-section-heading>.btn{font-size:11px;padding-inline:14px}
+  .home-pizzas .cards{gap:16px}
+  .home-pizzas .card .pic{height:220px}
+  .home-pizzas .card .pic picture{max-width:170px}
+  .home-pizzas .card .body{padding:18px 16px 0}
+  .home-pizzas .card .body .top{display:flex;flex-direction:column;gap:8px;min-height:92px}
+  .home-pizzas .card h3{font-size:21px}
 }
 @media(max-width:760px){
-  .home-pizzas{padding-block:40px 44px}
-  .home-pizzas .cards{grid-template-columns:1fr;gap:28px}
-  .home-pizzas .card{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center}
-  .home-pizzas .card .body{padding:0}
-  .home-pizzas .card .body .top{display:block}
-  .home-pizzas .card .price{display:block;margin-top:8px;font-size:23px}
-  .home-pizzas .card h3{font-size:23px;min-height:0}
-  .home-pizzas .card .body p{margin-bottom:6px;font-size:13px}
+  .home-pizzas{padding-block:36px 42px}
+  .pizza-section-heading{display:block}
+  .pizza-section-heading>.btn{margin-top:20px}
+  .home-formats{line-height:1.6;margin-bottom:20px}
+  .home-pizzas .cards{grid-template-columns:1fr;gap:20px}
+  .home-pizzas .card{display:grid;grid-template-columns:180px minmax(0,1fr);gap:0}
+  .home-pizzas .card .pic{height:100%;min-height:240px;padding:36px 12px 16px;border-bottom:0;border-right:1px solid #e4d8ca}
+  .home-pizzas .card .body{padding:18px 20px 0}
+  .home-pizzas .card .body .top{min-height:0}
+  .home-pizzas .card .body p{margin-bottom:14px}
+  .home-deals{padding:34px 0 22px}
+  .deals-heading{align-items:start;gap:12px}
+  .deals-all{font-size:13px;gap:8px}
+  .deals-grid{grid-template-columns:1fr}
+  .deal,.deal+.deal{padding:24px 0;gap:20px;border-left:0}
+  .deal+.deal{border-top:1px solid #56514a}
+  .deal h3{font-size:22px}
+  .deal-price{font-size:40px}
+  .deals-loyalty a{margin-left:0}
   .home-order{padding-block:40px}
   .home-order .section-head{margin-bottom:24px}
   .order-options{grid-template-columns:1fr;gap:26px}
-  .order-option{position:relative;padding:0 0 26px 132px;min-height:160px}
-  .order-option:first-child,.order-option:last-child{padding:0 0 26px 132px}
-  .order-option:last-child{padding-bottom:0}
-  .order-option+.order-option{border-left:0}
-  .order-option:not(:last-child){border-bottom:1px solid #cfc1af}
-  .brand-art{position:absolute;top:0;left:0;width:112px;height:98px;margin:0}
-  .order-option h3{font-size:28px}
-  .order-option p{max-width:100%;font-size:13px;margin-bottom:10px}
-  .order-links{gap:5px 20px}
-  .order-links a{font-size:15px}
-  .house-notes{grid-template-columns:1fr;gap:20px;max-width:560px}
-  .house-note{gap:20px}
-  .house-note img{flex-basis:78px;width:78px;height:68px}
-  .house-note h2{font-size:22px}
-  .house-note p,.house-note a{font-size:13px}
+  .order-option{grid-template-columns:minmax(0,1fr) 84px}
+  .brand-art{width:84px;height:74px}
+  .order-option p{max-width:100%;margin-bottom:12px}
+
 }
 @media(max-width:420px){
   .home .hero p{font-size:16px}
-  .home-pizzas .card{grid-template-columns:105px minmax(0,1fr);gap:16px;align-items:start}
-  .home-pizzas .card .pic{padding:0;margin-top:10px}
-  .home-pizzas .card .pic::after{inset:3px}
-  .home-pizzas .card h3{font-size:21px}
-  .home-pizzas .card-link{letter-spacing:.2px;font-size:12px;gap:6px}
-  .order-option,.order-option:first-child,.order-option:last-child{padding-left:92px}
-  .brand-art{width:80px;height:70px}
-  .order-option h3{font-size:25px}
-  .order-number{font-size:10px;letter-spacing:.5px}
+  .home-pizzas .card{display:flex}
+  .home-pizzas .card .pic{height:238px;min-height:0;margin:0;padding:32px 20px 6px;border-right:0;border-bottom:1px solid #e4d8ca}
+  .home-pizzas .card .pic picture{max-width:196px}
+  .home-pizzas .card .body .top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px}
+  .home-pizzas .card h3{font-size:22px}
+  .home-pizzas .card .price{font-size:23px}
+  .deals-heading{display:block}
+  .deals-all{margin-top:8px}
+  .deal h3{font-size:20px}
+  .deal-price{font-size:34px}
 }
 @media(prefers-reduced-motion:reduce){.brand-art,.order-links a>span[aria-hidden]{transition:none}}
+@media(min-width:1200px){.home-pizzas .card .body .top{min-height:28px}}
 @media(forced-colors:active){
   .home .hero .cta>.btn{background:ButtonFace;border-color:ButtonText;color:ButtonText}
   .home .hero .cta>.btn:is(:hover,:focus-visible){background:Highlight;border-color:Highlight;color:HighlightText}
