@@ -180,12 +180,12 @@
       { slug: "margherita", name: "Margherita", width: 1254 },
       { slug: "pepperoni", name: "Pepperoni", width: 1024 },
       { slug: "bbq-chicken", name: "BBQ Chicken", width: 760 },
-      { slug: "veggie-supreme", name: "Veggie Supreme", width: 1254 },
-      { slug: "full-cheesy", name: "Full Cheesy", width: 1254 },
-      { slug: "buffalo-spicy-chicken", name: "Buffalo Spicy Chicken", width: 1254 },
+      { slug: "veggie-supreme-hq", name: "Veggie Supreme", width: 1254 },
+      { slug: "full-cheesy-hq", name: "Full Cheesy", width: 1254 },
+      { slug: "buffalo-spicy-chicken-hq", name: "Buffalo Spicy Chicken", width: 1254 },
       { slug: "manhattan-cheesecake", name: "Manhattan Cheesecake", width: 1254 }
     ];
-    var imageVersion = "20261003";
+    var imageVersion = "20261003-hq";
     var announcement = document.getElementById("hero-pizza-announcement");
     var index = 0, busy = false, heroVisible = true, fadeTimer = null, autoTimer = null;
     var transitionVersion = 0, pendingManual = 0, activeManual = false, finishCurrent = null, keyboardFocused = false;
@@ -236,7 +236,7 @@
     addEventListener("pageshow", syncHeroMotion);
     function setImage(img, pizza) {
       var base = "assets/img/pizzas/web/" + pizza.slug + "-";
-      var sizes = [480, 800].filter(function (size) { return size < pizza.width; }).concat(pizza.width);
+      var sizes = [480, 800, 1280].filter(function (size) { return size < pizza.width; }).concat(pizza.width);
       img.srcset = sizes.map(function (size) { return base + size + ".webp?v=" + imageVersion + " " + size + "w"; }).join(", ");
       img.src = base + Math.min(800, pizza.width) + ".webp?v=" + imageVersion;
       img.width = pizza.width;

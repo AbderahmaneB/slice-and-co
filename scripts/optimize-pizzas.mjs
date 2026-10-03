@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Requires Node 22+ and an installed Chromium browser. No npm dependencies.
 // BROWSER_PATH may point to Chrome/Edge/Chromium on another machine.
+// BROWSER_NO_SANDBOX=1 supports trusted local PNG conversion inside a restricted process sandbox.
 // Optional arguments: source PNG filenames to regenerate only selected pizzas.
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -13,8 +14,8 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceDir = path.join(root, 'public/assets/img/pizzas');
 const outputDir = path.join(sourceDir, 'web');
-const sizes = [320, 480, 800];
-const quality = 0.90;
+const sizes = [320, 480, 800, 1280];
+const quality = 0.95;
 const browserCandidates = [
   process.env.BROWSER_PATH,
   path.join(process.env.PROGRAMFILES || 'C:/Program Files', 'Google/Chrome/Application/chrome.exe'),
@@ -34,8 +35,11 @@ await mkdir(outputDir, { recursive: true });
 const profile = await mkdtemp(path.join(tmpdir(), 'slice-pizza-webp-'));
 const browser = spawn(browserPath, [
   '--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check',
+  ...(process.env.BROWSER_NO_SANDBOX === '1' ? ['--no-sandbox'] : []),
   '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank',
 ], { windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'] });
+let browserLogs = '';
+browser.stderr.on('data', chunk => { browserLogs = (browserLogs + chunk.toString()).slice(-8192); });
 
 let socket;
 try {
@@ -61,8 +65,22 @@ try {
   });
   let nextId = 0;
   const pending = new Map();
+  const rejectPending = error => {
+    for (const operation of pending.values()) {
+      clearTimeout(operation.timeout);
+      operation.reject(error);
+    }
+    pending.clear();
+  };
+  const browserError = detail => new Error(`${detail}\n${browserLogs.trim()}\nIf the browser renderer is blocked by a restricted process sandbox, use BROWSER_NO_SANDBOX=1 for these trusted local PNGs.`);
+  socket.addEventListener('error', () => rejectPending(browserError('Browser WebSocket error.')));
+  socket.addEventListener('close', event => rejectPending(browserError(`Browser WebSocket closed (${event.code}): ${event.reason}`)));
+  browser.once('exit', (code, signal) => rejectPending(browserError(`Browser exited (${code ?? signal}).`)));
   socket.addEventListener('message', event => {
     const message = JSON.parse(event.data);
+    if (message.method === 'Runtime.consoleAPICalled') {
+      console.log(message.params.args.map(argument => argument.value ?? argument.description ?? '').join(' '));
+    }
     if (!message.id) return;
     const operation = pending.get(message.id);
     if (!operation) return;
@@ -71,26 +89,33 @@ try {
     if (message.error) operation.reject(new Error(message.error.message));
     else operation.resolve(message.result);
   });
-  const call = (method, params = {}) => new Promise((resolve, reject) => {
+  const call = (method, params = {}, timeoutMs = 30000) => new Promise((resolve, reject) => {
     const id = ++nextId;
-    const timeout = setTimeout(() => { pending.delete(id); reject(new Error(`${method} timed out.`)); }, 30000);
+    const timeout = setTimeout(() => { pending.delete(id); reject(browserError(`${method} timed out after ${timeoutMs / 1000}s.`)); }, timeoutMs);
     pending.set(id, { resolve, reject, timeout });
     socket.send(JSON.stringify({ id, method, params }));
   });
+  const browserVersion = await call('Browser.getVersion');
+  await call('Runtime.enable');
+  console.log(`Using ${browserVersion.product} for local PNG exports.`);
   const assets = [];
   for (const name of sourceNames) {
     const sourcePath = path.join(sourceDir, name);
     const source = await readFile(sourcePath);
     const hash = createHash('sha256').update(source).digest('hex');
+    console.log(`Converting ${name} (${Math.round(source.length / 1024)} KiB source).`);
     const expression = `(${async function convert(sourceUrl, targetSizes, encodingQuality) {
+      console.info('Loading source PNG.');
       const image = new Image();
       image.src = sourceUrl;
       await image.decode();
+      console.info(`Decoded source: ${image.naturalWidth} x ${image.naturalHeight}.`);
       const variants = [];
       const nativeSize = Math.max(image.naturalWidth, image.naturalHeight);
       // Keep the original detail for large displays, without enlarging small sources.
       const availableSizes = [...new Set([...targetSizes.filter(size => size < nativeSize), nativeSize])];
       for (const size of availableSizes) {
+        console.info(`Encoding and verifying ${size}px WebP.`);
         const canvas = document.createElement('canvas');
         canvas.width = size;
         canvas.height = size;
@@ -134,7 +159,7 @@ try {
       }
       return { width: image.naturalWidth, height: image.naturalHeight, variants };
     }})(${JSON.stringify(`data:image/png;base64,${source.toString('base64')}`)}, ${JSON.stringify(sizes)}, ${quality})`;
-    const response = await call('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
+    const response = await call('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }, 60000);
     if (response.exceptionDetails) throw new Error(response.exceptionDetails.exception?.description || 'Image conversion failed.');
     const converted = response.result.value;
     const entry = { source: name, sourceBytes: source.length, sourceSha256: hash, width: converted.width, height: converted.height, variants: [] };
