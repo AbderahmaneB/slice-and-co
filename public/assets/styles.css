@@ -92,9 +92,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
    dépasser derrière l'autre pendant le fondu */
 .hero-pizza img{width:100%;animation:spin 42s linear infinite;clip-path:circle(49.2% at 50% 50%)}
 .hero-pizza img.pz-b{position:absolute;inset:0;opacity:0}
-/* l'ombre est portée par un calque dédié (le clip-path la couperait sur les img) */
-.hero-pizza::before{content:"";position:absolute;inset:2%;border-radius:50%;
-  box-shadow:0 26px 48px rgba(0,0,0,.55)}
 @keyframes spin{to{transform:rotate(360deg)}}
 /* pastille promo : collée à la pizza (reste au même endroit sur tous les écrans) */
 .hero-pizza .badge{position:absolute;top:11%;right:11%;z-index:6;
