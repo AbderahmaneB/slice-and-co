@@ -29,6 +29,24 @@ const quickActions = `<!-- QUICK-ACTIONS:START -->
 <nav class="mobile-actions" aria-label="Commander ou appeler la pizzeria"><a href="tel:${site.telephone}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m7 3 3 5-3 3c2 4 4 6 8 7l3-3 4 3c0 3-2 4-4 3C9 19 4 14 2 6c0-3 2-4 5-3Z"/></svg>Appeler</a><a href="/contact#commander-livraison">Commander <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></nav>
 <!-- QUICK-ACTIONS:END -->`;
 const status = '<p class="business-status" data-business-status hidden><span class="business-status-dot" aria-hidden="true"></span><span data-business-status-text></span></p><small class="business-status-note">Selon les horaires habituels</small>';
+// Distinguish JavaScript loading from the accessible navigation without scripts.
+// Inline before styles so a slow or uncached site.js never exposes the desktop menu.
+const navigationBootstrap = `<script id="nav-bootstrap">
+(function () {
+  var root = document.documentElement;
+  root.classList.add("js-nav");
+  function restoreFallback() {
+    if (!root.classList.contains("nav-ready")) root.classList.remove("js-nav");
+  }
+  window.addEventListener("error", function (event) {
+    var source = (event.target && event.target.src) || event.filename || "";
+    if (/\\/assets\\/site\\.js(?:\\?|$)/.test(source)) restoreFallback();
+  }, true);
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(restoreFallback, 0);
+  });
+})();
+</script>`;
 
 function metadata(page, noindex = false) {
   const url = `${origin}${page.path}`;
@@ -63,6 +81,9 @@ ${noindex ? '' : `<link rel="canonical" href="${url}">`}
 
 for (const page of pages) {
   let html = await readFile(`public/${page.file}`, 'utf8');
+  html = html.replace(/<script id="nav-bootstrap">[\s\S]*?<\/script>\s*/g, '')
+    .replace(/<meta charset="utf-8">\s*/, `<meta charset="utf-8">\n${navigationBootstrap}\n`)
+    .replace(/(<button class="burger")(?![^>]*\bdisabled\b)/g, '$1 disabled');
   html = html.replace(/\s*<button class="motion-toggle"[^>]*>[\s\S]*?<\/button>/g, '')
     .replace(/<span id="motion-preference-note"[^>]*>[\s\S]*?<\/span>\s*/g, '')
     .replace(/<!-- SEO:START -->[\s\S]*?<!-- SEO:END -->\s*/g, '')
@@ -74,11 +95,12 @@ for (const page of pages) {
   if (!html.includes('assets/enhancements.css')) html = html.replace('</head>', '<link rel="stylesheet" href="assets/enhancements.css?v=20261003-optimize">\n</head>');
   if (!html.includes('assets/enhancements.js')) html = html.replace('</body>', '<script type="module" src="assets/enhancements.js?v=20261003-optimize"></script>\n</body>');
   html = html.replace(/<!-- QUICK-ACTIONS:START -->[\s\S]*?<!-- QUICK-ACTIONS:END -->\s*/g, '');
-  html = html.replace(/assets\/site\.js\?v=[^" ]+/g, 'assets/site.js?v=20261003-backtop');
+  html = html.replace(/assets\/site\.js\?v=[^" ]+/g, 'assets/site.js?v=20261003-mobile-nav');
   html = html.replace(/assets\/intro\.js(?:\?v=[^" ]+)?/g, 'assets/intro.js?v=20261003-click');
   html = html.replace(/assets\/home\.css\?v=[^" ]+/g, 'assets/home.css?v=20261003-hover');
   html = html.replace(/assets\/interactions\.css(?:\?v=[^" ]+)?/g, 'assets/interactions.css?v=20261003-click');
-  html = html.replace(/assets\/(styles|enhancements)\.css(?:\?v=[^" ]+)?/g, 'assets/$1.css?v=20261003-hover');
+  html = html.replace(/assets\/styles\.css(?:\?v=[^" ]+)?/g, 'assets/styles.css?v=20261003-mobile-nav');
+  html = html.replace(/assets\/enhancements\.css(?:\?v=[^" ]+)?/g, 'assets/enhancements.css?v=20261003-hover');
   if (!html.includes('assets/hover.css')) html = html.replace('</head>', '<link rel="stylesheet" href="assets/hover.css">\n</head>');
   html = html.replace(/assets\/hover\.css(?:\?v=[^" ]+)?/g, 'assets/hover.css?v=20261003-backtop');
   html = html.replace(/(<a class="footer-back-top[^"<>]*" href="#haut">)Retour en haut/g, '$1<span class="back-top-label">Retour en haut</span>');

@@ -395,12 +395,12 @@ main{display:block}
 @media(max-width:900px){
   .nav{visibility:hidden;overflow-y:auto;max-height:100dvh;transition:transform .25s,visibility .25s}
   .nav.open{visibility:visible}
-  html:not(.nav-ready) .site-header{position:relative}
-  html:not(.nav-ready) .site-header .wrap{flex-wrap:wrap}
-  html:not(.nav-ready) .nav{position:static;visibility:visible;transform:none;width:100%;flex-direction:row;flex-wrap:wrap;justify-content:center;padding:10px 0;gap:8px 20px;box-shadow:none;font-size:14px;max-height:none}
-  html:not(.nav-ready) .nav .btn{width:auto}
-  html:not(.nav-ready) .burger{display:none}
-  html:not(.nav-ready) .menu-category-nav{top:0}
+  html:not(.js-nav) .site-header{position:relative}
+  html:not(.js-nav) .site-header .wrap{flex-wrap:wrap}
+  html:not(.js-nav) .nav{position:static;visibility:visible;transform:none;width:100%;flex-direction:row;flex-wrap:wrap;justify-content:center;padding:10px 0;gap:8px 20px;box-shadow:none;font-size:14px;max-height:none}
+  html:not(.js-nav) .nav .btn{width:auto}
+  html:not(.js-nav) .burger{display:none}
+  html:not(.js-nav) .menu-category-nav{top:0}
 }
 @media(max-width:560px){
   .site-header .wrap{gap:8px;padding-inline:18px}

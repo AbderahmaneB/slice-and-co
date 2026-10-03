@@ -196,7 +196,8 @@
       });
       mobile.addEventListener("change", function () { setOpen(false, false); updateHeaderSize(); });
       addEventListener("pageshow", function () { setOpen(false, false); });
-      root.classList.add("nav-ready");
+      root.classList.add("js-nav", "nav-ready");
+      burger.disabled = false;
       setOpen(false, false);
     }
 

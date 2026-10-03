@@ -2,6 +2,22 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script id="nav-bootstrap">
+(function () {
+  var root = document.documentElement;
+  root.classList.add("js-nav");
+  function restoreFallback() {
+    if (!root.classList.contains("nav-ready")) root.classList.remove("js-nav");
+  }
+  window.addEventListener("error", function (event) {
+    var source = (event.target && event.target.src) || event.filename || "";
+    if (/\/assets\/site\.js(?:\?|$)/.test(source)) restoreFallback();
+  }, true);
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(restoreFallback, 0);
+  });
+})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <!-- SEO:START -->
 <title>Carte &amp; prix des pizzas · Slice &amp; Co | Paris 15</title>
@@ -30,7 +46,7 @@
 <script src="assets/intro.js?v=20261003-click"></script>
 <link rel="preload" href="assets/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css">
-<link rel="stylesheet" href="assets/styles.css?v=20261003-hover">
+<link rel="stylesheet" href="assets/styles.css?v=20261003-mobile-nav">
 <link rel="stylesheet" href="assets/menu.css?v=20261003-menu-guide">
 <link rel="stylesheet" href="assets/interactions.css?v=20261003-click">
 <link rel="stylesheet" href="assets/enhancements.css?v=20261003-hover">
@@ -55,7 +71,7 @@
     <a href="/contact">Contact</a>
     <a class="btn sco-action" href="https://www.ubereats.com/fr/store/slice-&-co-pizza/K-sIaop_TqqexoYeDdTACQ" target="_blank" rel="noopener"><span class="btn-label">Commander</span><svg class="sco-arrow sco-arrow--external action-icon action-icon--external" viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="sco-arrow-mark"><g transform="rotate(-45 16 16)"><path d="M4 17.5C11 17.5 17.5 16.5 27 14.5M19 7l8 7.5-7.5 9"/></g></g></svg><span class="sr-only"> (nouvel onglet)</span></a>
   </nav>
-  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-controls="nav" aria-expanded="false"><svg class="burger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path class="burger-line--top" d="M4 6h16"/><path class="burger-line--middle" d="M4 12h16"/><path class="burger-line--bottom" d="M4 18h16"/></svg></button>
+  <button class="burger" disabled type="button" aria-label="Ouvrir le menu" aria-controls="nav" aria-expanded="false"><svg class="burger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path class="burger-line--top" d="M4 6h16"/><path class="burger-line--middle" d="M4 12h16"/><path class="burger-line--bottom" d="M4 18h16"/></svg></button>
 </div></header>
 
 <main id="contenu" tabindex="-1">
@@ -402,7 +418,7 @@
   </div>
 </footer>
 
-<script src="assets/site.js?v=20261003-backtop" defer></script>
+<script src="assets/site.js?v=20261003-mobile-nav" defer></script>
 <script type="module" src="assets/enhancements.js?v=20261003-optimize"></script>
 <!-- QUICK-ACTIONS:START -->
 <nav class="mobile-actions" aria-label="Commander ou appeler la pizzeria"><a href="tel:+33782817250"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m7 3 3 5-3 3c2 4 4 6 8 7l3-3 4 3c0 3-2 4-4 3C9 19 4 14 2 6c0-3 2-4 5-3Z"/></svg>Appeler</a><a href="/contact#commander-livraison" class="sco-action">Commander <svg class="sco-arrow sco-arrow--right" viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="sco-arrow-mark"><g><path d="M4 17.5C11 17.5 17.5 16.5 27 14.5M19 7l8 7.5-7.5 9"/></g></g></svg></a></nav>
