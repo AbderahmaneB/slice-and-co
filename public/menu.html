@@ -10,7 +10,7 @@
 <link rel="preload" href="assets/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/styles.css?v=20261003-halo">
-<link rel="stylesheet" href="assets/menu.css?v=20261003-extras">
+<link rel="stylesheet" href="assets/menu.css?v=20261003-menu-guide">
 <link rel="stylesheet" href="assets/interactions.css">
 </head>
 <body id="haut">
@@ -51,21 +51,24 @@
 
 <section class="section menu-with-photos"><div class="wrap">
 
-  <div class="menu-intro">
-    <h2 class="menu-count"><span class="menu-count-number">23</span><span class="menu-count-label">recettes<br>à découvrir</span></h2>
-    <dl class="menu-formats">
-      <div><dt>Pizzas salées</dt><dd>Sénior <span>ou</span> Méga <small>+4€</small></dd></div>
-      <div><dt>Pizzas sucrées</dt><dd>9,90€</dd></div>
-    </dl>
-  </div>
+  <div class="menu-guide">
+    <div class="menu-intro">
+      <h2 class="menu-count"><span class="menu-count-number">23</span><span class="menu-count-label">recettes<br>à découvrir</span></h2>
+      <dl class="menu-formats">
+        <div><dt>Pizzas salées</dt><dd><span class="menu-format-value">Sénior <span>ou</span> Méga</span><small>+4€ en format Méga</small></dd></div>
+        <div><dt>Pizzas sucrées</dt><dd><span class="menu-format-price">9,90€</span></dd></div>
+      </dl>
+    </div>
 
-  <div class="menu-extras" id="supplements" role="group" aria-labelledby="supplements-label" tabindex="-1">
-    <p id="supplements-label">Suppléments pizza</p>
-    <dl>
-      <div><dt>Viande <small>(pepperoni, viande hachée…)</small></dt><dd>+2,00€</dd></div>
-      <div><dt>Légumes</dt><dd>+1,50€</dd></div>
-      <div><dt>Fromage</dt><dd>+1,50€</dd></div>
-    </dl>
+    <div class="menu-extras" id="supplements" role="group" aria-labelledby="supplements-label" tabindex="-1">
+      <p id="supplements-label">Un supplément ?</p>
+      <dl>
+        <div><dt>Viande</dt><dd>+2,00€</dd></div>
+        <div><dt>Légumes</dt><dd>+1,50€</dd></div>
+        <div><dt>Fromage</dt><dd>+1,50€</dd></div>
+      </dl>
+      <p class="menu-extras-detail">Viande : pepperoni, viande hachée…</p>
+    </div>
   </div>
 
   <nav class="menu-category-nav" aria-label="Catégories de la carte">
