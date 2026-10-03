@@ -1,0 +1,53 @@
+import assert from 'node:assert/strict';
+import { readFile, stat } from 'node:fs/promises';
+import path from 'node:path';
+import { site, pages, faq } from '../site.config.mjs';
+const origin = new URL(process.env.SITE_ORIGIN || site.origin).origin;
+const root = path.resolve('public');
+const known = new Map(pages.map(page => [page.path, page.file]));
+const titles = new Set();
+const idsFor = async file => new Set([...String(await readFile(file, 'utf8')).matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
+let localLinks = 0;
+for (const page of pages) {
+  const html = await readFile(path.join(root, page.file), 'utf8');
+  const title = html.match(/<title>(.*?)<\/title>/)?.[1];
+  assert.ok(title && !titles.has(title), `Titre manquant ou dupliqué : ${page.file}`);
+  titles.add(title);
+  assert.equal((html.match(/<h1\b/g) || []).length, 1, `Un seul h1 : ${page.file}`);
+  assert.ok(html.includes(`<link rel="canonical" href="${origin}${page.path}">`), `Canonical : ${page.file}`);
+  assert.equal((html.match(/rel="canonical"/g) || []).length, 1);
+  assert.equal((html.match(/name="description"/g) || []).length, 1);
+  assert.ok(html.includes('name="twitter:card" content="summary_large_image"'));
+  assert.ok(html.includes(`property="og:image" content="${origin}/assets/share-cover.png"`));
+  const data = JSON.parse(html.match(/id="site-schema">(.*?)<\/script>/s)[1]);
+  const restaurant = data['@graph'].find(item => item['@type'] === 'Restaurant');
+  assert.equal(restaurant.url, `${origin}/`);
+  assert.equal(restaurant.menu, `${origin}/menu`);
+  assert.equal(restaurant.telephone, site.telephone);
+  assert.equal(restaurant.openingHoursSpecification.length, 13);
+  assert.ok(!restaurant.openingHoursSpecification.some(entry => entry.closes === '24:00'));
+  if (page.path === '/') assert.equal(data['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.length, faq.length);
+  const ids = await idsFor(path.join(root, page.file));
+  for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
+    const raw = match[1].replaceAll('&amp;', '&');
+    if (/^(?:https?:|tel:|mailto:|data:)/.test(raw)) continue;
+    const url = new URL(raw, `${origin}${page.path}`);
+    let file;
+    if (url.hash && url.pathname === page.path) assert.ok(ids.has(decodeURIComponent(url.hash.slice(1))), `Ancre absente : ${page.file} ${raw}`);
+    file = known.has(url.pathname) ? path.join(root, known.get(url.pathname)) : path.join(root, url.pathname);
+    assert.ok((await stat(file)).isFile(), `Fichier absent : ${page.file} ${raw}`);
+    if (url.hash && url.pathname !== page.path && known.has(url.pathname)) assert.ok((await idsFor(file)).has(decodeURIComponent(url.hash.slice(1))), `Ancre interpage absente : ${raw}`);
+    localLinks += 1;
+  }
+}
+const share = await readFile(path.join(root, 'assets/share-cover.png'));
+assert.equal(share.readUInt32BE(16), 1200);
+assert.equal(share.readUInt32BE(20), 630);
+const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
+assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]), pages.map(page => `${origin}${page.path}`));
+assert.ok((await readFile(path.join(root, 'robots.txt'), 'utf8')).includes(`Sitemap: ${origin}/sitemap.xml`));
+const notFound = await readFile(path.join(root, '404.html'), 'utf8');
+assert.ok(notFound.includes('content="noindex,follow"'));
+assert.ok(!notFound.includes('rel="canonical"'));
+assert.ok(notFound.includes('href="/assets/enhancements.css'));
+console.log(`${pages.length} pages, SEO et données structurées valides ; ${localLinks} liens/ressources locaux vérifiés.`);

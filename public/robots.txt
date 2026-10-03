@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /motion/
+Disallow: /assets/img/pizzas.zip
+
+Sitemap: https://slice-and-co.abderahmane-benomari7.workers.dev/sitemap.xml

@@ -21,6 +21,7 @@
         motionButton.setAttribute("aria-pressed", String(paused));
         motionButton.setAttribute("aria-disabled", String(motion.matches));
         motionButton.title = motion.matches ? "Animations arrêtées selon votre appareil" : paused ? "Reprendre les animations" : "Mettre les animations en pause";
+        motionButton.setAttribute("aria-label", motionButton.title);
         if (motion.matches) motionButton.setAttribute("aria-describedby", "motion-preference-note");
         else motionButton.removeAttribute("aria-describedby");
       }
@@ -54,7 +55,7 @@
 
     // Ne jamais masquer une grande section dont le seuil serait hors écran.
     if ("IntersectionObserver" in window && !motionIsPaused()) {
-      var elements = document.querySelectorAll(".card,.feature,.offer,.menu-cat,.section-head,.info,.cta-band .wrap,.map");
+      var elements = document.querySelectorAll(".card,.feature,.offer,.menu-cat,.section-head,.info,.cta-band .wrap,.map-shell,.pizza-tile,.menu-poster,.deal,.order-option,.faq-list details");
       var reveal = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -64,6 +65,9 @@
         });
       }, { threshold: 0.06 });
       elements.forEach(function (el) { el.classList.add("reveal"); reveal.observe(el); });
+      document.querySelectorAll(".pizza-tile").forEach(function (el, index) {
+        el.style.setProperty("--reveal-delay", ((index % (matchMedia("(max-width: 760px)").matches ? 2 : 3)) * 60) + "ms");
+      });
       motion.addEventListener("change", function () {
         if (motion.matches) {
           elements.forEach(function (el) { el.classList.add("in"); });
@@ -151,7 +155,7 @@
       backdrop.setAttribute("aria-hidden", "true");
       backdrop.hidden = true;
       document.body.appendChild(backdrop);
-      var background = [document.querySelector(".topbar"), document.querySelector("main"), document.querySelector("footer"), document.querySelector(".skip-link"), header && header.querySelector(".brand")].filter(Boolean);
+      var background = [document.querySelector(".topbar"), document.querySelector("main"), document.querySelector("footer"), document.querySelector(".mobile-actions"), document.querySelector(".skip-link"), header && header.querySelector(".brand")].filter(Boolean);
       var previousInert = new Map();
       function setOpen(open, focus) {
         open = open && mobile.matches;

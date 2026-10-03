@@ -1,0 +1,21 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/img/pizzas/web/*
+  Cache-Control: public, max-age=604800
+
+/assets/icons/*
+  Cache-Control: public, max-age=604800
+
+/assets/illustrations/*
+  Cache-Control: public, max-age=604800
+
+/assets/share-cover.png
+  Cache-Control: public, max-age=86400
+
+/404
+  X-Robots-Tag: noindex
