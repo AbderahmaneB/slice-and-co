@@ -1,5 +1,7 @@
 # Veggie Supreme : image aux textures plus douces
 
+> Historique : cette version a été remplacée le 4 octobre 2026 par [le nouveau visuel](veggie-image-natural.md). Elle n'est plus utilisée par le site ni par les sources motion actuelles.
+
 Nouvelle image réalisée avec l’outil intégré `imagegen` le 3 octobre 2026. Cible : réduire l’aspect granuleux visible sur la version HQ à la taille du grand bandeau. Les ingrédients restent ceux de la recette ; la disposition change et la croûte est plus régulière.
 
 - PNG utilisé par le site : `public/assets/img/pizzas/veggie-supreme-clean.png`, 1254 × 1254, transparent.

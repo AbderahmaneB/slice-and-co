@@ -211,12 +211,12 @@
       { slug: "margherita", name: "Margherita", width: 1254 },
       { slug: "pepperoni", name: "Pepperoni", width: 1024 },
       { slug: "bbq-chicken", name: "BBQ Chicken", width: 760 },
-      { slug: "veggie-supreme-clean", name: "Veggie Supreme", width: 1254 },
+      { slug: "veggie-supreme-natural", name: "Veggie Supreme", width: 1254 },
       { slug: "full-cheesy-hq", name: "Full Cheesy", width: 1254 },
       { slug: "buffalo-spicy-chicken-hq", name: "Buffalo Spicy Chicken", width: 1254 },
       { slug: "manhattan-cheesecake", name: "Manhattan Cheesecake", width: 1254 }
     ];
-    var imageVersion = "20261003-veggie";
+    var imageVersion = "20261004-veggie-natural";
     var announcement = document.getElementById("hero-pizza-announcement");
     var index = 0, busy = false, heroVisible = true, fadeTimer = null, autoTimer = null;
     var transitionVersion = 0, pendingManual = 0, activeManual = false, finishCurrent = null, keyboardFocused = false;
